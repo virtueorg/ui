@@ -1,0 +1,14 @@
+<script lang="ts">
+  import { cn } from "$lib/utils/misc";
+  import type { HTMLParamAttributes } from "svelte/elements";
+
+  type $$Props = HTMLParamAttributes;
+
+  export { className as class };
+
+  let className = "";
+</script>
+
+<p class={cn("text-sm", "text-mutedForeground", className)} {...$$restProps}>
+  <slot />
+</p>
