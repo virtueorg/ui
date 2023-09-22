@@ -12,9 +12,9 @@ export default {
         mutedForeground: "#94a3b8",
         mutedHover: "#1e293b",
 
-        primary: "#34d399",
+        primary: "#818cf8",
         primaryForeground: "#020617",
-        primaryHover: "#10b981",
+        primaryHover: "#6366f1",
 
         warning: "#fbbf24",
         warningForeground: "#020617",
