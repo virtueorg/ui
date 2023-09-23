@@ -1,6 +1,6 @@
 <script lang="ts">
   import { CloseIcon } from "$lib/icons";
-  import alerts from "$lib/stores/alerts";
+  import { alerts } from "$lib/stores/alerts";
   import type { IAlert } from "$lib/types";
   import { Alert, AlertAction, AlertIcon, AlertTitle } from "../Alert";
   import { Button } from "../Button";
