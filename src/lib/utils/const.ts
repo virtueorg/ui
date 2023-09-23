@@ -1,5 +1,7 @@
 import { quartOut } from "svelte/easing";
 
+export const ALERT_TIMEOUT = 4000;
+
 export const TRANSITION_OFFSET = 30;
 export const TRANSITION_DURATION = 300;
 export const TRANSITION_START = 0.95;
