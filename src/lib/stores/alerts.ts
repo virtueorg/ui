@@ -15,11 +15,11 @@ export const addAlert = (alert: IAlert) => {
   });
 
   setTimeout(() => {
-    remove(alert.id);
+    removeAlert(alert.id);
   }, ALERT_TIMEOUT);
 };
 
-export const remove = (id: IAlert["id"]) => {
+export const removeAlert = (id: IAlert["id"]) => {
   alerts.update($alerts => {
     return $alerts.filter(alert => alert.id !== id);
   });

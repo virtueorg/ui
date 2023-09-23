@@ -1,16 +1,12 @@
 <script lang="ts">
   import { CloseIcon } from "$lib/icons";
-  import { alerts } from "$lib/stores/alerts";
+  import { removeAlert } from "$lib/stores/alerts";
   import type { IAlert } from "$lib/types";
   import { Alert, AlertAction, AlertIcon, AlertTitle } from "../Alert";
   import { Button } from "../Button";
   import { Icon } from "../Icon";
 
   export let alert: IAlert;
-
-  const removeAlert = () => {
-    alerts.remove(alert.id);
-  };
 </script>
 
 <Alert variant={alert.variant}>
@@ -27,7 +23,7 @@
   </AlertTitle>
 
   <AlertAction>
-    <Button class="p-1" variant={alert.variant} on:click={removeAlert}>
+    <Button class="p-1" variant={alert.variant} on:click={() => removeAlert}>
       <Icon>
         <CloseIcon />
       </Icon>
