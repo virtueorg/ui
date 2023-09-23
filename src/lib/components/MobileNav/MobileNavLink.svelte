@@ -1,7 +1,7 @@
 <script lang="ts">
   import { navigating, page } from "$app/stores";
   import { SpinnerIcon } from "$lib/icons";
-  import { cn } from "$lib/utils/misc.js";
+  import { cn } from "$lib/utils/misc";
   import type { HTMLAnchorAttributes } from "svelte/elements";
   import { Icon } from "../Icon";
 
@@ -20,8 +20,11 @@
   {href}
   class={cn(
     "transition-all",
-    "p-3",
+    "w-11",
+    "h-11",
     "inline-flex",
+    "items-center",
+    "justify-center",
     "rounded-lg",
     "opacity-50",
 
