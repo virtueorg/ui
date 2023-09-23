@@ -44,6 +44,7 @@
     className,
   )}
   {...$$restProps}
+  on:click
 >
   <slot />
 </Button.Root>
