@@ -3,9 +3,9 @@ import { ALERT_TIMEOUT } from "$lib/utils/const";
 import { nanoid } from "nanoid";
 import { writable, type Writable } from "svelte/store";
 
-const alerts: Writable<IAlert[]> = writable([]);
+export const alerts: Writable<IAlert[]> = writable([]);
 
-const add = (alert: IAlert) => {
+export const addAlert = (alert: IAlert) => {
   if (!alert.id) {
     alert.id = nanoid();
   }
@@ -19,14 +19,8 @@ const add = (alert: IAlert) => {
   }, ALERT_TIMEOUT);
 };
 
-const remove = (id: IAlert["id"]) => {
+export const remove = (id: IAlert["id"]) => {
   alerts.update($alerts => {
     return $alerts.filter(alert => alert.id !== id);
   });
-};
-
-export default {
-  ...alerts,
-  add,
-  remove,
 };
