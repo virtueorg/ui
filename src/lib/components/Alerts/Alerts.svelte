@@ -25,6 +25,7 @@
       "flex",
       "flex-col",
       "gap-2",
+      "z-50",
 
       "md:max-w-lg",
       className,
