@@ -15,6 +15,7 @@ export * from "./Icon";
 export * from "./Input";
 export * from "./Label";
 export * from "./MobileNav";
+export * from "./Nav";
 export * from "./Progress";
 export * from "./RadioGroup";
 export * from "./Select";
