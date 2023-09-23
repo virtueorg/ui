@@ -11,8 +11,8 @@
 
 <Avatar.Root
   class={cn(
-    "w-full",
-    "h-full",
+    "w-11",
+    "h-11",
     "flex",
     "items-center",
     "justify-center",
