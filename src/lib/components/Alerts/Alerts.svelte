@@ -1,5 +1,5 @@
 <script lang="ts">
-  import alerts from "$lib/stores/alerts";
+  import { alerts } from "$lib/stores/alerts";
   import { TRANSITION_BASE, TRANSITION_Y_IN, TRANSITION_Y_OUT } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
   import { flip } from "svelte/animate";
