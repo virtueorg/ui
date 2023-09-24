@@ -23,7 +23,7 @@
   </AlertTitle>
 
   <AlertAction>
-    <Button class="p-1" variant={alert.variant} on:click={() => removeAlert}>
+    <Button class="p-1" variant={alert.variant} on:click={() => removeAlert(alert.id)}>
       <Icon>
         <CloseIcon />
       </Icon>
