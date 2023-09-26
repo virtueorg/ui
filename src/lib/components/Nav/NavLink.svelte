@@ -28,9 +28,9 @@
     "rounded-lg",
     "opacity-50",
 
-    "hover:bg-mutedHover",
+    "hover:bg-muted/5",
 
-    active && "bg-primary text-primaryForeground opacity-100 hover:bg-primaryHover",
+    active && cn("bg-primary/5", "text-primary", "opacity-100", "hover:bg-primary/10"),
     className,
   )}
   {...$$restProps}
