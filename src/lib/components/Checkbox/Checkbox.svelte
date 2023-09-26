@@ -23,8 +23,7 @@
     "p-3",
     "rounded-lg",
 
-    "hover:bg-mutedHover",
-    "hover:border-mutedHover",
+    "hover:bg-muted/10",
 
     "data-[state=checked]:border-primary",
     className,
