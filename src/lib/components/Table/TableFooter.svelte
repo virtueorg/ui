@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<tfoot class={cn("bg-primary", "text-primary-foreground", className)} {...$$restProps}>
+<tfoot class={cn("bg-primary", className)} {...$$restProps}>
   <slot />
 </tfoot>

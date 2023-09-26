@@ -9,9 +9,6 @@
   let className = "";
 </script>
 
-<th
-  class={cn("p-4", "text-left", "align-middle", "text-muted-foreground", className)}
-  {...$$restProps}
->
+<th class={cn("p-4", "text-left", "align-middle", className)} {...$$restProps}>
   <slot />
 </th>
