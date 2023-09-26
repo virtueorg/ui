@@ -9,9 +9,6 @@
   let className = "";
 </script>
 
-<ContextMenu.Separator
-  class={cn("h-px", "bg-mutedForeground", "opacity-10", className)}
-  {...$$restProps}
->
+<ContextMenu.Separator class={cn("h-px", "bg-muted/10", className)} {...$$restProps}>
   <slot />
 </ContextMenu.Separator>
