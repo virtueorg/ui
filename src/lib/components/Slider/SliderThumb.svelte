@@ -15,9 +15,7 @@
     "h-5",
     "w-5",
     "rounded-lg",
-    "border-2",
-    "border-primary",
-    "bg-muted",
+    "bg-primary",
 
     "disabled:pointer-events-none",
     "disabled:opacity-50",
