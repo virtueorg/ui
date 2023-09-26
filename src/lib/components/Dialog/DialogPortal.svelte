@@ -18,6 +18,7 @@
     "items-end",
     "justify-center",
     "z-10",
+
     "md:items-center",
     className,
   )}
