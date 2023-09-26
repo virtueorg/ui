@@ -29,22 +29,22 @@ export default {
       colors: {
         background: "#020617",
         foreground: "#f8fafc",
-        foregroundMuted: "#94a3b8",
+
+        muted: "#0f172a",
+        mutedForeground: "#94a3b8",
+        mutedHover: "#1e293b",
 
         primary: "#34d399",
         primaryForeground: "#020617",
+        primaryHover: "#10b981",
 
         warning: "#fbbf24",
         warningForeground: "#020617",
+        warningHover: "#f59e0b",
 
         error: "#f87171",
         errorForeground: "#020617",
-
-        panel: "#090e1f",
-        panelForeground: "#f8fafc",
-
-        overlay: "#020617",
-        overlayForeground: "#f8fafc",
+        errorHover: "#ef4444",
       },
     },
   },
