@@ -11,6 +11,7 @@ export default {
         primary: "#818cf8",
         warning: "#fbbf24",
         error: "#f87171",
+        panel: "#090E1F",
       },
     },
   },
