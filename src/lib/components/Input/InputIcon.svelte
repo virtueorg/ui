@@ -19,6 +19,7 @@
     "items-center",
     "p-3",
     "text-muted",
+    "pointer-events-none",
     className,
   )}
   {...$$restProps}
