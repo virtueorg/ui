@@ -16,7 +16,7 @@
     "w-full",
     "text-left",
     "p-3",
-    "bg-muted",
+    "bg-muted/5",
     "rounded-lg",
     "flex",
     "items-center",

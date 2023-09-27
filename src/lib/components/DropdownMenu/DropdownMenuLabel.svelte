@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<DropdownMenu.Label class={cn("text-mutedForeground", "text-sm", className)} {...$$restProps}>
+<DropdownMenu.Label class={cn("text-muted", "text-sm", className)} {...$$restProps}>
   <slot />
 </DropdownMenu.Label>

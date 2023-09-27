@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<thead class={cn("bg-muted", "[&>tr]:hover:bg-transparent", className)} {...$$restProps}>
+<thead class={cn("bg-muted/5", "[&>tr]:hover:bg-transparent", className)} {...$$restProps}>
   <slot />
 </thead>

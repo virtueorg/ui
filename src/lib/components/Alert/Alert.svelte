@@ -13,11 +13,11 @@
   const alertVariants = tv({
     variants: {
       variant: {
-        default: cn("bg-muted"),
-        success: cn("bg-primary", "text-primaryForeground"),
-        info: cn("bg-muted", "text-mutedForeground"),
-        warning: cn("bg-warning", "text-warningForeground"),
-        error: cn("bg-error", "text-errorForeground"),
+        default: cn("bg-panel"),
+        success: cn("bg-primary", "text-background"),
+        info: cn("bg-panel", "text-muted"),
+        warning: cn("bg-warning", "text-background"),
+        error: cn("bg-error", "text-background"),
       },
     },
   });

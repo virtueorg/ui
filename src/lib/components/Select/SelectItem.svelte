@@ -24,7 +24,7 @@
 
     "active:scale-95",
 
-    "hover:bg-mutedHover",
+    "hover:bg-muted/5",
 
     "data-[selected]:border-primary",
     className,

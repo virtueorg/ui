@@ -15,7 +15,7 @@
       variant: {
         default: cn("text-foreground"),
         success: cn("text-primary"),
-        info: cn("text-mutedForeground"),
+        info: cn("text-muted"),
         warning: cn("text-warning"),
         error: cn("text-error"),
       },

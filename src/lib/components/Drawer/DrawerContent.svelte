@@ -17,7 +17,7 @@
     "h-full",
     "flex",
     "flex-col",
-    "bg-muted",
+    "bg-panel",
     "pointer-events-auto",
 
     "md:max-w-lg",

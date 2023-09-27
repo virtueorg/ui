@@ -15,7 +15,7 @@
 </script>
 
 <Progress.Root
-  class={cn("bg-muted", "h-2", "rounded-lg", "overflow-hidden", className)}
+  class={cn("bg-muted/5", "h-2", "rounded-lg", "overflow-hidden", className)}
   {max}
   {...$$restProps}
 >

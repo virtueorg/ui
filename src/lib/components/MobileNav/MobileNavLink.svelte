@@ -28,10 +28,10 @@
     "rounded-lg",
     "opacity-50",
 
-    "hover:bg-mutedHover",
+    "hover:bg-muted/5",
 
     "active:scale-95",
-    active && "opacity-100 bg-primary text-primaryForeground hover:bg-primaryHover",
+    active && cn("opacity-100", "bg-primary/5", "text-primary", "hover:bg-primary/10"),
     className,
   )}
   {...$$restProps}

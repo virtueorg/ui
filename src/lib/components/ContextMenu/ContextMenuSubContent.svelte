@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<ContextMenu.SubContent class={cn("w-64", "bg-muted", "rounded-lg", className)} {...$$restProps}>
+<ContextMenu.SubContent class={cn("w-64", "bg-panel", "rounded-lg", className)} {...$$restProps}>
   <slot />
 </ContextMenu.SubContent>

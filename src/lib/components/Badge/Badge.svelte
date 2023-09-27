@@ -14,10 +14,10 @@
     variants: {
       variant: {
         default: cn("bg-transparent"),
-        success: cn("bg-primary", "text-primaryForeground"),
-        info: cn("bg-muted", "text-mutedForeground"),
-        warning: cn("bg-warning", "text-warningForeground"),
-        error: cn("bg-error", "text-errorForeground"),
+        success: cn("bg-primary/5", "text-primary"),
+        info: cn("bg-muted/5", "text-muted"),
+        warning: cn("bg-warning/5", "text-warning"),
+        error: cn("bg-error/5", "text-error"),
       },
     },
   });

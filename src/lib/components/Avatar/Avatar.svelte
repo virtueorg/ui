@@ -16,7 +16,7 @@
     "flex",
     "items-center",
     "justify-center",
-    "bg-muted",
+    "bg-muted/5",
     "rounded-lg",
     "overflow-hidden",
     className,

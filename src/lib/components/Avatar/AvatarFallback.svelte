@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<Avatar.Fallback class={cn("text-mutedForeground", className)} {...$$restProps}>
+<Avatar.Fallback class={cn("text-muted", className)} {...$$restProps}>
   <slot />
 </Avatar.Fallback>
