@@ -37,8 +37,8 @@
 
     "active:scale-95",
 
-    "disabled:bg-muted",
-    "disabled:text-mutedForeground",
+    "disabled:bg-muted/5",
+    "disabled:text-muted",
     "disabled:active:scale-100",
     buttonVariants({ variant }),
     className,
