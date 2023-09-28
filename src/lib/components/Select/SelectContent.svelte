@@ -12,7 +12,7 @@
 </script>
 
 <Select.Content
-  class={cn("bg-panel", "rounded-lg", className)}
+  class={cn("bg-panel rounded-lg", className)}
   transition={scale}
   transitionConfig={TRANSITION_SCALE}
   {...$$restProps}

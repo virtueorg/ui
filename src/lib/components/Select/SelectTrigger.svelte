@@ -13,14 +13,7 @@
 
 <Select.Trigger
   class={cn(
-    "w-full",
-    "text-left",
-    "p-3",
-    "bg-muted/5",
-    "rounded-lg",
-    "flex",
-    "items-center",
-    "justify-between",
+    "w-full text-left p-3 bg-muted/5 rounded-lg flex items-center justify-between",
     className,
   )}
   {...$$restProps}

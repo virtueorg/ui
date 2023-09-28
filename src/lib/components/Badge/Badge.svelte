@@ -14,10 +14,10 @@
     variants: {
       variant: {
         default: cn("bg-transparent"),
-        success: cn("bg-primary/5", "text-primary"),
-        info: cn("bg-muted/5", "text-muted"),
-        warning: cn("bg-warning/5", "text-warning"),
-        error: cn("bg-error/5", "text-error"),
+        success: cn("bg-primary/5 text-primary"),
+        info: cn("bg-muted/5 text-muted"),
+        warning: cn("bg-warning/5 text-warning"),
+        error: cn("bg-error/5 text-error"),
       },
     },
   });
@@ -27,12 +27,7 @@
 
 <span
   class={cn(
-    "inline-flex",
-    "items-center",
-    "gap-2",
-    "py-2",
-    "px-3",
-    "rounded-lg",
+    "inline-flex items-center gap-2 py-2 px-3 rounded-lg",
     badgeVariants({ variant }),
     className,
   )}

@@ -11,16 +11,7 @@
 </script>
 
 <Slider.Root
-  class={cn(
-    "relative",
-    "flex",
-    "w-full",
-    "h-2",
-    "items-center",
-    "bg-muted/5",
-    "rounded-lg",
-    className,
-  )}
+  class={cn("relative flex w-full h-2 items-center bg-muted/5 rounded-lg", className)}
   {...$$restProps}
   bind:value
 >

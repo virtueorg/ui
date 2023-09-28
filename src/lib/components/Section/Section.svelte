@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<section class={cn("flex", "flex-col", "gap-2", className)} {...$$restProps}>
+<section class={cn("flex flex-col gap-2", className)} {...$$restProps}>
   <slot />
 </section>

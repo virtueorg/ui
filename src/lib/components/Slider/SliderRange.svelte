@@ -10,7 +10,7 @@
 </script>
 
 <Slider.Range
-  class={cn("h-2", "grow", "overflow-hidden", "rounded-full", "bg-primary", className)}
+  class={cn("h-2 grow overflow-hidden rounded-full bg-primary", className)}
   {...$$restProps}
 >
   <slot />

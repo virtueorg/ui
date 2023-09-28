@@ -10,16 +10,7 @@
 </script>
 
 <Dialog.Portal
-  class={cn(
-    "fixed",
-    "inset-0",
-    "pointer-events-none",
-    "flex",
-    "items-center",
-    "justify-end",
-    "z-10",
-    className,
-  )}
+  class={cn("fixed inset-0 pointer-events-none flex items-center justify-end z-10", className)}
   {...$$restProps}
 >
   <slot />

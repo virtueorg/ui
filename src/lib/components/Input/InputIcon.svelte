@@ -11,15 +11,7 @@
 
 <div
   class={cn(
-    "absolute",
-    "top-0",
-    "right-0",
-    "h-full",
-    "flex",
-    "items-center",
-    "p-3",
-    "text-muted",
-    "pointer-events-none",
+    "absolute top-0 right-0 h-full flex items-center p-3 text-muted pointer-events-none",
     className,
   )}
   {...$$restProps}

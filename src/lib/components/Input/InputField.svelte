@@ -17,10 +17,7 @@
 
 <input
   class={cn(
-    "w-full",
-    "p-3",
-    "bg-transparent",
-    "rounded-lg",
+    "w-full p-3 bg-transparent rounded-lg",
     hasIcon && "pr-11",
     hasLabel && "pt-8",
     className,

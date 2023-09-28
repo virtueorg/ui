@@ -12,13 +12,7 @@
 
 <DropdownMenu.RadioItem
   class={cn(
-    "transition-all",
-    "flex",
-    "items-center",
-    "gap-2",
-    "rounded-lg",
-    "p-2",
-    "cursor-pointer",
+    "transition-all flex items-center gap-2 rounded-lg p-2 cursor-pointer",
 
     "active:scale-95",
 

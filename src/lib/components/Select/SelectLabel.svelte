@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<Select.Label class={cn("text-sm", "text-muted", className)} {...$$restProps}>
+<Select.Label class={cn("text-sm text-muted", className)} {...$$restProps}>
   <slot />
 </Select.Label>

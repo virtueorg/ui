@@ -7,7 +7,7 @@
 
 <RadioGroup.ItemIndicator>
   <slot>
-    <Icon class={cn("ml-auto", "text-primary")}>
+    <Icon class={cn("ml-auto text-primary")}>
       <TickIcon />
     </Icon>
   </slot>

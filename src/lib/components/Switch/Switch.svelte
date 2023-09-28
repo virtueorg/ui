@@ -12,21 +12,9 @@
 
 <Switch.Root
   class={cn(
-    "transition-all",
-    "peer",
-    "inline-flex",
-    "h-6",
-    "w-11",
-    "shrink-0",
-    "cursor-pointer",
-    "items-center",
-    "rounded-full",
-    "border-2",
-    "bg-muted",
-    "border-transparent",
+    "transition-all peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 bg-muted border-transparent",
 
-    "disabled:cursor-not-allowed",
-    "disabled:opacity-50",
+    "disabled:cursor-not-allowed disabled:opacity-50",
 
     "data-[state=checked]:bg-primary",
     className,

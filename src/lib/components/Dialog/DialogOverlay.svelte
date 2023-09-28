@@ -12,7 +12,7 @@
 </script>
 
 <Dialog.Overlay
-  class={cn("absolute", "inset-0", "bg-background/80", "-z-10", "pointer-events-auto", className)}
+  class={cn("absolute inset-0 bg-background/80 -z-10 pointer-events-auto", className)}
   transition={fade}
   transitionConfig={TRANSITION_BASE}
   {...$$restProps}

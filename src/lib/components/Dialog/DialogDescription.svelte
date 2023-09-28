@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<Dialog.Description class={cn("text-sm", "text-muted", className)} {...$$restProps}>
+<Dialog.Description class={cn("text-sm text-muted", className)} {...$$restProps}>
   <slot />
 </Dialog.Description>

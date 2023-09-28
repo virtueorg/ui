@@ -13,12 +13,7 @@
 
 <Dialog.Content
   class={cn(
-    "w-full",
-    "h-full",
-    "flex",
-    "flex-col",
-    "bg-panel",
-    "pointer-events-auto",
+    "w-full h-full flex flex-col bg-panel pointer-events-auto",
 
     "md:max-w-lg",
     className,

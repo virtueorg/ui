@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<Tabs.List class={cn("flex", "items-center", className)} {...$$restProps}>
+<Tabs.List class={cn("flex items-center", className)} {...$$restProps}>
   <slot />
 </Tabs.List>

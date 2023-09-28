@@ -12,16 +12,7 @@
 
 <Checkbox.Root
   class={cn(
-    "transition-all",
-    "flex",
-    "items-center",
-    "w-full",
-    "border",
-    "border-transparent",
-    "bg-muted/5",
-    "text-left",
-    "p-3",
-    "rounded-lg",
+    "transition-all flex items-center w-full border border-transparent bg-muted/5 text-left p-3 rounded-lg",
 
     "hover:bg-muted/10",
 

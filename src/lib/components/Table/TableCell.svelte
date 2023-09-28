@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<td class={cn("p-4", "align-middle", className)} {...$$restProps}>
+<td class={cn("p-4 align-middle", className)} {...$$restProps}>
   <slot />
 </td>

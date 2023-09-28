@@ -17,15 +17,7 @@
 {#if $alerts.length}
   <div
     class={cn(
-      "fixed",
-      "top-0",
-      "right-0",
-      "w-full",
-      "p-4",
-      "flex",
-      "flex-col",
-      "gap-2",
-      "z-50",
+      "fixed top-0 right-0 w-full p-4 flex flex-col gap-2 z-50",
 
       "md:max-w-lg",
       className,

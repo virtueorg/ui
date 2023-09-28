@@ -13,7 +13,7 @@
 </script>
 
 <div
-  class={cn("transition-all h-full", "bg-primary", "rounded", className)}
+  class={cn("transition-all h-full bg-primary rounded", className)}
   style="width: {value}%"
   {...$$restProps}
 />

@@ -14,10 +14,10 @@
     variants: {
       variant: {
         default: cn("bg-panel"),
-        success: cn("bg-primary", "text-background"),
-        info: cn("bg-panel", "text-muted"),
-        warning: cn("bg-warning", "text-background"),
-        error: cn("bg-error", "text-background"),
+        success: cn("bg-primary text-background"),
+        info: cn("bg-panel text-muted"),
+        warning: cn("bg-warning text-background"),
+        error: cn("bg-error text-background"),
       },
     },
   });
@@ -27,15 +27,7 @@
 
 <div
   role="alert"
-  class={cn(
-    "rounded-lg",
-    "flex",
-    "items-center",
-    "p-4",
-    "gap-2",
-    alertVariants({ variant }),
-    className,
-  )}
+  class={cn("rounded-lg flex items-center p-4 gap-2", alertVariants({ variant }), className)}
   {...$$restProps}
 >
   <slot />

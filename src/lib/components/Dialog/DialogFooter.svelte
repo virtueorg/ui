@@ -9,6 +9,6 @@
   let className = "";
 </script>
 
-<div class={cn("p-4", "flex", "gap-2", "items-center", "justify-end", className)} {...$$restProps}>
+<div class={cn("p-4 flex gap-2 items-center justify-end", className)} {...$$restProps}>
   <slot />
 </div>
