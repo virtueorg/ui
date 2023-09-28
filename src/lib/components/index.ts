@@ -19,6 +19,7 @@ export * from "./MobileNav";
 export * from "./Nav";
 export * from "./Progress";
 export * from "./RadioGroup";
+export * from "./Section";
 export * from "./Select";
 export * from "./Slider";
 export * from "./Switch";
