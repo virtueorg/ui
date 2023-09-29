@@ -18,21 +18,30 @@
 
 <a
   {href}
-  class={cn(
-    "transition-all",
-    "w-11",
-    "h-11",
-    "flex",
-    "items-center",
-    "justify-center",
-    "rounded-lg",
-    "opacity-50",
+  class={cn`
+    transition-all
+    w-11
+    h-11
+    flex
+    items-center
+    justify-center
+    rounded-lg
+    opacity-50
 
-    "hover:bg-muted/5",
+    hover:bg-muted/5
 
-    active && cn("bg-primary/5", "text-primary", "opacity-100", "hover:bg-primary/10"),
-    className,
-  )}
+    ${
+      active &&
+      cn`
+        bg-primary/5
+        text-primary
+        opacity-100
+        
+        hover:bg-primary/10
+      `
+    }
+    ${className}
+  `}
   {...$$restProps}
   on:click
 >

@@ -11,23 +11,23 @@
 </script>
 
 <RadioGroup.Item
-  class={cn(
-    "transition-all",
-    "flex",
-    "items-center",
-    "w-full",
-    "border",
-    "border-transparent",
-    "bg-muted/5",
-    "text-left",
-    "p-3",
-    "rounded-lg",
+  class={cn`
+    transition-all
+    flex
+    items-center
+    w-full
+    border
+    border-transparent
+    bg-muted/5
+    text-left
+    p-3
+    rounded-lg
 
-    "hover:bg-muted/10",
+    hover:bg-muted/10
 
-    "data-[state=checked]:border-primary",
-    className,
-  )}
+    data-[state=checked]:border-primary
+    ${className}
+  `}
   type="button"
   {value}
   {...$$restProps}

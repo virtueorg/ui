@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<nav class={cn("w-full", "bg-panel", "p-2", className)} {...$$restProps}>
+<nav
+  class={cn`
+    w-full
+    bg-panel
+    p-2
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </nav>

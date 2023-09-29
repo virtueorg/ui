@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<div class={cn("ml-auto", className)} {...$$restProps}>
+<div
+  class={cn`
+    ml-auto
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

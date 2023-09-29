@@ -11,24 +11,24 @@
 </script>
 
 <Select.Item
-  class={cn(
-    "transition-all",
-    "flex",
-    "items-center",
-    "gap-2",
-    "rounded-lg",
-    "p-2",
-    "border",
-    "border-transparent",
-    "cursor-pointer",
+  class={cn`
+    transition-all
+    flex
+    items-center
+    gap-2
+    rounded-lg
+    p-2
+    border
+    border-transparent
+    cursor-pointer
 
-    "active:scale-95",
+    active:scale-95
 
-    "hover:bg-muted/5",
+    hover:bg-muted/5
 
-    "data-[selected]:border-primary",
-    className,
-  )}
+    data-[selected]:border-primary
+    ${className}
+  `}
   {value}
   {...$$restProps}
 >

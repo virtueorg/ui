@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<AlertDialog.Title class={cn("font-bold", className)} {...$$restProps}>
+<AlertDialog.Title
+  class={cn`
+    font-bold
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </AlertDialog.Title>

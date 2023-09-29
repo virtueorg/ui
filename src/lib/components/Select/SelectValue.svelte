@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Select.Value class={cn("font-bold", className)} {...$$restProps}>
+<Select.Value
+  class={cn`
+    font-bold
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Select.Value>

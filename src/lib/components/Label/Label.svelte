@@ -9,6 +9,13 @@
   let className = "";
 </script>
 
-<Label.Root class={cn("text-sm", "text-muted", className)} {...$$restProps}>
+<Label.Root
+  class={cn`
+    text-sm
+    text-muted
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Label.Root>

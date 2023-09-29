@@ -9,6 +9,13 @@
   let className = "";
 </script>
 
-<DropdownMenu.Separator class={cn("h-px", "bg-muted/10", className)} {...$$restProps}>
+<DropdownMenu.Separator
+  class={cn`
+    h-px
+    bg-muted/10
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </DropdownMenu.Separator>

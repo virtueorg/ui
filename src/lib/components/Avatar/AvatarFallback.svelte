@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Avatar.Fallback class={cn("text-muted", className)} {...$$restProps}>
+<Avatar.Fallback
+  class={cn`
+    text-muted
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Avatar.Fallback>

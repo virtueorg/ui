@@ -9,6 +9,15 @@
   let className = "";
 </script>
 
-<ul class={cn("p-4", "flex", "flex-col", "gap-2", className)} {...$$restProps}>
+<ul
+  class={cn`
+    p-4
+    flex
+    flex-col
+    gap-2
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </ul>

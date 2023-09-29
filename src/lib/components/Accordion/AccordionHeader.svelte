@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Accordion.Header class={cn("font-bold", className)} {...$$restProps}>
+<Accordion.Header
+  class={cn`
+    font-bold
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Accordion.Header>

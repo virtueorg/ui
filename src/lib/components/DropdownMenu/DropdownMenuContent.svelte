@@ -12,7 +12,12 @@
 </script>
 
 <DropdownMenu.Content
-  class={cn("w-64", "bg-panel", "rounded-lg", className)}
+  class={cn`
+    w-64
+    bg-panel
+    rounded-lg
+    ${className}
+  `}
   transition={scale}
   transitionConfig={TRANSITION_SCALE}
   {...$$restProps}

@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Select.Group class={cn("p-2", className)} {...$$restProps}>
+<Select.Group
+  class={cn`
+    p-2
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Select.Group>

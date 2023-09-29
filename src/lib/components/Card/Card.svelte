@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<div class={cn("rounded-lg", "border", "border-muted/20", className)} {...$$restProps}>
+<div
+  class={cn`
+    rounded-lg
+    border
+    border-muted/20
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

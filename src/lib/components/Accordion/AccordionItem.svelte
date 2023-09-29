@@ -10,6 +10,14 @@
   let className = "";
 </script>
 
-<Accordion.Item class={cn("bg-muted/5", "rounded-lg", className)} {value} {...$$restProps}>
+<Accordion.Item
+  class={cn`
+    bg-muted/5
+    rounded-lg
+    ${className}
+  `}
+  {value}
+  {...$$restProps}
+>
   <slot />
 </Accordion.Item>

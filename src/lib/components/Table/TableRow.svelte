@@ -10,7 +10,12 @@
 </script>
 
 <tr
-  class={cn("transition-all", "even:bg-muted/5", "hover:bg-muted/10", className)}
+  class={cn`
+    transition-all
+    even:bg-muted/5
+    hover:bg-muted/10
+    ${className}
+  `}
   {...$$restProps}
 >
   <slot />

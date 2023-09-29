@@ -10,6 +10,15 @@
   let className = "";
 </script>
 
-<RadioGroup.Root class={cn("flex", "flex-col", "gap-2", className)} {...$$restProps} bind:value>
+<RadioGroup.Root
+  class={cn`
+    flex
+    flex-col
+    gap-2
+    ${className}
+  `}
+  {...$$restProps}
+  bind:value
+>
   <slot />
 </RadioGroup.Root>

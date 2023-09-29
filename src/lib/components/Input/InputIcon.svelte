@@ -10,18 +10,18 @@
 </script>
 
 <div
-  class={cn(
-    "absolute",
-    "top-0",
-    "right-0",
-    "h-full",
-    "flex",
-    "items-center",
-    "p-3",
-    "text-muted",
-    "pointer-events-none",
-    className,
-  )}
+  class={cn`
+    absolute
+    top-0
+    right-0
+    h-full
+    flex
+    items-center
+    p-3
+    text-muted
+    pointer-events-none
+    ${className}
+  `}
   {...$$restProps}
 >
   <slot />

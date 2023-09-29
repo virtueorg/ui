@@ -9,6 +9,13 @@
   let className = "";
 </script>
 
-<div class={cn("flex flex-col", className)} {...$$restProps}>
+<div
+  class={cn`
+    flex
+    flex-col
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

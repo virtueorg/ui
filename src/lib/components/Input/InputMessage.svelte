@@ -13,11 +13,21 @@
   const inputMessageVariants = tv({
     variants: {
       variant: {
-        default: cn("text-foreground"),
-        success: cn("text-primary"),
-        info: cn("text-muted"),
-        warning: cn("text-warning"),
-        error: cn("text-error"),
+        default: cn`
+          text-foreground
+        `,
+        success: cn`
+          text-primary
+        `,
+        info: cn`
+          text-muted
+        `,
+        warning: cn`
+          text-warning
+        `,
+        error: cn`
+          text-error
+        `,
       },
     },
   });
@@ -25,6 +35,13 @@
   let className = "";
 </script>
 
-<div class={cn("text-sm", inputMessageVariants({ variant }), className)} {...$$restProps}>
+<div
+  class={cn`
+    text-sm
+    ${inputMessageVariants({ variant })}
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

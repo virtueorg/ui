@@ -20,15 +20,15 @@
 </script>
 
 <textarea
-  class={cn(
-    "w-full",
-    "p-3",
-    "bg-transparent",
-    "rounded-lg",
-    "resize-none",
-    hasLabel && "pt-8",
-    className,
-  )}
+  class={cn`
+    w-full
+    p-3
+    bg-transparent
+    rounded-lg
+    resize-none
+    ${hasLabel && "pt-8"}
+    ${className}
+  `}
   {...$$restProps}
   bind:value
   bind:this={element}

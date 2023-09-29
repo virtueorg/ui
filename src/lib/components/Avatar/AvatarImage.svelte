@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<Avatar.Image class={cn("w-full", "h-full", "object-cover", className)} {...$$restProps}>
+<Avatar.Image
+  class={cn`
+    w-full
+    h-full
+    object-cover
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Avatar.Image>
