@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<tr class={cn("transition-all even:bg-muted/5 hover:bg-muted/10", className)} {...$$restProps}>
+<tr
+  class={cn`
+    transition-all
+    even:bg-muted/5
+    hover:bg-muted/10
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </tr>

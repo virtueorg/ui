@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<tfoot class={cn("bg-primary", className)} {...$$restProps}>
+<tfoot
+  class={cn`
+    bg-primary
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </tfoot>

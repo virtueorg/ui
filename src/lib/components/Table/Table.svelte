@@ -9,9 +9,21 @@
   let className = "";
 </script>
 
-<div class={cn("w-full overflow-auto")}>
+<div
+  class={cn`
+    w-full
+    overflow-auto
+  `}
+>
   <table
-    class={cn("w-full min-w-[65rem] caption-bottom rounded-lg overflow-hidden", className)}
+    class={cn`
+      w-full
+      min-w-[65rem]
+      caption-bottom
+      rounded-lg
+      overflow-hidden
+      ${className}
+    `}
     {...$$restProps}
   >
     <slot />

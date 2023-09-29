@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<caption class={cn("mt-4 text-sm text-muted", className)} {...$$restProps}>
+<caption
+  class={cn`
+    mt-4
+    text-sm
+    text-muted
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </caption>
