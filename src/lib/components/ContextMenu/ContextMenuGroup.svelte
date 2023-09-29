@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<ContextMenu.Group class={cn("p-2", className)} {...$$restProps}>
+<ContextMenu.Group
+  class={cn`
+    p-2 
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </ContextMenu.Group>

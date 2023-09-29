@@ -9,6 +9,13 @@
   let className = "";
 </script>
 
-<ContextMenu.Label class={cn("text-muted text-sm", className)} {...$$restProps}>
+<ContextMenu.Label
+  class={cn`
+    text-muted
+    text-sm
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </ContextMenu.Label>
