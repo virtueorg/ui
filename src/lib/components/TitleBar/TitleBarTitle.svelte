@@ -12,6 +12,13 @@
   let className = "";
 </script>
 
-<svelte:element this={tag} class={cn("font-bold", className)} {...$$restProps}>
+<svelte:element
+  this={tag}
+  class={cn`
+    font-bold
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </svelte:element>
