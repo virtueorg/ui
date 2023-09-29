@@ -10,10 +10,17 @@
 </script>
 
 <Avatar.Root
-  class={cn(
-    "w-11 h-11 flex items-center justify-center bg-muted/5 rounded-lg overflow-hidden",
-    className,
-  )}
+  class={cn`
+    w-11
+    h-11
+    flex
+    items-center
+    justify-center
+    bg-muted/5
+    rounded-lg
+    overflow-hidden
+    ${className}
+  `}
   {...$$restProps}
 >
   <slot />
