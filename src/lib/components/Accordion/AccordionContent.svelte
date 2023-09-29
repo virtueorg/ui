@@ -10,6 +10,13 @@
   let className = "";
 </script>
 
-<Accordion.Content class={cn("p-4", className)} {...$$restProps} transition={slide}>
+<Accordion.Content
+  class={cn`
+    p-4 
+    ${className}
+  `}
+  {...$$restProps}
+  transition={slide}
+>
   <slot />
 </Accordion.Content>
