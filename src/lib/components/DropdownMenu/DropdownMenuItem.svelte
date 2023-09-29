@@ -25,6 +25,7 @@
     ${className}
   `}
   {...$$restProps}
+  on:click
 >
   <slot />
 </DropdownMenu.Item>
