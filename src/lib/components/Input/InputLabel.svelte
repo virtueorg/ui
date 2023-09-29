@@ -10,7 +10,16 @@
 </script>
 
 <label
-  class={cn("absolute top-0 left-0 p-3 text-sm text-muted pointer-events-none", className)}
+  class={cn`
+    absolute
+    top-0
+    left-0
+    p-3
+    text-sm
+    text-muted
+    pointer-events-none
+    ${className}
+  `}
   {...$$restProps}
 >
   <slot />

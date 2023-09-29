@@ -16,12 +16,15 @@
 </script>
 
 <input
-  class={cn(
-    "w-full p-3 bg-transparent rounded-lg",
-    hasIcon && "pr-11",
-    hasLabel && "pt-8",
-    className,
-  )}
+  class={cn`
+    w-full
+    p-3
+    bg-transparent
+    rounded-lg
+    ${hasIcon && "pr-11"}
+    ${hasLabel && "pt-8"}
+    ${className}
+  `}
   {...$$restProps}
   bind:value
 />
