@@ -13,11 +13,28 @@
 </script>
 
 {#if enhance}
-  <form class={cn("flex flex-col gap-5", className)} {...$$restProps} use:enhance>
+  <form
+    class={cn`
+      flex
+      flex-col
+      gap-5
+      ${className}
+    `}
+    {...$$restProps}
+    use:enhance
+  >
     <slot />
   </form>
 {:else}
-  <form class={cn("flex flex-col gap-5", className)} {...$$restProps}>
+  <form
+    class={cn`
+      flex
+      flex-col
+      gap-5
+      ${className}
+    `}
+    {...$$restProps}
+  >
     <slot />
   </form>
 {/if}
