@@ -10,12 +10,17 @@
 </script>
 
 <Slider.Thumb
-  class={cn(
-    "block h-5 w-5 rounded-lg bg-primary",
+  class={cn`
+    block
+    h-5
+    w-5
+    rounded-lg
+    bg-primary
 
-    "disabled:pointer-events-none disabled:opacity-50",
-    className,
-  )}
+    disabled:pointer-events-none
+    disabled:opacity-50
+    ${className}
+  `}
   {...$$restProps}
 >
   <slot />
