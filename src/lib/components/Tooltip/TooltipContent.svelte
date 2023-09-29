@@ -12,7 +12,12 @@
 </script>
 
 <Tooltip.Content
-  class={cn("bg-panel rounded-lg p-3", className)}
+  class={cn`
+    bg-panel
+    rounded-lg
+    p-3
+    ${className}
+  `}
   transition={scale}
   transitionConfig={TRANSITION_SCALE}
   {...$$restProps}
