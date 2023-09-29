@@ -11,7 +11,13 @@
   let className = "";
 </script>
 
-<DropdownMenu.CheckboxIndicator class={cn("ml-auto", className)} {...$$restProps}>
+<DropdownMenu.CheckboxIndicator
+  class={cn`
+    ml-auto
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot>
     <Icon>
       <TickIcon />

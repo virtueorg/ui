@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<DropdownMenu.Group class={cn("p-2", className)} {...$$restProps}>
+<DropdownMenu.Group
+  class={cn`
+    p-2
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </DropdownMenu.Group>

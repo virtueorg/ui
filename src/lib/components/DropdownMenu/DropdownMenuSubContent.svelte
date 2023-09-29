@@ -9,6 +9,14 @@
   let className = "";
 </script>
 
-<DropdownMenu.SubContent class={cn("w-64 bg-panel rounded-lg", className)} {...$$restProps}>
+<DropdownMenu.SubContent
+  class={cn`
+    w-64
+    bg-panel
+    rounded-lg
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </DropdownMenu.SubContent>

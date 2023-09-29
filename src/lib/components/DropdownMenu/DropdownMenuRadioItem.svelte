@@ -11,14 +11,20 @@
 </script>
 
 <DropdownMenu.RadioItem
-  class={cn(
-    "transition-all flex items-center gap-2 rounded-lg p-2 cursor-pointer",
+  class={cn`
+    transition-all
+    flex
+    items-center
+    gap-2
+    rounded-lg
+    p-2
+    cursor-pointer
 
-    "active:scale-95",
+    active:scale-95
 
-    "hover:bg-muted/5",
-    className,
-  )}
+    hover:bg-muted/5
+    ${className}
+  `}
   {value}
   {...$$restProps}
 >
