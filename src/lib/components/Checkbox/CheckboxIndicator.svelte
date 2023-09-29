@@ -11,7 +11,15 @@
   let className = "";
 </script>
 
-<Checkbox.Indicator class={cn("ml-auto text-primary", className)} let:isChecked {...$$restProps}>
+<Checkbox.Indicator
+  class={cn`
+    ml-auto
+    text-primary
+    ${className}
+  `}
+  let:isChecked
+  {...$$restProps}
+>
   {#if isChecked}
     <slot>
       <Icon>
