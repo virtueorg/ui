@@ -12,7 +12,15 @@
 </script>
 
 <AlertDialog.Content
-  class={cn("w-full bg-muted/5 pointer-events-auto md:max-w-lg md:rounded-lg", className)}
+  class={cn`
+    w-full
+    bg-muted/5
+    pointer-events-auto
+    
+    md:max-w-lg
+    md:rounded-lg
+    ${className}
+  `}
   transition={fly}
   transitionConfig={TRANSITION_Y_IN}
   {...$$restProps}
