@@ -31,6 +31,7 @@
   type="button"
   {value}
   {...$$restProps}
+  on:click
 >
   <slot />
 </RadioGroup.Item>

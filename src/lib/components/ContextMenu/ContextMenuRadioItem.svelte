@@ -27,6 +27,7 @@
   `}
   {value}
   {...$$restProps}
+  on:click
 >
   <slot />
 </ContextMenu.RadioItem>
