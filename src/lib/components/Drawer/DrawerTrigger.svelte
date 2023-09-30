@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Dialog.Trigger class={cn(className)} {...$$restProps}>
+<Dialog.Trigger
+  class={cn`
+    text-left
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Dialog.Trigger>
