@@ -21,6 +21,7 @@
     border-b-2
     border-muted/20
     opacity-50
+    text-left
 
     data-[state=active]:border-primary
     data-[state=active]:text-primary

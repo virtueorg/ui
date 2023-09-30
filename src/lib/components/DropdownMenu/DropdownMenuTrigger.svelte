@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<DropdownMenu.Trigger class={cn(className)} {...$$restProps}>
+<DropdownMenu.Trigger
+  class={cn`
+    text-left
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </DropdownMenu.Trigger>

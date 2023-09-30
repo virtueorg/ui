@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<Tooltip.Trigger class={cn(className)} {...$$restProps}>
+<Tooltip.Trigger
+  class={cn`
+    text-left
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </Tooltip.Trigger>

@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<AlertDialog.Trigger class={cn(className)} {...$$restProps}>
+<AlertDialog.Trigger
+  class={cn`
+    text-left
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </AlertDialog.Trigger>
