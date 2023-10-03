@@ -3,9 +3,9 @@
 
   type $$Props = Select.Props;
 
-  let value: unknown;
+  export let selected: $$Props["selected"];
 </script>
 
-<Select.Root {...$$restProps} onSelectedChange={e => (value = e?.value)}>
-  <slot {value} />
+<Select.Root {...$$restProps} bind:selected>
+  <slot />
 </Select.Root>
