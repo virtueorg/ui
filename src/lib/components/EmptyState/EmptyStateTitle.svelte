@@ -1,0 +1,25 @@
+<script lang="ts">
+  import { cn } from "$lib/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+
+  type $$Props = HTMLAttributes<HTMLHeadingElement> & {
+    tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  };
+
+  export { className as class };
+  export let tag: $$Props["tag"] = "h3";
+
+  let className = "";
+</script>
+
+<svelte:element
+  this={tag}
+  class={cn`
+    font-bold
+    text-2xl
+    ${className}
+  `}
+  {...$$restProps}
+>
+  <slot />
+</svelte:element>
