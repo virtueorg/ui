@@ -11,6 +11,7 @@ export * from "./ContextMenu";
 export * from "./Dialog";
 export * from "./Drawer";
 export * from "./DropdownMenu";
+export * from "./EmptyState";
 export * from "./Form";
 export * from "./Icon";
 export * from "./Input";
