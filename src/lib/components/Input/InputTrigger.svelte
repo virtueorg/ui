@@ -11,9 +11,9 @@
 
 <div
   class={cn`
-    flex
-    flex-col
-    gap-2
+    relative
+    bg-muted/5
+    rounded-lg
     ${className}
   `}
   {...$$restProps}
