@@ -13,7 +13,7 @@
   class={cn`
     p-4
     flex
-    flex-col"
+    flex-col
     ${className}
   `}
   {...$$restProps}
