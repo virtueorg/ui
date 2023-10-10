@@ -12,8 +12,7 @@
 <div
   class={cn`
     rounded-lg
-    border
-    border-muted/20
+    bg-muted/5
     ${className}
   `}
   {...$$restProps}
