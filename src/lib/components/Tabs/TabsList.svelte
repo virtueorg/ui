@@ -13,6 +13,8 @@
   class={cn`
     flex
     items-center
+    whitespace-nowrap
+    overflow-auto
     ${className}
   `}
   {...$$restProps}
