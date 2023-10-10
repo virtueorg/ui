@@ -22,6 +22,7 @@
       caption-bottom
       rounded-lg
       overflow-hidden
+      table-fixed
       ${className}
     `}
     {...$$restProps}
