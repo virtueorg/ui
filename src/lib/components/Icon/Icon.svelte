@@ -39,6 +39,7 @@
   class={cn`
     w-5
     h-5
+    shrink-0
     ${iconVariants({ variant })}
     ${className}
   `}
