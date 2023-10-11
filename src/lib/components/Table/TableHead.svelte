@@ -11,7 +11,7 @@
 
 <th
   class={cn`
-    p-4
+    p-5
     text-left
     align-middle
     ${className}
