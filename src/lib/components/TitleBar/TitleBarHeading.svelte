@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<div class={cn(className)} {...$$restProps}>
+<div
+  class={cn`
+    truncate
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

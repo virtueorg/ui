@@ -13,6 +13,7 @@
   class={cn`
     text-sm
     text-muted
+    truncate
     ${className}
   `}
   {...$$restProps}

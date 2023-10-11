@@ -18,6 +18,7 @@
     justify-center
     rounded-lg
     bg-muted/5
+    shrink-0
     ${className}
   `}
   {...$$restProps}

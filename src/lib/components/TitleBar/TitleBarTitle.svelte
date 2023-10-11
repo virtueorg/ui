@@ -16,6 +16,7 @@
   this={tag}
   class={cn`
     font-bold
+    truncate
     ${className}
   `}
   {...$$restProps}
