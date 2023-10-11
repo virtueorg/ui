@@ -11,11 +11,9 @@
 
 <div
   class={cn`
-    p-4
     flex
-    gap-2
     items-center
-    justify-end
+    gap-2
     ${className}
   `}
   {...$$restProps}
