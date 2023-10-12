@@ -9,6 +9,12 @@
   let className = "";
 </script>
 
-<div class={cn(className)} {...$$restProps}>
+<div
+  class={cn`
+    w-full
+    ${className}
+  `}
+  {...$$restProps}
+>
   <slot />
 </div>

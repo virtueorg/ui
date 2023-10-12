@@ -11,6 +11,7 @@
 
 <div
   class={cn`
+    w-full
     text-right
     ml-auto
     ${className}
