@@ -47,6 +47,7 @@ import SortIcon from "./SortIcon.svelte";
 import SpinnerIcon from "./SpinnerIcon.svelte";
 import TickIcon from "./TickIcon.svelte";
 import TrashIcon from "./TrashIcon.svelte";
+import TreeIcon from "./TreeIcon.svelte";
 import UploadIcon from "./UploadIcon.svelte";
 import UserIcon from "./UserIcon.svelte";
 import UsersIcon from "./UsersIcon.svelte";
@@ -102,10 +103,10 @@ export {
   SortIcon,
   SpinnerIcon,
   TickIcon,
-  TrashIcon,
-  UploadIcon,
+  TrashIcon, TreeIcon, UploadIcon,
   UserIcon,
   UsersIcon,
   VerifiedIcon,
-  WarningIcon,
+  WarningIcon
 };
+
