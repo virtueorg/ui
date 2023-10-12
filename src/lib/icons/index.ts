@@ -36,8 +36,8 @@ import LogoutIcon from "./LogoutIcon.svelte";
 import MenuIcon from "./MenuIcon.svelte";
 import MilkIcon from "./MilkIcon.svelte";
 import MoneyIcon from "./MoneyIcon.svelte";
+import PaperclipIcon from "./PaperclipIcon.svelte";
 import PenIcon from "./PenIcon.svelte";
-import PeperclipIcon from "./PeperclipIcon.svelte";
 import PetIcon from "./PetIcon.svelte";
 import PlusIcon from "./PlusIcon.svelte";
 import SearchIcon from "./SearchIcon.svelte";
@@ -93,8 +93,8 @@ export {
   MenuIcon,
   MilkIcon,
   MoneyIcon,
+  PaperclipIcon,
   PenIcon,
-  PeperclipIcon,
   PetIcon,
   PlusIcon,
   SearchIcon,
@@ -103,10 +103,11 @@ export {
   SortIcon,
   SpinnerIcon,
   TickIcon,
-  TrashIcon, TreeIcon, UploadIcon,
+  TrashIcon,
+  TreeIcon,
+  UploadIcon,
   UserIcon,
   UsersIcon,
   VerifiedIcon,
-  WarningIcon
+  WarningIcon,
 };
-
