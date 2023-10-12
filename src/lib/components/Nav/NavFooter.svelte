@@ -12,7 +12,7 @@
 <div
   class={cn`
     mt-auto
-    p-4
+    p-5
     ${className}
   `}
   {...$$restProps}

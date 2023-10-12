@@ -47,7 +47,7 @@
 <Button.Root
   class={cn`
     transition-all
-    p-4
+    p-5
     rounded-lg
     flex
     items-center

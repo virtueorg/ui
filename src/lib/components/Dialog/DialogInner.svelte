@@ -11,7 +11,7 @@
 
 <div
   class={cn`
-    p-4
+    p-5
     ${className}
   `}
   {...$$restProps}

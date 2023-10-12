@@ -11,7 +11,7 @@
 
 <td
   class={cn`
-    p-4
+    p-5
     align-middle
     ${className}
   `}

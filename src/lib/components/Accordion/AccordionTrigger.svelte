@@ -13,7 +13,7 @@
   class={cn`
     w-full
     text-left
-    p-4
+    p-5
     ${className}
   `}
   {...$$restProps}
