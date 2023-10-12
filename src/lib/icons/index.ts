@@ -7,8 +7,11 @@ import BuildingIcon from "./BuildingIcon.svelte";
 import CalendarIcon from "./CalendarIcon.svelte";
 import ChevronDownIcon from "./ChevronDownIcon.svelte";
 import ChevronRightIcon from "./ChevronRightIcon.svelte";
+import ClockIcon from "./ClockIcon.svelte";
 import CloseIcon from "./CloseIcon.svelte";
 import CloudIcon from "./CloudIcon.svelte";
+import ConstraintIcon from "./ConstraintIcon.svelte";
+import CropIcon from "./CropIcon.svelte";
 import DotIcon from "./DotIcon.svelte";
 import DownloadIcon from "./DownloadIcon.svelte";
 import EditIcon from "./EditIcon.svelte";
@@ -17,17 +20,25 @@ import ErrorIcon from "./ErrorIcon.svelte";
 import EuroIcon from "./EuroIcon.svelte";
 import EyeIcon from "./EyeIcon.svelte";
 import EyeSlashIcon from "./EyeSlashIcon.svelte";
+import FieldIcon from "./FieldIcon.svelte";
+import FileIcon from "./FileIcon.svelte";
 import FilterIcon from "./FilterIcon.svelte";
 import FolderIcon from "./FolderIcon.svelte";
 import GridIcon from "./GridIcon.svelte";
 import HeartIcon from "./HeartIcon.svelte";
+import HourglassIcon from "./HourglassIcon.svelte";
 import HouseIcon from "./HouseIcon.svelte";
 import InfoIcon from "./InfoIcon.svelte";
+import LayerIcon from "./LayerIcon.svelte";
 import LayersIcon from "./LayersIcon.svelte";
 import LoginIcon from "./LoginIcon.svelte";
 import LogoutIcon from "./LogoutIcon.svelte";
 import MenuIcon from "./MenuIcon.svelte";
+import MilkIcon from "./MilkIcon.svelte";
+import MoneyIcon from "./MoneyIcon.svelte";
 import PenIcon from "./PenIcon.svelte";
+import PeperclipIcon from "./PeperclipIcon.svelte";
+import PetIcon from "./PetIcon.svelte";
 import PlusIcon from "./PlusIcon.svelte";
 import SearchIcon from "./SearchIcon.svelte";
 import SettingsIcon from "./SettingsIcon.svelte";
@@ -52,8 +63,11 @@ export {
   CalendarIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  ClockIcon,
   CloseIcon,
   CloudIcon,
+  ConstraintIcon,
+  CropIcon,
   DotIcon,
   DownloadIcon,
   EditIcon,
@@ -62,17 +76,25 @@ export {
   EuroIcon,
   EyeIcon,
   EyeSlashIcon,
+  FieldIcon,
+  FileIcon,
   FilterIcon,
   FolderIcon,
   GridIcon,
   HeartIcon,
+  HourglassIcon,
   HouseIcon,
   InfoIcon,
+  LayerIcon,
   LayersIcon,
   LoginIcon,
   LogoutIcon,
   MenuIcon,
+  MilkIcon,
+  MoneyIcon,
   PenIcon,
+  PeperclipIcon,
+  PetIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
