@@ -1,23 +1,34 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Accordion } from "bits-ui";
+  import { melt, type AccordionItemProps } from "@melt-ui/svelte";
+  import accordionCtx from "./ctx";
 
-  type $$Props = Accordion.ItemProps;
+  type $$Props = Exclude<AccordionItemProps, string> & {
+    asChild?: boolean;
+  };
 
   export let value: $$Props["value"];
+  export let disabled: $$Props["disabled"] = false;
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { item, props } = accordionCtx.setItem({ value, disabled });
 </script>
 
-<Accordion.Item
-  class={cn`
+{#if asChild}
+  <slot builder={$item(props)} />
+{:else}
+  <div
+    class={cn`
     bg-muted/5
     rounded-lg
     ${className}
   `}
-  {value}
-  {...$$restProps}
->
-  <slot />
-</Accordion.Item>
+    use:melt={$item(props)}
+    {...$$restProps}
+  >
+    <slot />
+  </div>
+{/if}

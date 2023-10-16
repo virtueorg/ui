@@ -1,20 +1,34 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Accordion } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import accordionCtx from "./ctx";
 
-  type $$Props = Accordion.HeaderProps;
+  type $$Props = {
+    asChild?: boolean;
+    level?: 1 | 2 | 3 | 4 | 5 | 6;
+  };
 
+  export let level: $$Props["level"] = 3;
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
+
+  const { elements } = accordionCtx.get();
+  const { heading } = elements;
 
   let className = "";
 </script>
 
-<Accordion.Header
-  class={cn`
-    font-bold
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Accordion.Header>
+{#if asChild}
+  <slot builder={$heading(level || 3)} />
+{:else}
+  <div
+    class={cn`
+      font-bold
+      ${className}
+    `}
+    use:melt={$heading(level || 3)}
+    {...$$restProps}
+  >
+    <slot />
+  </div>
+{/if}
