@@ -1,21 +1,34 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { AlertDialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import dialogCtx from "./ctx";
 
-  type $$Props = AlertDialog.DescriptionProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = dialogCtx.get();
+  const { description } = elements;
 </script>
 
-<AlertDialog.Description
-  class={cn`
+{#if asChild}
+  <slot builder={$description} />
+{:else}
+  <div
+    class={cn`
     text-sm
     text-muted
     ${className}
   `}
-  {...$$restProps}
->
-  <slot />
-</AlertDialog.Description>
+    {...$$restProps}
+    use:melt={$description}
+  >
+    <slot />
+  </div>
+{/if}

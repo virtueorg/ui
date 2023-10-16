@@ -1,20 +1,33 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { AlertDialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import dialogCtx from "./ctx";
 
-  type $$Props = AlertDialog.TriggerProps;
+  type $$Props = HTMLButtonAttributes & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = dialogCtx.get();
+  const { trigger } = elements;
 </script>
 
-<AlertDialog.Trigger
-  class={cn`
+{#if asChild}
+  <slot builder={$trigger} />
+{:else}
+  <button
+    class={cn`
     text-left
     ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</AlertDialog.Trigger>
+    `}
+    {...$$restProps}
+    use:melt={$trigger}
+  >
+    <slot />
+  </button>
+{/if}

@@ -1,28 +1,40 @@
 <script lang="ts">
   import { TRANSITION_BASE } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { AlertDialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
   import { fade } from "svelte/transition";
+  import dialogCtx from "./ctx";
 
-  type $$Props = AlertDialog.OverlayProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = dialogCtx.get();
+  const { overlay } = elements;
 </script>
 
-<AlertDialog.Overlay
-  class={cn`
+{#if asChild}
+  <slot builder={$overlay} />
+{:else}
+  <div
+    class={cn`
     absolute
     inset-0
     bg-background/80
     -z-10
     pointer-events-auto
     ${className}
-  `}
-  transition={fade}
-  transitionConfig={TRANSITION_BASE}
-  {...$$restProps}
->
-  <slot />
-</AlertDialog.Overlay>
+    `}
+    {...$$restProps}
+    transition:fade={TRANSITION_BASE}
+    use:melt={$overlay}
+  >
+    <slot />
+  </div>
+{/if}

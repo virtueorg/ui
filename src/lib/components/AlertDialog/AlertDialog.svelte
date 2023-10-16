@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { AlertDialog } from "bits-ui";
+  import type { CreateDialogProps } from "@melt-ui/svelte";
+  import dialogCtx from "./ctx";
 
-  type $$Props = AlertDialog.Props;
+  type $$Props = CreateDialogProps;
+
+  dialogCtx.create($$restProps);
 </script>
 
-<AlertDialog.Root {...$$restProps}>
-  <slot />
-</AlertDialog.Root>
+<slot />
