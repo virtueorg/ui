@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { TRANSITION_BASE } from "$lib/utils";
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
@@ -25,7 +26,7 @@
     ${className}
     `}
     {...$$restProps}
-    transition:slide
+    transition:slide={TRANSITION_BASE}
     use:melt={$content(item)}
   >
     <slot />
