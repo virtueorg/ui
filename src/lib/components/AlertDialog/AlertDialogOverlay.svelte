@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements, states } = dialogCtx.get();
+  const { elements } = dialogCtx.get();
   const { overlay } = elements;
 </script>
 
@@ -23,14 +23,7 @@
   <slot builder={$overlay} />
 {:else}
   <div
-    class={cn`
-    absolute
-    inset-0
-    bg-background/80
-    -z-10
-    pointer-events-auto
-    ${className}
-    `}
+    class={cn("AlertDialogOverlay", className)}
     {...$$restProps}
     transition:fade={TRANSITION_BASE}
     use:melt={$overlay}
@@ -38,3 +31,13 @@
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogOverlay {
+    @apply absolute;
+    @apply inset-0;
+    @apply bg-background/80;
+    @apply -z-10;
+    @apply pointer-events-auto;
+  }
+</style>

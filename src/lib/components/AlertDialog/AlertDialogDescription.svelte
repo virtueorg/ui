@@ -20,15 +20,14 @@
 {#if asChild}
   <slot builder={$description} />
 {:else}
-  <div
-    class={cn`
-    text-sm
-    text-muted
-    ${className}
-  `}
-    {...$$restProps}
-    use:melt={$description}
-  >
+  <div class={cn("AlertDialogDescription", className)} {...$$restProps} use:melt={$description}>
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogDescription {
+    @apply text-sm;
+    @apply text-muted;
+  }
+</style>

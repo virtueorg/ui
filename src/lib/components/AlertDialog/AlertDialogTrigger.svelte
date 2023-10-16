@@ -20,14 +20,13 @@
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <button
-    class={cn`
-    text-left
-    ${className}
-    `}
-    {...$$restProps}
-    use:melt={$trigger}
-  >
+  <button class={cn("AlertDialogTrigger", className)} {...$$restProps} use:melt={$trigger}>
     <slot />
   </button>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogTrigger {
+    @apply text-left;
+  }
+</style>

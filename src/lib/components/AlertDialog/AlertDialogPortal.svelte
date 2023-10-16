@@ -22,23 +22,22 @@
   {#if asChild}
     <slot builder={$portalled} />
   {:else}
-    <div
-      class={cn`
-        fixed
-        inset-0
-        pointer-events-none
-        flex
-        items-end
-        justify-center
-        z-10
-
-        md:items-center
-        ${className}
-      `}
-      {...$$restProps}
-      use:melt={$portalled}
-    >
+    <div class={cn("AlertDialogPortal", className)} {...$$restProps} use:melt={$portalled}>
       <slot />
     </div>
   {/if}
 {/if}
+
+<style lang="postcss">
+  .AlertDialogPortal {
+    @apply fixed;
+    @apply inset-0;
+    @apply pointer-events-none;
+    @apply flex;
+    @apply items-end;
+    @apply justify-center;
+    @apply z-10;
+
+    @apply md:items-center;
+  }
+</style>

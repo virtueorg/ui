@@ -24,13 +24,16 @@
 {:else}
   <svelte:element
     this={level}
-    class={cn`
-    font-bold
-    ${className}
-  `}
+    class={cn("AlertDialogTitle", className)}
     {...$$restProps}
     use:melt={$title}
   >
     <slot />
   </svelte:element>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogTitle {
+    @apply font-bold;
+  }
+</style>

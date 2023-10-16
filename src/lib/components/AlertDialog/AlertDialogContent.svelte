@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements, states } = dialogCtx.get();
+  const { elements } = dialogCtx.get();
   const { content } = elements;
 </script>
 
@@ -23,15 +23,7 @@
   <slot builder={$content} />
 {:else}
   <div
-    class={cn`
-    w-full
-    bg-muted/5
-    pointer-events-auto
-    
-    md:max-w-lg
-    md:rounded-lg
-    ${className}
-    `}
+    class={cn("AlertDialogContent", className)}
     transition:fly={TRANSITION_Y_IN}
     {...$$restProps}
     use:melt={$content}
@@ -39,3 +31,14 @@
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogContent {
+    @apply w-full;
+    @apply bg-muted/5;
+    @apply pointer-events-auto;
+
+    @apply md:max-w-lg;
+    @apply md:rounded-lg;
+  }
+</style>

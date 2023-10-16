@@ -20,7 +20,13 @@
 {#if asChild}
   <slot builder={$close} />
 {:else}
-  <button use:melt={$close} class={cn(className)} {...$$restProps} on:click>
+  <button use:melt={$close} class={cn("AlertDialogAction", className)} {...$$restProps} on:click>
     <slot />
   </button>
 {/if}
+
+<style lang="postcss">
+  .AlertDialogAction {
+    @apply text-left;
+  }
+</style>
