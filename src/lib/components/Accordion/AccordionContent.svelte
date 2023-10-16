@@ -6,8 +6,11 @@
   import { slide } from "svelte/transition";
   import accordionCtx from "./ctx";
 
-  type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
@@ -20,15 +23,19 @@
 </script>
 
 {#if $isSelected(item.value)}
-  <div
-    class={cn`
+  {#if asChild}
+    <slot builder={$content} />
+  {:else}
+    <div
+      class={cn`
     p-5 
     ${className}
     `}
-    {...$$restProps}
-    transition:slide={TRANSITION_BASE}
-    use:melt={$content(item)}
-  >
-    <slot />
-  </div>
+      {...$$restProps}
+      transition:slide={TRANSITION_BASE}
+      use:melt={$content(item)}
+    >
+      <slot />
+    </div>
+  {/if}
 {/if}
