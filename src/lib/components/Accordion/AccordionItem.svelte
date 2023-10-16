@@ -20,15 +20,14 @@
 {#if asChild}
   <slot builder={$item(props)} />
 {:else}
-  <div
-    class={cn`
-    bg-muted/5
-    rounded-lg
-    ${className}
-  `}
-    {...$$restProps}
-    use:melt={$item(props)}
-  >
+  <div class={cn("AccordionItem", className)} {...$$restProps} use:melt={$item(props)}>
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .AccordionItem {
+    @apply bg-muted/5;
+    @apply rounded-lg;
+  }
+</style>

@@ -21,14 +21,13 @@
 {#if asChild}
   <slot builder={$heading(level || 3)} />
 {:else}
-  <div
-    class={cn`
-      font-bold
-      ${className}
-    `}
-    {...$$restProps}
-    use:melt={$heading(level || 3)}
-  >
+  <div class={cn("AccordionHeader", className)} {...$$restProps} use:melt={$heading(level || 3)}>
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .AccordionHeader {
+    @apply font-bold;
+  }
+</style>

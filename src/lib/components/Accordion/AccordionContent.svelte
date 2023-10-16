@@ -27,10 +27,7 @@
     <slot builder={$content} />
   {:else}
     <div
-      class={cn`
-    p-5 
-    ${className}
-    `}
+      class={cn("AccordionContent", className)}
       {...$$restProps}
       transition:slide={TRANSITION_BASE}
       use:melt={$content(item)}
@@ -39,3 +36,9 @@
     </div>
   {/if}
 {/if}
+
+<style lang="postcss">
+  .AccordionContent {
+    @apply p-5;
+  }
+</style>

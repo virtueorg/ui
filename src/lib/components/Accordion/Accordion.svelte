@@ -19,16 +19,15 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <div
-    class={cn`
-    flex
-    flex-col
-    gap-2
-    ${className}
-    `}
-    {...$root}
-    {...$$restProps}
-  >
+  <div class={cn("Accordion", className)} {...$root} {...$$restProps}>
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .Accordion {
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+  }
+</style>

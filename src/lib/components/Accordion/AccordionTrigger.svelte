@@ -23,15 +23,7 @@
   <slot builder={$trigger(item)} />
 {:else}
   <button
-    class={cn`
-    w-full
-    text-left
-    p-5
-    flex
-    items-center
-    justify-between
-    ${className}
-  `}
+    class={cn("AccordionTrigger", className)}
     {...$$restProps}
     use:melt={$trigger(item)}
     on:click
@@ -39,3 +31,14 @@
     <slot />
   </button>
 {/if}
+
+<style lang="postcss">
+  .AccordionTrigger {
+    @apply w-full;
+    @apply text-left;
+    @apply p-5;
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+  }
+</style>
