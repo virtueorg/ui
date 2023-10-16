@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import dialogCtx from "./ctx";
+  import alertDialogCtx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -13,7 +13,7 @@
 
   let className = "";
 
-  const { elements, states } = dialogCtx.get();
+  const { elements, states } = alertDialogCtx.get();
   const { portalled } = elements;
   const { open } = states;
 </script>

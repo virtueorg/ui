@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import dialogCtx from "./ctx";
+  import alertDialogCtx from "./ctx";
 
   type $$Props = HTMLButtonAttributes & {
     asChild?: boolean;
@@ -13,7 +13,7 @@
 
   let className = "";
 
-  const { elements } = dialogCtx.get();
+  const { elements } = alertDialogCtx.get();
   const { trigger } = elements;
 </script>
 

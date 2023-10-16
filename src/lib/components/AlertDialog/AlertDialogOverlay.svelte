@@ -4,7 +4,7 @@
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { fade } from "svelte/transition";
-  import dialogCtx from "./ctx";
+  import alertDialogCtx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements } = dialogCtx.get();
+  const { elements } = alertDialogCtx.get();
   const { overlay } = elements;
 </script>
 

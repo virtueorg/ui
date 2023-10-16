@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import dialogCtx from "./ctx";
+  import alertDialogCtx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLHeadingElement> & {
     level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements } = dialogCtx.get();
+  const { elements } = alertDialogCtx.get();
   const { title } = elements;
 </script>
 

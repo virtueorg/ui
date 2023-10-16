@@ -17,9 +17,9 @@ const get = () => {
   return alertDialog;
 };
 
-const dialogCtx = {
+const alertDialogCtx = {
   create,
   get,
 };
 
-export default dialogCtx;
+export default alertDialogCtx;
