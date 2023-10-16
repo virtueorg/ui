@@ -32,8 +32,9 @@
     justify-between
     ${className}
   `}
-    use:melt={$trigger(item)}
     {...$$restProps}
+    use:melt={$trigger(item)}
+    on:click
   >
     <slot />
   </button>

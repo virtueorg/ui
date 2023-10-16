@@ -26,8 +26,8 @@
     rounded-lg
     ${className}
   `}
-    use:melt={$item(props)}
     {...$$restProps}
+    use:melt={$item(props)}
   >
     <slot />
   </div>

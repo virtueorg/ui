@@ -26,8 +26,8 @@
       font-bold
       ${className}
     `}
-    use:melt={$heading(level || 3)}
     {...$$restProps}
+    use:melt={$heading(level || 3)}
   >
     <slot />
   </div>
