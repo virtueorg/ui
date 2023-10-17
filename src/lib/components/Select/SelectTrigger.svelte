@@ -1,35 +1,47 @@
 <script lang="ts">
   import { ChevronDownIcon } from "$lib/icons";
   import { cn } from "$lib/utils/misc";
-  import { Select } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
   import { Icon } from "../Icon";
+  import ctx from "./ctx";
 
-  type $$Props = Select.TriggerProps;
+  type $$Props = HTMLButtonAttributes & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { trigger } = elements;
 </script>
 
-<Select.Trigger
-  class={cn`
-    w-full
-    text-left
-    p-3
-    bg-muted/5
-    rounded-lg
-    flex
-    items-center
-    justify-between
-    ${className}
-  `}
-  {...$$restProps}
->
-  <div>
-    <slot />
-  </div>
+{#if asChild}
+  <slot builder={$trigger} />
+{:else}
+  <button class={cn("SelectTrigger", className)} {...$$restProps} use:melt={$trigger}>
+    <div>
+      <slot />
+    </div>
 
-  <Icon>
-    <ChevronDownIcon />
-  </Icon>
-</Select.Trigger>
+    <Icon>
+      <ChevronDownIcon />
+    </Icon>
+  </button>
+{/if}
+
+<style lang="postcss">
+  .SelectTrigger {
+    @apply w-full;
+    @apply text-left;
+    @apply p-3;
+    @apply bg-muted/5;
+    @apply rounded-lg;
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+  }
+</style>

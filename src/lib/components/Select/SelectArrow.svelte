@@ -1,14 +1,24 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Select } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Select.ArrowProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { arrow } = elements;
 </script>
 
-<Select.Arrow class={cn(className)} {...$$restProps}>
-  <slot />
-</Select.Arrow>
+{#if asChild}
+  <slot builder={$arrow} />
+{:else}
+  <div class={cn(className)} {...$$restProps} use:melt={$arrow} />
+{/if}

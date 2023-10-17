@@ -6,6 +6,7 @@ import SelectInput from "./SelectInput.svelte";
 import SelectItem from "./SelectItem.svelte";
 import SelectItemIndicator from "./SelectItemIndicator.svelte";
 import SelectLabel from "./SelectLabel.svelte";
+import SelectMessage from "./SelectMessage.svelte";
 import SelectTrigger from "./SelectTrigger.svelte";
 import SelectValue from "./SelectValue.svelte";
 
@@ -18,6 +19,7 @@ export {
   SelectItem,
   SelectItemIndicator,
   SelectLabel,
+  SelectMessage,
   SelectTrigger,
   SelectValue,
 };

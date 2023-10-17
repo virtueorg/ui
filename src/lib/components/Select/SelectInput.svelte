@@ -1,15 +1,24 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Select } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLInputAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Select.InputProps;
+  type $$Props = HTMLInputAttributes & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
-  export let value: $$Props["value"] = undefined;
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { hiddenInput } = elements;
 </script>
 
-<Select.Input class={cn(className)} {...$$restProps} bind:value>
-  <slot />
-</Select.Input>
+{#if asChild}
+  <slot builder={$hiddenInput} />
+{:else}
+  <input class={cn(className)} {...$$restProps} use:melt={$hiddenInput} />
+{/if}
