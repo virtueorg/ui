@@ -1,15 +1,28 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Tabs } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Tabs.ContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+    value: string;
+  };
 
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false;
   export let value: $$Props["value"];
+  export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { content } = elements;
 </script>
 
-<Tabs.Content class={cn(className)} {value} {...$$restProps}>
-  <slot />
-</Tabs.Content>
+{#if asChild}
+  <slot builder={$content(value)} />
+{:else}
+  <div class={cn(className)} {...$$restProps} use:melt={$content(value)}>
+    <slot />
+  </div>
+{/if}
