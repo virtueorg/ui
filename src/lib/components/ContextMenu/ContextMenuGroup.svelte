@@ -19,14 +19,13 @@
 {#if asChild}
   <slot builder={$group(id)} />
 {:else}
-  <div
-    class={cn`
-    p-2 
-    ${className}
-    `}
-    {...$$restProps}
-    use:melt={$group(id)}
-  >
+  <div class={cn("ContextMenuGroup", className)} {...$$restProps} use:melt={$group(id)}>
     <slot />
   </div>
 {/if}
+
+<style lang="postcss">
+  .ContextMenuGroup {
+    @apply p-2;
+  }
+</style>
