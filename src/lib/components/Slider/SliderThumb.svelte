@@ -1,27 +1,37 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Slider } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Slider.ThumbProps;
+  type $$Props = HTMLAttributes<HTMLSpanElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { thumb } = elements;
 </script>
 
-<Slider.Thumb
-  class={cn`
-    block
-    h-5
-    w-5
-    rounded-lg
-    bg-primary
+{#if asChild}
+  <slot builder={$thumb()} />
+{:else}
+  <span class={cn("SliderThumb", className)} {...$$restProps} use:melt={$thumb()} />
+{/if}
 
-    disabled:pointer-events-none
-    disabled:opacity-50
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Slider.Thumb>
+<style lang="postcss">
+  .SliderThumb {
+    @apply block;
+    @apply h-5;
+    @apply w-5;
+    @apply rounded-lg;
+    @apply bg-primary;
+
+    @apply disabled:pointer-events-none;
+    @apply disabled:opacity-50;
+  }
+</style>

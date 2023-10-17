@@ -1,35 +1,55 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Tabs } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Tabs.TriggerProps;
+  type $$Props = Omit<HTMLButtonAttributes, "disabled"> & {
+    asChild?: boolean;
+    value: string;
+    disabled?: boolean;
+  };
 
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false;
   export let value: $$Props["value"];
+  export let disabled: $$Props["disabled"] = false;
+  export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { trigger } = elements;
 </script>
 
-<Tabs.Trigger
-  class={cn`
-    transition-all
-    flex
-    items-center
-    gap-2
-    py-3
-    px-5
-    border-b-2
-    border-muted/20
-    opacity-50
-    text-left
+{#if asChild}
+  <slot builder={$trigger({ value, disabled })} />
+{:else}
+  <button
+    type="button"
+    class={cn("TabsTrigger", className)}
+    {value}
+    {...$$restProps}
+    use:melt={$trigger({ value, disabled })}
+  >
+    <slot />
+  </button>
+{/if}
 
-    data-[state=active]:border-primary
-    data-[state=active]:text-primary
-    data-[state=active]:opacity-100
-    ${className}
-  `}
-  {value}
-  {...$$restProps}
->
-  <slot />
-</Tabs.Trigger>
+<style lang="postcss">
+  .TabsTrigger {
+    @apply transition-all;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply py-3;
+    @apply px-5;
+    @apply border-b-2;
+    @apply border-muted/20;
+    @apply opacity-50;
+    @apply text-left;
+
+    @apply data-[state=active]:border-primary;
+    @apply data-[state=active]:text-primary;
+    @apply data-[state=active]:opacity-100;
+  }
+</style>

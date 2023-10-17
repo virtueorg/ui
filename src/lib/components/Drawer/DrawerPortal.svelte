@@ -1,26 +1,41 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Dialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Dialog.PortalProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = ctx.get();
+  const { portalled } = elements;
+  const { open } = states;
 </script>
 
-<Dialog.Portal
-  class={cn`
-    fixed
-    inset-0
-    pointer-events-none
-    flex
-    items-center
-    justify-end
-    z-10
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Dialog.Portal>
+{#if $open}
+  {#if asChild}
+    <slot builder={$portalled} />
+  {:else}
+    <div class={cn("DrawerPortal", className)} {...$$restProps} use:melt={$portalled}>
+      <slot />
+    </div>
+  {/if}
+{/if}
+
+<style lang="postcss">
+  .DrawerPortal {
+    @apply fixed;
+    @apply inset-0;
+    @apply pointer-events-none;
+    @apply flex;
+    @apply items-center;
+    @apply justify-end;
+    @apply z-10;
+  }
+</style>

@@ -1,23 +1,35 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Tabs } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Tabs.ListProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { list } = elements;
 </script>
 
-<Tabs.List
-  class={cn`
-    flex
-    items-center
-    whitespace-nowrap
-    overflow-auto
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Tabs.List>
+{#if asChild}
+  <slot builder={$list} />
+{:else}
+  <div class={cn("TabsList", className)} {...$$restProps} use:melt={$list}>
+    <slot />
+  </div>
+{/if}
+
+<style lang="postcss">
+  .TabsList {
+    @apply flex;
+    @apply items-center;
+    @apply whitespace-nowrap;
+    @apply overflow-auto;
+  }
+</style>

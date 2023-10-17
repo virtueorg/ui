@@ -1,20 +1,31 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Select } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Select.GroupProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { group, id } = ctx.createGroup();
 </script>
 
-<Select.Group
-  class={cn`
-    p-2
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Select.Group>
+{#if asChild}
+  <slot builder={$group(id)} />
+{:else}
+  <div class={cn("SelectGroup", className)} {...$$restProps} use:melt={$group(id)}>
+    <slot />
+  </div>
+{/if}
+
+<style lang="postcss">
+  .SelectGroup {
+    @apply p-2;
+  }
+</style>

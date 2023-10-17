@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { DropdownMenu } from "bits-ui";
+  import type { CreateContextMenuProps } from "@melt-ui/svelte";
+  import ctx from "./ctx";
 
-  type $$Props = DropdownMenu.Props;
+  type $$Props = CreateContextMenuProps;
+
+  ctx.create($$restProps);
 </script>
 
-<DropdownMenu.Root {...$$restProps}>
-  <slot />
-</DropdownMenu.Root>
+<slot />

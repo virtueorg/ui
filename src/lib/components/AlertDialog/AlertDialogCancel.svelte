@@ -1,14 +1,38 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { AlertDialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = AlertDialog.CancelProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { close } = elements;
 </script>
 
-<AlertDialog.Cancel class={cn(className)} {...$$restProps}>
-  <slot />
-</AlertDialog.Cancel>
+{#if asChild}
+  <slot builder={$close} />
+{:else}
+  <button
+    type="button"
+    class={cn("AlertDialogCancel", className)}
+    {...$$restProps}
+    use:melt={$close}
+    on:click
+  >
+    <slot />
+  </button>
+{/if}
+
+<style lang="postcss">
+  .AlertDialogCancel {
+    @apply text-left;
+  }
+</style>

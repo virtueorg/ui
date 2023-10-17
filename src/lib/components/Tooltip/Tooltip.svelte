@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { Tooltip } from "bits-ui";
+  import type { CreateTooltipProps } from "@melt-ui/svelte";
+  import ctx from "./ctx";
 
-  type $$Props = Tooltip.Props;
+  type $$Props = CreateTooltipProps;
+
+  ctx.create($$restProps);
 </script>
 
-<Tooltip.Root {...$$restProps}>
-  <slot />
-</Tooltip.Root>
+<slot />

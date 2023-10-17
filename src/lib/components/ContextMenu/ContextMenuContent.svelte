@@ -1,26 +1,37 @@
 <script lang="ts">
-  import { TRANSITION_SCALE } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
-  import { scale } from "svelte/transition";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = ContextMenu.ContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = ctx.get();
+  const { menu } = elements;
+  const { open } = states;
 </script>
 
-<ContextMenu.Content
-  class={cn`
-    w-64
-    bg-panel
-    rounded-lg
-    ${className}
-  `}
-  transition={scale}
-  transitionConfig={TRANSITION_SCALE}
-  {...$$restProps}
->
-  <slot />
-</ContextMenu.Content>
+{#if open}
+  {#if asChild}
+    <slot builder={$menu} />
+  {:else}
+    <div class={cn("ContextMenuContent", className)} {...$$restProps} use:melt={$menu}>
+      <slot />
+    </div>
+  {/if}
+{/if}
+
+<style lang="postcss">
+  .ContextMenuContent {
+    @apply w-64;
+    @apply bg-panel;
+    @apply rounded-lg;
+  }
+</style>

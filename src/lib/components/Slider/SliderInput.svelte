@@ -1,14 +1,26 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Slider } from "bits-ui";
+  import type { HTMLInputAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Slider.InputProps;
+  type $$Props = HTMLInputAttributes;
 
   export { className as class };
 
   let className = "";
+
+  const { states } = ctx.get();
+  const { value } = states;
+
+  const getValue = (value: number[]) => {
+    if (value.length === 1) {
+      return value[0];
+    }
+
+    return value[1] - value[0];
+  };
+
+  $: inputValue = getValue($value);
 </script>
 
-<Slider.Input class={cn(className)} {...$$restProps}>
-  <slot />
-</Slider.Input>
+<input class={cn(className)} hidden {...$$restProps} value={inputValue} />

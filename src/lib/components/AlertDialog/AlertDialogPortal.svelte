@@ -1,28 +1,43 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { AlertDialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = AlertDialog.PortalProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = ctx.get();
+  const { portalled } = elements;
+  const { open } = states;
 </script>
 
-<AlertDialog.Portal
-  class={cn`
-    fixed
-    inset-0
-    pointer-events-none
-    flex
-    items-end
-    justify-center
-    z-10
+{#if $open}
+  {#if asChild}
+    <slot builder={$portalled} />
+  {:else}
+    <div class={cn("AlertDialogPortal", className)} {...$$restProps} use:melt={$portalled}>
+      <slot />
+    </div>
+  {/if}
+{/if}
 
-    md:items-center
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</AlertDialog.Portal>
+<style lang="postcss">
+  .AlertDialogPortal {
+    @apply fixed;
+    @apply inset-0;
+    @apply pointer-events-none;
+    @apply flex;
+    @apply items-end;
+    @apply justify-center;
+    @apply z-10;
+
+    @apply md:items-center;
+  }
+</style>

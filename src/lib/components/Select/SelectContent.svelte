@@ -1,25 +1,36 @@
 <script lang="ts">
-  import { TRANSITION_SCALE } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { Select } from "bits-ui";
-  import { scale } from "svelte/transition";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Select.ContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = ctx.get();
+  const { menu } = elements;
+  const { open } = states;
 </script>
 
-<Select.Content
-  class={cn`
-    bg-panel
-    rounded-lg
-    ${className}
-  `}
-  transition={scale}
-  transitionConfig={TRANSITION_SCALE}
-  {...$$restProps}
->
-  <slot />
-</Select.Content>
+{#if $open}
+  {#if asChild}
+    <slot builder={$menu} />
+  {:else}
+    <div class={cn("SelectContent", className)} {...$$restProps} use:melt={$menu}>
+      <slot />
+    </div>
+  {/if}
+{/if}
+
+<style lang="postcss">
+  .SelectContent {
+    @apply bg-panel;
+    @apply rounded-lg;
+  }
+</style>

@@ -9,16 +9,16 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    p-5
-    flex
-    gap-2
-    items-center
-    justify-end
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("AlertDialogFooter", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .AlertDialogFooter {
+    @apply p-5;
+    @apply flex;
+    @apply gap-2;
+    @apply items-center;
+    @apply justify-end;
+  }
+</style>

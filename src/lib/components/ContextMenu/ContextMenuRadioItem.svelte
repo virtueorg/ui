@@ -1,33 +1,49 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
+  import ctx from "./ctx";
 
-  type $$Props = ContextMenu.RadioItemProps;
+  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
+    value: string;
+    disabled?: boolean;
+    asChild?: boolean;
+  };
 
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false;
   export let value: $$Props["value"];
+  export let disabled: $$Props["disabled"] = false;
+  export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.createRadioItem(value);
+  const { radioItem } = elements;
 </script>
 
-<ContextMenu.RadioItem
-  class={cn`
-    transition-all
-    flex
-    items-center
-    gap-2
-    rounded-lg
-    p-2
-    cursor-pointer
+{#if asChild}
+  <slot builder={$radioItem({ value, disabled })} />
+{:else}
+  <div
+    class={cn("ContextMenuRadioItem", className)}
+    {...$$restProps}
+    use:melt={$radioItem({ value, disabled })}
+  >
+    <slot />
+  </div>
+{/if}
 
-    active:scale-95
+<style lang="postcss">
+  .ContextMenuRadioItem {
+    @apply transition-all;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply rounded-lg;
+    @apply p-2;
+    @apply cursor-pointer;
 
-    hover:bg-muted/5
-    ${className}
-  `}
-  {value}
-  {...$$restProps}
-  on:click
->
-  <slot />
-</ContextMenu.RadioItem>
+    @apply active:scale-95;
+
+    @apply hover:bg-muted/5;
+  }
+</style>

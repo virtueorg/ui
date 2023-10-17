@@ -1,13 +1,16 @@
 <script lang="ts">
   import { DotIcon } from "$lib/icons";
-  import { DropdownMenu } from "bits-ui";
   import Icon from "../Icon/Icon.svelte";
+  import ctx from "./ctx";
+
+  const { helpers, value } = ctx.getRadioItem();
+  const { isChecked } = helpers;
 </script>
 
-<DropdownMenu.RadioIndicator>
+{#if $isChecked(value)}
   <slot>
     <Icon class="ml-auto">
       <DotIcon />
     </Icon>
   </slot>
-</DropdownMenu.RadioIndicator>
+{/if}

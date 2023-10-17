@@ -1,22 +1,37 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Accordion } from "bits-ui";
-  import { slide } from "svelte/transition";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Accordion.ContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const item = ctx.getItem();
+
+  const { elements, helpers } = ctx.get();
+  const { content } = elements;
+  const { isSelected } = helpers;
 </script>
 
-<Accordion.Content
-  class={cn`
-    p-5 
-    ${className}
-  `}
-  {...$$restProps}
-  transition={slide}
->
-  <slot />
-</Accordion.Content>
+{#if $isSelected(item.value)}
+  {#if asChild}
+    <slot builder={$content} />
+  {:else}
+    <div class={cn("AccordionContent", className)} {...$$restProps} use:melt={$content(item)}>
+      <slot />
+    </div>
+  {/if}
+{/if}
+
+<style lang="postcss">
+  .AccordionContent {
+    @apply p-5;
+  }
+</style>

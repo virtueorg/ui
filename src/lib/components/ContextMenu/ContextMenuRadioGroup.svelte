@@ -1,15 +1,37 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
+  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
+  import ctx from "./ctx";
 
-  type $$Props = ContextMenu.RadioGroupProps;
+  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
+    asChild?: boolean;
+    value?: string;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
+  export let value: $$Props["value"] = "";
   export { className as class };
-  export let value: $$Props["value"] = undefined;
 
   let className = "";
+
+  const handleChange: ChangeFn<string | null> = ({ next }) => {
+    value = String(next);
+    return value;
+  };
+
+  const { elements } = ctx.createRadioGroup({
+    ...$$restProps,
+    onValueChange: handleChange,
+    defaultValue: value,
+  });
+  const { radioGroup } = elements;
 </script>
 
-<ContextMenu.RadioGroup class={cn(className)} {...$$restProps} bind:value>
-  <slot />
-</ContextMenu.RadioGroup>
+{#if asChild}
+  <slot builder={$radioGroup} />
+{:else}
+  <div class={cn(className)} {...$$restProps} use:melt={$radioGroup}>
+    <slot />
+  </div>
+{/if}

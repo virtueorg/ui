@@ -1,24 +1,34 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Slider } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Slider.RangeProps;
+  type $$Props = HTMLAttributes<HTMLSpanElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { range } = elements;
 </script>
 
-<Slider.Range
-  class={cn`
-    h-2
-    grow
-    overflow-hidden
-    rounded-full
-    bg-primary
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Slider.Range>
+{#if asChild}
+  <slot builder={$range} />
+{:else}
+  <span class={cn("SliderRange", className)} {...$$restProps} use:melt={$range} />
+{/if}
+
+<style lang="postcss">
+  .SliderRange {
+    @apply h-2;
+    @apply grow;
+    @apply overflow-hidden;
+    @apply rounded-full;
+    @apply bg-primary;
+  }
+</style>

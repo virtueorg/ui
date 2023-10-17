@@ -1,31 +1,49 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { DropdownMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = DropdownMenu.ItemProps;
+  type $$Props = HTMLButtonAttributes & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.get();
+  const { item } = elements;
 </script>
 
-<DropdownMenu.Item
-  class={cn`
-    transition-all
-    flex
-    items-center
-    gap-2
-    rounded-lg
-    p-2
-    cursor-pointer
+{#if asChild}
+  <slot builder={$item} />
+{:else}
+  <button
+    type="button"
+    class={cn("DropdownMenuItem", className)}
+    {...$$restProps}
+    use:melt={$item}
+    on:click
+  >
+    <slot />
+  </button>
+{/if}
 
-    active:scale-95
+<style lang="postcss">
+  .DropdownMenuItem {
+    @apply transition-all;
+    @apply w-full;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply rounded-lg;
+    @apply p-2;
+    @apply cursor-pointer;
 
-    hover:bg-muted/5
-    ${className}
-  `}
-  {...$$restProps}
-  on:click
->
-  <slot />
-</DropdownMenu.Item>
+    @apply active:scale-95;
+
+    @apply hover:bg-muted/5;
+  }
+</style>

@@ -1,22 +1,33 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Accordion } from "bits-ui";
+  import type { CreateAccordionProps } from "@melt-ui/svelte";
+  import ctx from "./ctx";
 
-  type $$Props = Accordion.Props<boolean>;
+  type $$Props = CreateAccordionProps<boolean> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = ctx.create($$restProps);
+  const { root } = elements;
 </script>
 
-<Accordion.Root
-  class={cn`
-    flex
-    flex-col
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Accordion.Root>
+{#if asChild}
+  <slot builder={$root} />
+{:else}
+  <div class={cn("Accordion", className)} {...$root} {...$$restProps}>
+    <slot />
+  </div>
+{/if}
+
+<style lang="postcss">
+  .Accordion {
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+  }
+</style>

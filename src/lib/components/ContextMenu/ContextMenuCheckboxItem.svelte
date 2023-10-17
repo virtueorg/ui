@@ -1,32 +1,54 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt, type CreateContextMenuCheckboxItemProps } from "@melt-ui/svelte";
+  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
+  import ctx from "./ctx";
 
-  type $$Props = ContextMenu.CheckboxItemProps;
+  type $$Props = Omit<CreateContextMenuCheckboxItemProps, "checked"> & {
+    asChild?: boolean;
+    checked?: boolean;
+  };
 
-  export { className as class };
   export let checked: $$Props["checked"] = false;
+  export let onCheckedChange: $$Props["onCheckedChange"] = undefined;
+  export let asChild: $$Props["asChild"] = false;
+  export { className as class };
 
   let className = "";
+
+  const handleChange: ChangeFn<boolean | "indeterminate"> = ({ next }) => {
+    checked = Boolean(next);
+    return checked;
+  };
+
+  const { elements } = ctx.createCheckboxItem({
+    ...$$restProps,
+    defaultChecked: checked,
+    onCheckedChange: onCheckedChange || handleChange,
+  });
+  const { checkboxItem } = elements;
 </script>
 
-<ContextMenu.CheckboxItem
-  class={cn`
-    transition-all
-    flex
-    items-center
-    gap-2
-    rounded-lg
-    p-2
-    cursor-pointer
+{#if asChild}
+  <slot builder={$checkboxItem} />
+{:else}
+  <div class={cn("ContextMenuCheckboxItem", className)} {...$$restProps} use:melt={$checkboxItem}>
+    <slot />
+  </div>
+{/if}
 
-    active:scale-95
+<style lang="postcss">
+  .ContextMenuCheckboxItem {
+    @apply transition-all;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply rounded-lg;
+    @apply p-2;
+    @apply cursor-pointer;
 
-    hover:bg-muted/5
-    ${className}
-  `}
-  {...$$restProps}
-  bind:checked
->
-  <slot />
-</ContextMenu.CheckboxItem>
+    @apply active:scale-95;
+
+    @apply hover:bg-muted/5;
+  }
+</style>
