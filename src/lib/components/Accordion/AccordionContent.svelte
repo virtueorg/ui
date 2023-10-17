@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { TRANSITION_BASE } from "$lib/utils";
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { slide } from "svelte/transition";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -26,12 +24,7 @@
   {#if asChild}
     <slot builder={$content} />
   {:else}
-    <div
-      class={cn("AccordionContent", className)}
-      {...$$restProps}
-      transition:slide={TRANSITION_BASE}
-      use:melt={$content(item)}
-    >
+    <div class={cn("AccordionContent", className)} {...$$restProps} use:melt={$content(item)}>
       <slot />
     </div>
   {/if}

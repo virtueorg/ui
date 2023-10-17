@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { TRANSITION_BASE } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { fade } from "svelte/transition";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -22,12 +20,7 @@
 {#if asChild}
   <slot builder={$overlay} />
 {:else}
-  <div
-    class={cn("AlertDialogOverlay", className)}
-    {...$$restProps}
-    transition:fade={TRANSITION_BASE}
-    use:melt={$overlay}
-  >
+  <div class={cn("AlertDialogOverlay", className)} {...$$restProps} use:melt={$overlay}>
     <slot />
   </div>
 {/if}
