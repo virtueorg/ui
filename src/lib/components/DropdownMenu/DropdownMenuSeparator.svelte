@@ -1,21 +1,33 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { DropdownMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import dropdownMenuCtx from "./ctx";
 
-  type $$Props = DropdownMenu.SeparatorProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = dropdownMenuCtx.get();
+  const { separator } = elements;
 </script>
 
-<DropdownMenu.Separator
-  class={cn`
-    h-px
-    bg-muted/10
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</DropdownMenu.Separator>
+{#if asChild}
+  <slot builder={$separator} />
+{:else}
+  <div class={cn("DropdownMenuSeparator", className)} {...$$restProps} use:melt={$separator}>
+    <slot />
+  </div>
+{/if}
+
+<style lang="postcss">
+  .DropdownMenuSeparator {
+    @apply h-px;
+    @apply bg-muted/10;
+  }
+</style>

@@ -1,14 +1,26 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { DropdownMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import dropdownMenuCtx from "./ctx";
 
-  type $$Props = DropdownMenu.ArrowProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = dropdownMenuCtx.get();
+  const { arrow } = elements;
 </script>
 
-<DropdownMenu.Arrow class={cn(className)} {...$$restProps}>
-  <slot />
-</DropdownMenu.Arrow>
+{#if asChild}
+  <slot builder={$arrow} />
+{:else}
+  <div class={cn(className)} {...$$restProps} use:melt={$arrow}>
+    <slot />
+  </div>
+{/if}
