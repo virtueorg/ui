@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateDropdownMenuRadioGroupProps } from "@melt-ui/svelte";
-  import dropdownMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = Omit<CreateDropdownMenuRadioGroupProps, "value"> & {
     value: string;
@@ -16,7 +16,7 @@
 
   let className = "";
 
-  const { elements } = dropdownMenuCtx.createRadioItem(value);
+  const { elements } = ctx.createRadioItem(value);
   const { radioItem } = elements;
 </script>
 

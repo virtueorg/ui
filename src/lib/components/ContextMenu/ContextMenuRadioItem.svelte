@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
     value: string;
@@ -16,7 +16,7 @@
 
   let className = "";
 
-  const { elements } = contextMenuCtx.createRadioItem(value);
+  const { elements } = ctx.createRadioItem(value);
   const { radioItem } = elements;
 </script>
 

@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuCheckboxItemProps } from "@melt-ui/svelte";
   import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuCheckboxItemProps, "checked"> & {
     asChild?: boolean;
@@ -21,7 +21,7 @@
     return checked;
   };
 
-  const { elements } = contextMenuCtx.createCheckboxItem({
+  const { elements } = ctx.createCheckboxItem({
     ...$$restProps,
     defaultChecked: checked,
     onCheckedChange: onCheckedChange || handleChange,

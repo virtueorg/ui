@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import accordionCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLButtonElement> & {
     asChild?: boolean;
@@ -11,9 +11,9 @@
   export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
-  const item = accordionCtx.getItem();
+  const item = ctx.getItem();
 
-  const { elements } = accordionCtx.get();
+  const { elements } = ctx.get();
   const { trigger } = elements;
 
   let className = "";

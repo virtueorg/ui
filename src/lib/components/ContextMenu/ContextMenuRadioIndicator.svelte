@@ -1,9 +1,9 @@
 <script lang="ts">
   import { DotIcon } from "$lib/icons";
   import Icon from "../Icon/Icon.svelte";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
-  const { helpers, value } = contextMenuCtx.getRadioItem();
+  const { helpers, value } = ctx.getRadioItem();
   const { isChecked } = helpers;
 </script>
 

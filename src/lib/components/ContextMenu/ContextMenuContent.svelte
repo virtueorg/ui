@@ -4,7 +4,7 @@
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { scale } from "svelte/transition";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements, states } = contextMenuCtx.get();
+  const { elements, states } = ctx.get();
   const { menu } = elements;
   const { open } = states;
 </script>

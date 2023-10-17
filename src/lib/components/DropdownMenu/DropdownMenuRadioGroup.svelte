@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateDropdownMenuRadioGroupProps } from "@melt-ui/svelte";
   import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
-  import dropdownMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = Omit<CreateDropdownMenuRadioGroupProps, "value"> & {
     asChild?: boolean;
@@ -20,7 +20,7 @@
     return value;
   };
 
-  const { elements } = dropdownMenuCtx.createRadioGroup({
+  const { elements } = ctx.createRadioGroup({
     ...$$restProps,
     onValueChange: handleChange,
     defaultValue: value,

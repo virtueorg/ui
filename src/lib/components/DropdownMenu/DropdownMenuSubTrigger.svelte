@@ -4,7 +4,7 @@
   import { melt } from "@melt-ui/svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import Icon from "../Icon/Icon.svelte";
-  import dropdownMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLButtonAttributes & {
     asChild?: boolean;
@@ -15,7 +15,7 @@
 
   let className = "";
 
-  const { elements } = dropdownMenuCtx.getSub();
+  const { elements } = ctx.getSub();
   const { subTrigger } = elements;
 </script>
 

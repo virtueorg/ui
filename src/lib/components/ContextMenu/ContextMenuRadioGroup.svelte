@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
   import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
     asChild?: boolean;
@@ -20,7 +20,7 @@
     return value;
   };
 
-  const { elements } = contextMenuCtx.createRadioGroup({
+  const { elements } = ctx.createRadioGroup({
     ...$$restProps,
     onValueChange: handleChange,
     defaultValue: value,

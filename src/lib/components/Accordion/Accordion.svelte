@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { CreateAccordionProps } from "@melt-ui/svelte";
-  import accordionCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = CreateAccordionProps<boolean> & {
     asChild?: boolean;
@@ -12,7 +12,7 @@
 
   let className = "";
 
-  const { elements } = accordionCtx.create($$restProps);
+  const { elements } = ctx.create($$restProps);
   const { root } = elements;
 </script>
 

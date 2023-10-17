@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLButtonAttributes & {
     asChild?: boolean;
@@ -13,7 +13,7 @@
 
   let className = "";
 
-  const { elements } = contextMenuCtx.get();
+  const { elements } = ctx.get();
   const { item } = elements;
 </script>
 

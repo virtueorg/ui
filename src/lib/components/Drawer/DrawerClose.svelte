@@ -2,7 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import drawerCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -13,7 +13,7 @@
 
   let className = "";
 
-  const { elements } = drawerCtx.get();
+  const { elements } = ctx.get();
   const { close } = elements;
 </script>
 

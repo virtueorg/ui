@@ -39,11 +39,11 @@ const getItem = () => {
   return item;
 };
 
-const accordionCtx = {
+const ctx = {
   create,
   get,
   setItem,
   getItem,
 };
 
-export default accordionCtx;
+export default ctx;

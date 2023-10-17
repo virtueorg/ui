@@ -4,7 +4,7 @@
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { slide } from "svelte/transition";
-  import accordionCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -15,9 +15,9 @@
 
   let className = "";
 
-  const item = accordionCtx.getItem();
+  const item = ctx.getItem();
 
-  const { elements, helpers } = accordionCtx.get();
+  const { elements, helpers } = ctx.get();
   const { content } = elements;
   const { isSelected } = helpers;
 </script>

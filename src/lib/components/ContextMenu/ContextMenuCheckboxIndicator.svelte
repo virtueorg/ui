@@ -3,7 +3,7 @@
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
   import Icon from "../Icon/Icon.svelte";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     asChild?: boolean;
@@ -14,7 +14,7 @@
 
   let className = "";
 
-  const { states } = contextMenuCtx.getCheckboxItem();
+  const { states } = ctx.getCheckboxItem();
   const { checked } = states;
 </script>
 

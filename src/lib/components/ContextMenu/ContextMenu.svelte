@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { CreateContextMenuProps } from "@melt-ui/svelte";
-  import contextMenuCtx from "./ctx";
+  import ctx from "./ctx";
 
   type $$Props = CreateContextMenuProps;
 
-  contextMenuCtx.create($$restProps);
+  ctx.create($$restProps);
 </script>
 
 <slot />

@@ -118,7 +118,7 @@ const getSub = () => {
   return sub;
 };
 
-const dropdownMenuCtx = {
+const ctx = {
   create,
   get,
   createCheckboxItem,
@@ -132,4 +132,4 @@ const dropdownMenuCtx = {
   getSub,
 };
 
-export default dropdownMenuCtx;
+export default ctx;

@@ -17,9 +17,9 @@ const get = () => {
   return drawer;
 };
 
-const drawerCtx = {
+const ctx = {
   create,
   get,
 };
 
-export default drawerCtx;
+export default ctx;
