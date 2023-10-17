@@ -23,6 +23,7 @@
   <slot builder={$subTrigger} />
 {:else}
   <button
+    type="button"
     class={cn("DropdownMenuSubTrigger", className)}
     {...$$restProps}
     use:melt={$subTrigger}

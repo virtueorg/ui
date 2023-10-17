@@ -25,6 +25,7 @@
   <slot builder={$trigger({ value, disabled })} />
 {:else}
   <button
+    type="button"
     class={cn("TabsTrigger", className)}
     {value}
     {...$$restProps}

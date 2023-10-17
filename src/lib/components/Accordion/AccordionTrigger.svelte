@@ -23,6 +23,7 @@
   <slot builder={$trigger(item)} />
 {:else}
   <button
+    type="button"
     class={cn("AccordionTrigger", className)}
     {...$$restProps}
     use:melt={$trigger(item)}

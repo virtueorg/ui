@@ -20,7 +20,13 @@
 {#if asChild}
   <slot builder={$item} />
 {:else}
-  <button class={cn("DropdownMenuItem", className)} {...$$restProps} use:melt={$item} on:click>
+  <button
+    type="button"
+    class={cn("DropdownMenuItem", className)}
+    {...$$restProps}
+    use:melt={$item}
+    on:click
+  >
     <slot />
   </button>
 {/if}

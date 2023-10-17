@@ -20,7 +20,12 @@
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <button class={cn("TooltipTrigger", className)} {...$$restProps} use:melt={$trigger}>
+  <button
+    type="button"
+    class={cn("TooltipTrigger", className)}
+    {...$$restProps}
+    use:melt={$trigger}
+  >
     <slot />
   </button>
 {/if}
