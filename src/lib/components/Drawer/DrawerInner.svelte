@@ -9,13 +9,13 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    p-5
-    h-full
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("DrawerInner", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .DrawerInner {
+    @apply p-5;
+    @apply h-full;
+  }
+</style>

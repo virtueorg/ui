@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    items-center
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("DrawerActions", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .DrawerActions {
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+  }
+</style>

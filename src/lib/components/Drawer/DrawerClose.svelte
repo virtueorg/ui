@@ -1,14 +1,32 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Dialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import drawerCtx from "./ctx";
 
-  type $$Props = Dialog.CloseProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = drawerCtx.get();
+  const { close } = elements;
 </script>
 
-<Dialog.Close class={cn(className)} {...$$restProps}>
-  <slot />
-</Dialog.Close>
+{#if asChild}
+  <slot builder={$close} />
+{:else}
+  <button use:melt={$close} class={cn("DrawerClose", className)} {...$$restProps} on:click>
+    <slot />
+  </button>
+{/if}
+
+<style lang="postcss">
+  .DrawerClose {
+    @apply text-left;
+  }
+</style>

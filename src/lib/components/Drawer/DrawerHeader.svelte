@@ -9,15 +9,15 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    p-5
-    flex
-    items-center
-    justify-between
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("DrawerHeader", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .DrawerHeader {
+    @apply p-5;
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+  }
+</style>

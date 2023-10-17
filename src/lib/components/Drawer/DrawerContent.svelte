@@ -1,31 +1,46 @@
 <script lang="ts">
-  import { TRANSITION_X_IN } from "$lib/utils/const";
+  import { TRANSITION_Y_IN } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { Dialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
   import { fly } from "svelte/transition";
+  import drawerCtx from "./ctx";
 
-  type $$Props = Dialog.ContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = drawerCtx.get();
+  const { content } = elements;
 </script>
 
-<Dialog.Content
-  class={cn`
-    w-full
-    h-full
-    flex
-    flex-col
-    bg-panel
-    pointer-events-auto
+{#if asChild}
+  <slot builder={$content} />
+{:else}
+  <div
+    class={cn("DrawerContent", className)}
+    transition:fly={TRANSITION_Y_IN}
+    {...$$restProps}
+    use:melt={$content}
+  >
+    <slot />
+  </div>
+{/if}
 
-    md:max-w-lg
-    ${className}
-  `}
-  transition={fly}
-  transitionConfig={TRANSITION_X_IN}
-  {...$$restProps}
->
-  <slot />
-</Dialog.Content>
+<style lang="postcss">
+  .DrawerContent {
+    @apply w-full;
+    @apply h-full;
+    @apply flex;
+    @apply flex-col;
+    @apply bg-panel;
+    @apply pointer-events-auto;
+
+    @apply md:max-w-lg;
+  }
+</style>
