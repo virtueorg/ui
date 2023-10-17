@@ -1,20 +1,32 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import contextMenuCtx from "./ctx";
 
-  type $$Props = ContextMenu.TriggerProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = contextMenuCtx.get();
+  const { trigger } = elements;
 </script>
 
-<ContextMenu.Trigger
-  class={cn`
-    text-left
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</ContextMenu.Trigger>
+{#if asChild}
+  <slot builder={$trigger} />
+{:else}
+  <div class={cn("ContextMenuTrigger", className)} {...$$restProps} use:melt={$trigger}>
+    <slot />
+  </div>
+{/if}
+
+<style lang="postcss">
+  .ContextMenuTrigger {
+    @apply text-left;
+  }
+</style>

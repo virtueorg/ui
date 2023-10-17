@@ -1,14 +1,26 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import contextMenuCtx from "./ctx";
 
-  type $$Props = ContextMenu.ArrowProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = contextMenuCtx.get();
+  const { arrow } = elements;
 </script>
 
-<ContextMenu.Arrow class={cn(className)} {...$$restProps}>
-  <slot />
-</ContextMenu.Arrow>
+{#if asChild}
+  <slot builder={$arrow} />
+{:else}
+  <div class={cn(className)} {...$$restProps} use:melt={$arrow}>
+    <slot />
+  </div>
+{/if}

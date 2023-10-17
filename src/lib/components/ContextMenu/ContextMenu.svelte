@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { ContextMenu } from "bits-ui";
+  import type { CreateContextMenuProps } from "@melt-ui/svelte";
+  import contextMenuCtx from "./ctx";
 
-  type $$Props = ContextMenu.Props;
+  type $$Props = CreateContextMenuProps;
+
+  contextMenuCtx.create($$restProps);
 </script>
 
-<ContextMenu.Root {...$$restProps}>
-  <slot />
-</ContextMenu.Root>
+<slot />

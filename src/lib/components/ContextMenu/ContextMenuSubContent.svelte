@@ -1,22 +1,37 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import contextMenuCtx from "./ctx";
 
-  type $$Props = ContextMenu.SubContentProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements, states } = contextMenuCtx.getSub();
+  const { subMenu } = elements;
+  const { subOpen } = states;
 </script>
 
-<ContextMenu.SubContent
-  class={cn`
-    w-64
-    bg-panel
-    rounded-lg
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</ContextMenu.SubContent>
+{#if $subOpen}
+  {#if asChild}
+    <slot builder={$subMenu} />
+  {:else}
+    <div class={cn("ContextMenuSubContent", className)} {...$$restProps} use:melt={$subMenu}>
+      <slot />
+    </div>
+  {/if}
+{/if}
+
+<style lang="postcss">
+  .ContextMenuSubContent {
+    @apply w-64;
+    @apply bg-panel;
+    @apply rounded-lg;
+  }
+</style>

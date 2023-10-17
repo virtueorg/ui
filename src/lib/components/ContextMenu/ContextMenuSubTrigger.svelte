@@ -1,36 +1,54 @@
 <script lang="ts">
   import ChevronRightIcon from "$lib/icons/ChevronRightIcon.svelte";
   import { cn } from "$lib/utils/misc";
-  import { ContextMenu } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
   import Icon from "../Icon/Icon.svelte";
+  import contextMenuCtx from "./ctx";
 
-  type $$Props = ContextMenu.SubTriggerProps;
+  type $$Props = HTMLButtonAttributes & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const { elements } = contextMenuCtx.getSub();
+  const { subTrigger } = elements;
 </script>
 
-<ContextMenu.SubTrigger
-  class={cn`
-    transition-all
-    flex
-    items-center
-    gap-2
-    rounded-lg
-    p-2
-    cursor-pointer
+{#if asChild}
+  <slot builder={$subTrigger} />
+{:else}
+  <button
+    class={cn("ContextMenuSubTrigger", className)}
+    {...$$restProps}
+    use:melt={$subTrigger}
+    on:click
+  >
+    <slot />
 
-    active:scale-95
+    <Icon class="ml-auto">
+      <ChevronRightIcon />
+    </Icon>
+  </button>
+{/if}
 
-    hover:bg-muted/5
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
+<style lang="postcss">
+  .ContextMenuSubTrigger {
+    @apply transition-all;
+    @apply w-full;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply rounded-lg;
+    @apply p-2;
+    @apply cursor-pointer;
 
-  <Icon class="ml-auto">
-    <ChevronRightIcon />
-  </Icon>
-</ContextMenu.SubTrigger>
+    @apply active:scale-95;
+
+    @apply hover:bg-muted/5;
+  }
+</style>
