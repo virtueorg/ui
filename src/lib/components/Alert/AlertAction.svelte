@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    ml-auto
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("AlertAction", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .AlertAction {
+    @apply ml-auto;
+  }
+</style>
