@@ -16,15 +16,24 @@
 </script>
 
 <input
-  class={cn`
-    w-full
-    p-3
-    bg-transparent
-    rounded-lg
-    ${hasIcon && "pr-11"}
-    ${hasLabel && "pt-8"}
-    ${className}
-  `}
+  class={cn("TextFieldInput", { hasIcon }, { hasLabel }, className)}
   {...$$restProps}
   bind:value
 />
+
+<style lang="postcss">
+  .TextFieldInput {
+    @apply w-full;
+    @apply p-3;
+    @apply bg-transparent;
+    @apply rounded-lg;
+  }
+
+  .hasIcon {
+    @apply pr-11;
+  }
+
+  .hasLabel {
+    @apply pt-8;
+  }
+</style>

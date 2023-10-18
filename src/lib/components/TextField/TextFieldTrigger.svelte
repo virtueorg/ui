@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    flex-col
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("TextFieldTrigger", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .TextFieldTrigger {
+    @apply relative;
+    @apply bg-muted/5;
+    @apply rounded-lg;
+  }
+</style>

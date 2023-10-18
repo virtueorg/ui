@@ -9,20 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    absolute
-    top-0
-    right-0
-    h-full
-    flex
-    items-center
-    p-3
-    text-muted
-    pointer-events-none
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("TextField", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .TextField {
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+  }
+</style>
