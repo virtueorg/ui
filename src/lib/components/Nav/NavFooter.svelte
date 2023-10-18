@@ -9,13 +9,13 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    mt-auto
-    p-5
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("NavFooter", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .NavFooter {
+    @apply mt-auto;
+    @apply p-5;
+  }
+</style>

@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<nav
-  class={cn`
-    bg-panel
-    flex
-    flex-col
-    ${className}
-  `}
-  {...$$restProps}
->
+<nav class={cn("Nav", className)} {...$$restProps}>
   <slot />
 </nav>
+
+<style lang="postcss">
+  .Nav {
+    @apply bg-panel;
+    @apply flex;
+    @apply flex-col;
+  }
+</style>

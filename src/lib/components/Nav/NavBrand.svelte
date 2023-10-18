@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    p-5
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("NavBrand", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .NavBrand {
+    @apply p-5;
+  }
+</style>

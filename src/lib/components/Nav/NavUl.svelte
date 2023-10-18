@@ -9,15 +9,15 @@
   let className = "";
 </script>
 
-<ul
-  class={cn`
-    p-5
-    flex
-    flex-col
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<ul class={cn("NavUl", className)} {...$$restProps}>
   <slot />
 </ul>
+
+<style lang="postcss">
+  .NavUl {
+    @apply p-5;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+  }
+</style>
