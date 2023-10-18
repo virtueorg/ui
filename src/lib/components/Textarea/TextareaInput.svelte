@@ -20,17 +20,23 @@
 </script>
 
 <textarea
-  class={cn`
-    w-full
-    p-3
-    bg-transparent
-    rounded-lg
-    resize-none
-    ${hasLabel && "pt-8"}
-    ${className}
-  `}
+  class={cn("TextareaInput", { hasLabel }, className)}
   {...$$restProps}
   bind:value
   bind:this={element}
   on:input={autoGrow}
 />
+
+<style lang="postcss">
+  .TextareaInput {
+    @apply w-full;
+    @apply p-3;
+    @apply bg-transparent;
+    @apply rounded-lg;
+    @apply resize-none;
+  }
+
+  .hasLabel {
+    @apply pt-8;
+  }
+</style>

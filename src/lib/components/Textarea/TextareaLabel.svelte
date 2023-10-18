@@ -9,17 +9,17 @@
   let className = "";
 </script>
 
-<label
-  class={cn`
-    absolute
-    top-0
-    left-0
-    p-3
-    text-sm
-    text-muted
-    ${className}
-  `}
-  {...$$restProps}
->
+<label class={cn("TextareaLabel", className)} {...$$restProps}>
   <slot />
 </label>
+
+<style lang="postcss">
+  .TextareaLabel {
+    @appl absolute;
+    @appl top-0;
+    @appl left-0;
+    @appl p-3;
+    @appl text-sm;
+    @appl text-muted;
+  }
+</style>

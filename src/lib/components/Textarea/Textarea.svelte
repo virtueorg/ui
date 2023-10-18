@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    relative
-    bg-muted/5
-    rounded-lg
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("Textarea", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .Textarea {
+    @apply relative;
+    @apply bg-muted/5;
+    @apply rounded-lg;
+  }
+</style>
