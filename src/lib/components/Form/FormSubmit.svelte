@@ -9,13 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    flex-col
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("FormSubmit", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .FormSubmit {
+    @appl flex;
+    @appl flex-col;
+    @appl gap-2;
+  }
+</style>

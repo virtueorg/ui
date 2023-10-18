@@ -13,28 +13,19 @@
 </script>
 
 {#if enhance}
-  <form
-    class={cn`
-      flex
-      flex-col
-      gap-5
-      ${className}
-    `}
-    {...$$restProps}
-    use:enhance
-  >
+  <form class={cn("Form", className)} use:enhance {...$$restProps}>
     <slot />
   </form>
 {:else}
-  <form
-    class={cn`
-      flex
-      flex-col
-      gap-5
-      ${className}
-    `}
-    {...$$restProps}
-  >
+  <form class={cn("Form", className)} {...$$restProps}>
     <slot />
   </form>
 {/if}
+
+<style lang="postcss">
+  .Form {
+    @appl flex;
+    @appl flex-col;
+    @appl gap-5;
+  }
+</style>

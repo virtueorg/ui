@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    flex-col
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("FormFields", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .FormFields {
+    @appl flex;
+    @appl flex-col;
+    @appl gap-2;
+  }
+</style>
