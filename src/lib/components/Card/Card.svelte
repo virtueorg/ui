@@ -9,13 +9,13 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    rounded-lg
-    bg-muted/5
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("Card", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .Card {
+    @apply rounded-lg;
+    @apply bg-muted/5;
+  }
+</style>

@@ -1,9 +1,10 @@
 <script lang="ts">
+  import type { IHeadingTag } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
 
   type $$Props = HTMLAttributes<HTMLHeadingElement> & {
-    tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    tag?: IHeadingTag;
   };
 
   export { className as class };
@@ -12,13 +13,12 @@
   let className = "";
 </script>
 
-<svelte:element
-  this={tag}
-  class={cn`
-    font-bold
-    ${className}
-  `}
-  {...$$restProps}
->
+<svelte:element this={tag} class={cn("CardTitle", className)} {...$$restProps}>
   <slot />
 </svelte:element>
+
+<style lang="postcss">
+  .CardTitle {
+    @apply font-bold;
+  }
+</style>
