@@ -24,8 +24,8 @@
 
 <style lang="postcss">
   .Form {
-    @appl flex;
-    @appl flex-col;
-    @appl gap-5;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-5;
   }
 </style>

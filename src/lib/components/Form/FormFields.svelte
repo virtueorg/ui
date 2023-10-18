@@ -15,8 +15,8 @@
 
 <style lang="postcss">
   .FormFields {
-    @appl flex;
-    @appl flex-col;
-    @appl gap-2;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
   }
 </style>

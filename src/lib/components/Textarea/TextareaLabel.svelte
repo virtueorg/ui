@@ -15,11 +15,11 @@
 
 <style lang="postcss">
   .TextareaLabel {
-    @appl absolute;
-    @appl top-0;
-    @appl left-0;
-    @appl p-3;
-    @appl text-sm;
-    @appl text-muted;
+    @apply absolute;
+    @apply top-0;
+    @apply left-0;
+    @apply p-3;
+    @apply text-sm;
+    @apply text-muted;
   }
 </style>
