@@ -1,10 +1,7 @@
 <script lang="ts">
   import { alerts } from "$lib/stores/alerts";
-  import { TRANSITION_BASE, TRANSITION_Y_IN, TRANSITION_Y_OUT } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { flip } from "svelte/animate";
   import type { HTMLAttributes } from "svelte/elements";
-  import { fly } from "svelte/transition";
   import AlertItem from "./AlertItem.svelte";
 
   type $$Props = HTMLAttributes<HTMLDivElement>;
@@ -15,31 +12,25 @@
 </script>
 
 {#if $alerts.length}
-  <div
-    class={cn`
-      fixed
-      top-0
-      right-0
-      w-full
-      p-5
-      flex
-      flex-col
-      gap-2
-      z-50
-
-      md:max-w-lg
-      ${className}
-    `}
-    {...$$restProps}
-  >
+  <div class={cn("Alerts", className)} {...$$restProps}>
     {#each $alerts as alert (alert.id)}
-      <div
-        animate:flip={TRANSITION_BASE}
-        in:fly|global={TRANSITION_Y_IN}
-        out:fly|global={TRANSITION_Y_OUT}
-      >
-        <AlertItem {alert} />
-      </div>
+      <AlertItem {alert} />
     {/each}
   </div>
 {/if}
+
+<style lang="postcss">
+  .Alerts {
+    @apply fixed;
+    @apply top-0;
+    @apply right-0;
+    @apply w-full;
+    @apply p-5;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+    @apply z-50;
+
+    @apply md:max-w-lg;
+  }
+</style>
