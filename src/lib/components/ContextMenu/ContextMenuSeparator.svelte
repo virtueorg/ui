@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$separator} />
 {:else}
-  <div class={cn("ContextMenuSeparator", className)} {...$$restProps} use:melt={$separator}>
+  <div class={cn("ContextMenuSeparator", className)} use:melt={$separator} {...$$restProps}>
     <slot />
   </div>
 {/if}

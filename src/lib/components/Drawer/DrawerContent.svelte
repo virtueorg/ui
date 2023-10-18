@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$content} />
 {:else}
-  <div class={cn("DrawerContent", className)} {...$$restProps} use:melt={$content}>
+  <div class={cn("DrawerContent", className)} use:melt={$content} {...$$restProps}>
     <slot />
   </div>
 {/if}

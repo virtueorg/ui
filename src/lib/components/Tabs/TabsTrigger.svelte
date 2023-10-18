@@ -27,9 +27,8 @@
   <button
     type="button"
     class={cn("TabsTrigger", className)}
-    {value}
-    {...$$restProps}
     use:melt={$trigger({ value, disabled })}
+    {...$$restProps}
   >
     <slot />
   </button>

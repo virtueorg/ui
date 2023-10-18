@@ -19,7 +19,7 @@
 {#if asChild}
   <slot builder={$group(id)} />
 {:else}
-  <div class={cn("ContextMenuGroup", className)} {...$$restProps} use:melt={$group(id)}>
+  <div class={cn("ContextMenuGroup", className)} use:melt={$group(id)} {...$$restProps}>
     <slot />
   </div>
 {/if}

@@ -25,8 +25,8 @@
 {:else}
   <div
     class={cn("ContextMenuRadioItem", className)}
-    {...$$restProps}
     use:melt={$radioItem({ value, disabled })}
+    {...$$restProps}
   >
     <slot />
   </div>

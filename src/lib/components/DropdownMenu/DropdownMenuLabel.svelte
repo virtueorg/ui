@@ -19,7 +19,7 @@
 {#if asChild}
   <slot builder={$groupLabel(id)} />
 {:else}
-  <div class={cn("DropdownMenuLabel", className)} {...$$restProps} use:melt={$groupLabel(id)}>
+  <div class={cn("DropdownMenuLabel", className)} use:melt={$groupLabel(id)} {...$$restProps}>
     <slot />
   </div>
 {/if}

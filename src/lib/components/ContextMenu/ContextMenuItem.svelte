@@ -23,8 +23,8 @@
   <button
     type="button"
     class={cn("ContextMenuItem", className)}
-    {...$$restProps}
     use:melt={$item}
+    {...$$restProps}
     on:click
   >
     <slot />

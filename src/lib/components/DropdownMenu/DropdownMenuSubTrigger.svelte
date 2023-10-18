@@ -25,8 +25,8 @@
   <button
     type="button"
     class={cn("DropdownMenuSubTrigger", className)}
-    {...$$restProps}
     use:melt={$subTrigger}
+    {...$$restProps}
     on:click
   >
     <slot />

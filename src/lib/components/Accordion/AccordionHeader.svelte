@@ -21,7 +21,7 @@
 {#if asChild}
   <slot builder={$heading(level || 3)} />
 {:else}
-  <div class={cn("AccordionHeader", className)} {...$$restProps} use:melt={$heading(level || 3)}>
+  <div class={cn("AccordionHeader", className)} use:melt={$heading(level || 3)} {...$$restProps}>
     <slot />
   </div>
 {/if}

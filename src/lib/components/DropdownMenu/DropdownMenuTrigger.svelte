@@ -23,8 +23,8 @@
   <button
     type="button"
     class={cn("DropdownMenuTrigger", className)}
-    {...$$restProps}
     use:melt={$trigger}
+    {...$$restProps}
   >
     <slot />
   </button>

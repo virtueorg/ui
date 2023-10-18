@@ -31,7 +31,7 @@
 {#if asChild}
   <slot builder={$radioGroup} />
 {:else}
-  <div class={cn(className)} {...$$restProps} use:melt={$radioGroup}>
+  <div class={cn(className)} use:melt={$radioGroup} {...$$restProps}>
     <slot />
   </div>
 {/if}

@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$range} />
 {:else}
-  <span class={cn("SliderRange", className)} {...$$restProps} use:melt={$range} />
+  <span class={cn("SliderRange", className)} use:melt={$range} {...$$restProps} />
 {/if}
 
 <style lang="postcss">

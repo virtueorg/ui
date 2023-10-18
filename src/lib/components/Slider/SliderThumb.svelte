@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$thumb()} />
 {:else}
-  <span class={cn("SliderThumb", className)} {...$$restProps} use:melt={$thumb()} />
+  <span class={cn("SliderThumb", className)} use:melt={$thumb()} {...$$restProps} />
 {/if}
 
 <style lang="postcss">

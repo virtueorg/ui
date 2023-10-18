@@ -34,7 +34,7 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <span class={cn("Slider", className)} {...$$restProps} use:melt={$root}>
+  <span class={cn("Slider", className)} use:melt={$root} {...$$restProps}>
     <slot />
   </span>
 {/if}

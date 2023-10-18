@@ -23,7 +23,7 @@
 {#if asChild}
   <slot builder={$image} />
 {:else}
-  <img {src} {alt} class={cn("AvatarImage", className)} {...$$restProps} use:melt={$image} />
+  <img {src} {alt} class={cn("AvatarImage", className)} use:melt={$image} {...$$restProps} />
 {/if}
 
 <style lang="postcss">

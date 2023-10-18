@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$description} />
 {:else}
-  <div class={cn("AlertDialogDescription", className)} {...$$restProps} use:melt={$description}>
+  <div class={cn("AlertDialogDescription", className)} use:melt={$description} {...$$restProps}>
     <slot />
   </div>
 {/if}

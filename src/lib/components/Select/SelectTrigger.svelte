@@ -22,7 +22,7 @@
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <button type="button" class={cn("SelectTrigger", className)} {...$$restProps} use:melt={$trigger}>
+  <button type="button" class={cn("SelectTrigger", className)} use:melt={$trigger} {...$$restProps}>
     <div>
       <slot />
     </div>

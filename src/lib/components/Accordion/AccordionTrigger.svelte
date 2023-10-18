@@ -25,8 +25,8 @@
   <button
     type="button"
     class={cn("AccordionTrigger", className)}
-    {...$$restProps}
     use:melt={$trigger(item)}
+    {...$$restProps}
     on:click
   >
     <slot />

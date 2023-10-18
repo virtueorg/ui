@@ -29,8 +29,8 @@
   <div
     class={cn("SelectItem", className)}
     class:disabled
-    {...$$restProps}
     use:melt={$option({ value, disabled, label })}
+    {...$$restProps}
   >
     <slot />
   </div>

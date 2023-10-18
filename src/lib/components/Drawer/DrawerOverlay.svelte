@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$overlay} />
 {:else}
-  <div class={cn("DrawerOverlay", className)} {...$$restProps} use:melt={$overlay}>
+  <div class={cn("DrawerOverlay", className)} use:melt={$overlay} {...$$restProps}>
     <slot />
   </div>
 {/if}

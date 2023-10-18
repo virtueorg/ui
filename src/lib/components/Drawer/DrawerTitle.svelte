@@ -25,8 +25,8 @@
   <svelte:element
     this={level}
     class={cn("DrawerTitle", className)}
-    {...$$restProps}
     use:melt={$title}
+    {...$$restProps}
   >
     <slot />
   </svelte:element>

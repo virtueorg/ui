@@ -22,7 +22,7 @@
   {#if asChild}
     <slot builder={$portalled} />
   {:else}
-    <div class={cn("AlertDialogPortal", className)} {...$$restProps} use:melt={$portalled}>
+    <div class={cn("AlertDialogPortal", className)} use:melt={$portalled} {...$$restProps}>
       <slot />
     </div>
   {/if}

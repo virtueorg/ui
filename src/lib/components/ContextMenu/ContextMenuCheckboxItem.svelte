@@ -32,7 +32,7 @@
 {#if asChild}
   <slot builder={$checkboxItem} />
 {:else}
-  <div class={cn("ContextMenuCheckboxItem", className)} {...$$restProps} use:melt={$checkboxItem}>
+  <div class={cn("ContextMenuCheckboxItem", className)} use:melt={$checkboxItem} {...$$restProps}>
     <slot />
   </div>
 {/if}

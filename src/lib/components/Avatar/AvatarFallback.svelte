@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$fallback} />
 {:else}
-  <span class={cn("AvatarFallback", className)} {...$$restProps} use:melt={$fallback}>
+  <span class={cn("AvatarFallback", className)} use:melt={$fallback} {...$$restProps}>
     <slot />
   </span>
 {/if}

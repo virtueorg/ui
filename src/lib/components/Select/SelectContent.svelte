@@ -22,7 +22,7 @@
   {#if asChild}
     <slot builder={$menu} />
   {:else}
-    <div class={cn("SelectContent", className)} {...$$restProps} use:melt={$menu}>
+    <div class={cn("SelectContent", className)} use:melt={$menu} {...$$restProps}>
       <slot />
     </div>
   {/if}

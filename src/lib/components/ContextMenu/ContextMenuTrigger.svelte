@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <div class={cn("ContextMenuTrigger", className)} {...$$restProps} use:melt={$trigger}>
+  <div class={cn("ContextMenuTrigger", className)} use:melt={$trigger} {...$$restProps}>
     <slot />
   </div>
 {/if}

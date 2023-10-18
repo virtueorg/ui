@@ -23,8 +23,8 @@
   <button
     type="button"
     class={cn("AlertDialogCancel", className)}
-    {...$$restProps}
     use:melt={$close}
+    {...$$restProps}
     on:click
   >
     <slot />

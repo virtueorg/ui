@@ -20,7 +20,7 @@
 {#if asChild}
   <slot builder={$separator} />
 {:else}
-  <div class={cn("DropdownMenuSeparator", className)} {...$$restProps} use:melt={$separator}>
+  <div class={cn("DropdownMenuSeparator", className)} use:melt={$separator} {...$$restProps}>
     <slot />
   </div>
 {/if}

@@ -25,8 +25,8 @@
   <button
     type="button"
     class={cn("ContextMenuSubTrigger", className)}
-    {...$$restProps}
     use:melt={$subTrigger}
+    {...$$restProps}
     on:click
   >
     <slot />
