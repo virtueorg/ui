@@ -9,17 +9,17 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    flex-col
-    items-center
-    justify-center
-    gap-3
-    text-center
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("EmptyState", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .EmptyState {
+    @apply flex;
+    @apply flex-col;
+    @apply items-center;
+    @apply justify-center;
+    @apply gap-3;
+    @apply text-center;
+  }
+</style>

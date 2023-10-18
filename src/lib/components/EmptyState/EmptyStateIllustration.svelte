@@ -9,13 +9,13 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    w-40
-    h-40
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("EmptyStateIllustration", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .EmptyStateIllustration {
+    @apply w-40;
+    @apply h-40;
+  }
+</style>

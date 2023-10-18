@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<p
-  class={cn`
-    text-muted
-    ${className}
-  `}
-  {...$$restProps}
->
+<p class={cn("EmptyStateDescription", className)} {...$$restProps}>
   <slot />
 </p>
+
+<style lang="postcss">
+  .EmptyStateDescription {
+    @apply text-muted;
+  }
+</style>
