@@ -3,27 +3,25 @@
   import type { CreateAvatarProps } from "@melt-ui/svelte";
   import ctx from "./ctx";
 
-  type $$Props = CreateAvatarProps & {
+  type $$Props = Omit<CreateAvatarProps, "src"> & {
     asChild?: boolean;
   };
 
-  export { className as class };
-
   export let asChild: $$Props["asChild"] = false;
+  export { className as class };
 
   let className = "";
 
-  //TODO: IDK why this but this thinky pop up an error
-
-  const { elements } = ctx.create($$restProps);
-
-  const { root } = elements;
+  ctx.create({
+    ...$$restProps,
+    src: "",
+  });
 </script>
 
 {#if asChild}
-  <slot builder={$root} />
+  <slot />
 {:else}
-  <div class={cn("Avatar", className)} {...$root} {...$$restProps}>
+  <div class={cn("Avatar", className)} {...$$restProps}>
     <slot />
   </div>
 {/if}
