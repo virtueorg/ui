@@ -13,14 +13,13 @@
   let className = "";
 </script>
 
-<svelte:element
-  this={tag}
-  class={cn`
-    text-sm
-    text-muted
-    ${className}
-  `}
-  {...$$restProps}
->
+<svelte:element this={tag} class={cn("SectionTitle", className)} {...$$restProps}>
   <slot />
 </svelte:element>
+
+<style lang="postcss">
+  .SectionTitle {
+    @apply text-sm;
+    @apply text-muted;
+  }
+</style>

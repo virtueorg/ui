@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<section
-  class={cn`
-    flex
-    flex-col
-    gap-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<section class={cn("Section", className)} {...$$restProps}>
   <slot />
 </section>
+
+<style lang="postcss">
+  .Section {
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+  }
+</style>
