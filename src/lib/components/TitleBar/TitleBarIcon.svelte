@@ -9,19 +9,19 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    w-11
-    h-11
-    flex
-    items-center
-    justify-center
-    rounded-lg
-    bg-muted/5
-    shrink-0
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("TitleBarIcon", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .TitleBarIcon {
+    @apply w-11;
+    @apply h-11;
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply rounded-lg;
+    @apply bg-muted/5;
+    @apply shrink-0;
+  }
+</style>

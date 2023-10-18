@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    truncate
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("TitleBarHeading", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .TitleBarHeading {
+    @apply truncate;
+  }
+</style>

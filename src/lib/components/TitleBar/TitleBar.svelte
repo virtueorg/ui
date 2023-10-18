@@ -9,15 +9,15 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    flex
-    items-center
-    gap-2
-    truncate
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("TitleBar", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .TitleBar {
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply truncate;
+  }
+</style>

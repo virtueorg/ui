@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<p
-  class={cn`
-    text-sm
-    text-muted
-    truncate
-    ${className}
-  `}
-  {...$$restProps}
->
+<p class={cn("TitleBarDescription", className)} {...$$restProps}>
   <slot />
 </p>
+
+<style lang="postcss">
+  .TitleBarDescription {
+    @apply text-sm;
+    @apply text-muted;
+    @apply truncate;
+  }
+</style>
