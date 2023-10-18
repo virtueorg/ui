@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    w-full
-    text-right
-    ml-auto
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("DetailValue", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .DetailValue {
+    @apply w-full;
+    @apply text-right;
+    @apply ml-auto;
+  }
+</style>

@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    w-full
-    ${className}
-  `}
-  {...$$restProps}
->
+<div class={cn("DetailText", className)} {...$$restProps}>
   <slot />
 </div>
+
+<style lang="postcss">
+  .DetailText {
+    @apply w-full;
+  }
+</style>
