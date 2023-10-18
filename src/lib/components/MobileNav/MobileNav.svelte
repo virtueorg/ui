@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<nav
-  class={cn`
-    w-full
-    bg-panel
-    p-2
-    ${className}
-  `}
-  {...$$restProps}
->
+<nav class={cn("MobileNav", className)} {...$$restProps}>
   <slot />
 </nav>
+
+<style lang="postcss">
+  .MobileNav {
+    @apply w-full;
+    @apply bg-panel;
+    @apply p-2;
+  }
+</style>

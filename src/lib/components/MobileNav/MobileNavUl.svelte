@@ -9,15 +9,15 @@
   let className = "";
 </script>
 
-<ul
-  class={cn`
-    p-2
-    flex
-    items-center
-    justify-between
-    ${className}
-  `}
-  {...$$restProps}
->
+<ul class={cn("MobileNavUl", className)} {...$$restProps}>
   <slot />
 </ul>
+
+<style lang="postcss">
+  .MobileNavUl {
+    @apply p-2;
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+  }
+</style>

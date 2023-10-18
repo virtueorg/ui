@@ -16,38 +16,7 @@
   $: active = $page.url.pathname === href;
 </script>
 
-<a
-  {href}
-  class={cn`
-    transition-all
-    w-11
-    h-11
-    inline-flex
-    items-center
-    justify-center
-    rounded-lg
-    opacity-50
-
-    hover:bg-muted/5
-
-    active:scale-95
-    
-    ${
-      active &&
-      cn`
-      opacity-100
-      bg-primary/5
-      text-primary
-      
-      hover:bg-primary/10
-    `
-    }
-
-    ${className}
-  `}
-  {...$$restProps}
-  on:click
->
+<a {href} class={cn("MobileNavLink", { active }, className)} {...$$restProps} on:click>
   {#if loading}
     <Icon>
       <SpinnerIcon />
@@ -56,3 +25,27 @@
     <slot />
   {/if}
 </a>
+
+<style lang="postcss">
+  .MobileNavLink {
+    @apply transition-all;
+    @apply w-11;
+    @apply h-11;
+    @apply inline-flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply rounded-lg;
+    @apply opacity-50;
+
+    @apply hover:bg-muted/5;
+
+    @apply active:scale-95;
+  }
+
+  .active {
+    @apply opacity-100;
+    @apply bg-primary/5;
+    @apply text-primary;
+    @apply hover:bg-primary/10;
+  }
+</style>
