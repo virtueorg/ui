@@ -1,3 +1,5 @@
+<!-- TODO: Remove tailwind-variants from the dependencies (see Alert component to learn how) -->
+
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { Button } from "bits-ui";
