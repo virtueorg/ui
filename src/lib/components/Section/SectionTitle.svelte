@@ -1,9 +1,10 @@
 <script lang="ts">
+  import type { IHeadingTag } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
 
   type $$Props = HTMLAttributes<HTMLElement> & {
-    tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    tag?: IHeadingTag;
   };
 
   export { className as class };
