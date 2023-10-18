@@ -9,12 +9,12 @@
   let className = "";
 </script>
 
-<tfoot
-  class={cn`
-    bg-primary
-    ${className}
-  `}
-  {...$$restProps}
->
+<tfoot class={cn("TableFooter", className)} {...$$restProps}>
   <slot />
 </tfoot>
+
+<style lang="postcss">
+  .TableFooter {
+    @apply bg-primary;
+  }
+</style>

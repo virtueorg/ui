@@ -9,13 +9,13 @@
   let className = "";
 </script>
 
-<td
-  class={cn`
-    p-5
-    align-middle
-    ${className}
-  `}
-  {...$$restProps}
->
+<td class={cn("TableCell", className)} {...$$restProps}>
   <slot />
 </td>
+
+<style lang="postcss">
+  .TableCell {
+    @apply p-5;
+    @apply align-middle;
+  }
+</style>

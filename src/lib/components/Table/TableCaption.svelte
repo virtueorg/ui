@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<caption
-  class={cn`
-    mt-4
-    text-sm
-    text-muted
-    ${className}
-  `}
-  {...$$restProps}
->
+<caption class={cn("TableCaption", className)} {...$$restProps}>
   <slot />
 </caption>
+
+<style lang="postcss">
+  .TableCaption {
+    @apply mt-4;
+    @apply text-sm;
+    @apply text-muted;
+  }
+</style>

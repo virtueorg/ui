@@ -9,14 +9,16 @@
   let className = "";
 </script>
 
-<tr
-  class={cn`
-    transition-all
-    even:bg-muted/5
-    hover:bg-muted/10
-    ${className}
-  `}
-  {...$$restProps}
->
+<tr class={cn("TableRow", className)} {...$$restProps}>
   <slot />
 </tr>
+
+<style lang="postcss">
+  .TableRow {
+    @apply transition-all;
+
+    @apply even:bg-muted/5;
+
+    @apply hover:bg-muted/10;
+  }
+</style>

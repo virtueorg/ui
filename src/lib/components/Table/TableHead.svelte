@@ -9,14 +9,14 @@
   let className = "";
 </script>
 
-<th
-  class={cn`
-    p-5
-    text-left
-    align-middle
-    ${className}
-  `}
-  {...$$restProps}
->
+<th class={cn("TableHead", className)} {...$$restProps}>
   <slot />
 </th>
+
+<style lang="postcss">
+  .TableHead {
+    @apply p-5;
+    @apply text-left;
+    @apply align-middle;
+  }
+</style>

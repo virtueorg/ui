@@ -9,13 +9,16 @@
   let className = "";
 </script>
 
-<thead
-  class={cn`
-    bg-muted/5
-    [&>tr]:hover:bg-transparent
-    ${className}
-  `}
-  {...$$restProps}
->
+<thead class={cn("TableHeader", className)} {...$$restProps}>
   <slot />
 </thead>
+
+<style lang="postcss">
+  .TableHeader {
+    @apply bg-muted/5;
+  }
+
+  .TableHeader:hover > :global(tr) {
+    @apply bg-transparent;
+  }
+</style>

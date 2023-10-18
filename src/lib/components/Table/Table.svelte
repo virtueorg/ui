@@ -9,24 +9,24 @@
   let className = "";
 </script>
 
-<div
-  class={cn`
-    w-full
-    overflow-auto
-  `}
->
-  <table
-    class={cn`
-      w-full
-      min-w-[65rem]
-      caption-bottom
-      rounded-lg
-      overflow-hidden
-      table-fixed
-      ${className}
-    `}
-    {...$$restProps}
-  >
+<div class={cn("TableContainer")}>
+  <table class={cn("Table", className)} {...$$restProps}>
     <slot />
   </table>
 </div>
+
+<style lang="postcss">
+  .TableContainer {
+    @apply w-full;
+    @apply overflow-auto;
+  }
+
+  .Table {
+    @apply w-full;
+    @apply min-w-[65rem];
+    @apply caption-bottom;
+    @apply rounded-lg;
+    @apply overflow-hidden;
+    @apply table-fixed;
+  }
+</style>
