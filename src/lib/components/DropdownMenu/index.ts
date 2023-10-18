@@ -1,35 +1,35 @@
-import ContextMenu from "./ContextMenu.svelte";
-import ContextMenuArrow from "./ContextMenuArrow.svelte";
-import ContextMenuCheckboxIndicator from "./ContextMenuCheckboxIndicator.svelte";
-import ContextMenuCheckboxItem from "./ContextMenuCheckboxItem.svelte";
-import ContextMenuContent from "./ContextMenuContent.svelte";
-import ContextMenuGroup from "./ContextMenuGroup.svelte";
-import ContextMenuItem from "./ContextMenuItem.svelte";
-import ContextMenuLabel from "./ContextMenuLabel.svelte";
-import ContextMenuRadioGroup from "./ContextMenuRadioGroup.svelte";
-import ContextMenuRadioIndicator from "./ContextMenuRadioIndicator.svelte";
-import ContextMenuRadioItem from "./ContextMenuRadioItem.svelte";
-import ContextMenuSeparator from "./ContextMenuSeparator.svelte";
-import ContextMenuSub from "./ContextMenuSub.svelte";
-import ContextMenuSubContent from "./ContextMenuSubContent.svelte";
-import ContextMenuSubTrigger from "./ContextMenuSubTrigger.svelte";
-import ContextMenuTrigger from "./ContextMenuTrigger.svelte";
+import DropdownMenu from "./DropdownMenu.svelte";
+import DropdownMenuArrow from "./DropdownMenuArrow.svelte";
+import DropdownMenuCheckboxIndicator from "./DropdownMenuCheckboxIndicator.svelte";
+import DropdownMenuCheckboxItem from "./DropdownMenuCheckboxItem.svelte";
+import DropdownMenuContent from "./DropdownMenuContent.svelte";
+import DropdownMenuGroup from "./DropdownMenuGroup.svelte";
+import DropdownMenuItem from "./DropdownMenuItem.svelte";
+import DropdownMenuLabel from "./DropdownMenuLabel.svelte";
+import DropdownMenuRadioGroup from "./DropdownMenuRadioGroup.svelte";
+import DropdownMenuRadioIndicator from "./DropdownMenuRadioIndicator.svelte";
+import DropdownMenuRadioItem from "./DropdownMenuRadioItem.svelte";
+import DropdownMenuSeparator from "./DropdownMenuSeparator.svelte";
+import DropdownMenuSub from "./DropdownMenuSub.svelte";
+import DropdownMenuSubContent from "./DropdownMenuSubContent.svelte";
+import DropdownMenuSubTrigger from "./DropdownMenuSubTrigger.svelte";
+import DropdownMenuTrigger from "./DropdownMenuTrigger.svelte";
 
 export {
-  ContextMenu,
-  ContextMenuArrow,
-  ContextMenuCheckboxIndicator,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioIndicator,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
+  DropdownMenu,
+  DropdownMenuArrow,
+  DropdownMenuCheckboxIndicator,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioIndicator,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 };
