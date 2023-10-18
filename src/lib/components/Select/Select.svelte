@@ -1,12 +1,10 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
   import type { CreateSelectProps } from "@melt-ui/svelte";
-  import type { ListboxOption } from "@melt-ui/svelte/dist/builders/listbox/types";
-  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateSelectProps, "selected" | "multiple"> & {
-    selected?: ListboxOption<unknown>;
+    selected?: CreateSelectProps["defaultSelected"];
     multiple?: boolean;
   };
 
@@ -16,7 +14,7 @@
 
   let className = "";
 
-  const handleChange: ChangeFn<ListboxOption<unknown> | undefined> = ({ next }) => {
+  const handleChange: CreateSelectProps["onSelectedChange"] = ({ next }) => {
     selected = next;
 
     return next;
