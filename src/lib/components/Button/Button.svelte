@@ -2,17 +2,32 @@
 
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Button } from "bits-ui";
+  import type { HTMLButtonAttributes } from "svelte/elements";
   import { tv, type VariantProps } from "tailwind-variants";
 
-  type $$Props = Button.Props & {
-    variant?: VariantProps<typeof buttonVariants>["variant"];
+  type $$Props = HTMLButtonAttributes & {
+    variant?: VariantProps<typeof style>["variant"];
   };
 
   export { className as class };
   export let variant: $$Props["variant"] = "default";
 
-  const buttonVariants = tv({
+  const style = tv({
+    base: cn`
+      transition-all
+      p-5
+      rounded-lg
+      flex
+      items-center
+      justify-center
+      gap-2
+
+      active:scale-95
+
+      disabled:bg-muted/5
+      disabled:text-muted
+      disabled:active:scale-100
+    `,
     variants: {
       variant: {
         default: cn`
@@ -46,26 +61,6 @@
   let className = "";
 </script>
 
-<Button.Root
-  class={cn`
-    transition-all
-    p-5
-    rounded-lg
-    flex
-    items-center
-    justify-center
-    gap-2
-
-    active:scale-95
-
-    disabled:bg-muted/5
-    disabled:text-muted
-    disabled:active:scale-100
-    ${buttonVariants({ variant })}
-    ${className}
-  `}
-  {...$$restProps}
-  on:click
->
+<button class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
   <slot />
-</Button.Root>
+</button>
