@@ -3,22 +3,25 @@
   import type { HTMLAttributes } from "svelte/elements";
   import { tv } from "tailwind-variants";
 
-  type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
   let className = "";
 
   const style = tv({
     base: cn`
-      p-5
-      flex
-      gap-2
-      items-center
-      justify-end
+      text-left
     `,
   });
 </script>
 
-<div class={cn(style.base, className)} {...$$restProps}>
+{#if asChild}
   <slot />
-</div>
+{:else}
+  <button type="button" class={cn(style.base, className)} {...$$restProps} on:click>
+    <slot />
+  </button>
+{/if}

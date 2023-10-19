@@ -1,28 +1,37 @@
 <script lang="ts">
-  import { TRANSITION_BASE } from "$lib/utils/const";
   import { cn } from "$lib/utils/misc";
-  import { Dialog } from "bits-ui";
-  import { fade } from "svelte/transition";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
+  import ctx from "./ctx";
 
-  type $$Props = Dialog.OverlayProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      absolute
+      inset-0
+      bg-background/80
+      -z-10
+      pointer-events-auto
+    `,
+  });
+
+  const { elements } = ctx.get();
+  const { overlay } = elements;
 </script>
 
-<Dialog.Overlay
-  class={cn`
-    absolute
-    inset-0
-    bg-background/80
-    -z-10
-    pointer-events-auto
-    ${className}
-  `}
-  transition={fade}
-  transitionConfig={TRANSITION_BASE}
-  {...$$restProps}
->
-  <slot />
-</Dialog.Overlay>
+{#if asChild}
+  <slot builder={$overlay} />
+{:else}
+  <div class={cn(style.base, className)} use:melt={$overlay} {...$$restProps}>
+    <slot />
+  </div>
+{/if}
