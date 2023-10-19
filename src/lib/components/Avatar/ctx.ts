@@ -22,6 +22,8 @@ const getImage = (src?: string | null) => {
 
   if (src) {
     avatar.options.src.set(src);
+  } else {
+    avatar.options.src.set("");
   }
 
   return avatar;
