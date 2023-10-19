@@ -35,6 +35,7 @@ import LoginIcon from "./LoginIcon.svelte";
 import LogoutIcon from "./LogoutIcon.svelte";
 import MenuIcon from "./MenuIcon.svelte";
 import MilkIcon from "./MilkIcon.svelte";
+import MinusIcon from "./MinusIcon.svelte";
 import MoneyIcon from "./MoneyIcon.svelte";
 import PaperclipIcon from "./PaperclipIcon.svelte";
 import PenIcon from "./PenIcon.svelte";
@@ -92,6 +93,7 @@ export {
   LogoutIcon,
   MenuIcon,
   MilkIcon,
+  MinusIcon,
   MoneyIcon,
   PaperclipIcon,
   PenIcon,
