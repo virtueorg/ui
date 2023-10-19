@@ -1,14 +1,24 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Checkbox } from "bits-ui";
+  import type { HTMLInputAttributes } from "svelte/elements";
+  import ctx from "./ctx";
 
-  type $$Props = Checkbox.InputProps;
+  type $$Props = HTMLInputAttributes & {
+    asChild?: boolean;
+  };
 
   export { className as class };
 
   let className = "";
+  export let asChild: $$Props["asChild"] = false;
+
+  const { helpers, options } = ctx.get();
+  const { isChecked } = helpers;
+  const { disabled } = options;
 </script>
 
-<Checkbox.Input class={cn(className)} {...$$restProps}>
-  <slot />
-</Checkbox.Input>
+{#if asChild}
+  <slot isChecked={$isChecked} disabled={$disabled} />
+{:else}
+  <input hidden class={cn(className)} value={$isChecked} disabled={$disabled} {...$$restProps} />
+{/if}
