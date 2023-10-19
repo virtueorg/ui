@@ -24,8 +24,6 @@
 
   const { helpers } = ctx.get();
   const { isChecked, isIndeterminate } = helpers;
-
-  $: console.log($isIndeterminate);
 </script>
 
 {#if asChild}
