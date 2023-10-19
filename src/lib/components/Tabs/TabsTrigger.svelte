@@ -46,7 +46,6 @@
     @apply border-b-2;
     @apply border-muted/20;
     @apply opacity-50;
-    @apply text-left;
 
     @apply data-[state=active]:border-primary;
     @apply data-[state=active]:text-primary;
