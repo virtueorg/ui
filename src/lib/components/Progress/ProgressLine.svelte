@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
     value?: number;
@@ -10,16 +11,15 @@
   export let value: $$Props["value"] = 0;
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      transition-all
+      h-full
+      bg-primary
+      rounded-lg
+    `,
+  });
 </script>
 
-<div
-  class={cn`
-    transition-all
-    h-full
-    bg-primary
-    rounded-lg
-    ${className}
-  `}
-  style="width: {value}%"
-  {...$$restProps}
-/>
+<div class={cn(style.base, className)} style="width: {value}%" {...$$restProps} />
