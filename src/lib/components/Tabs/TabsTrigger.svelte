@@ -37,6 +37,7 @@
 <style lang="postcss">
   .TabsTrigger {
     @apply transition-all;
+    @apply text-left;
     @apply flex;
     @apply items-center;
     @apply gap-2;

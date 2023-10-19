@@ -40,6 +40,7 @@
 <style lang="postcss">
   .DropdownMenuSubTrigger {
     @apply transition-all;
+    @apply text-left;
     @apply w-full;
     @apply flex;
     @apply items-center;

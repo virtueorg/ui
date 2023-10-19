@@ -40,6 +40,7 @@
 <style lang="postcss">
   .ContextMenuSubTrigger {
     @apply transition-all;
+    @apply text-left;
     @apply w-full;
     @apply flex;
     @apply items-center;
