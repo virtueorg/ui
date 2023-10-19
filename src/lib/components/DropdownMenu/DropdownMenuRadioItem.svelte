@@ -23,18 +23,22 @@
 {#if asChild}
   <slot builder={$radioItem({ value, disabled })} />
 {:else}
-  <div
+  <button
+    type="button"
     class={cn("DropdownMenuRadioItem", className)}
     use:melt={$radioItem({ value, disabled })}
     {...$$restProps}
+    on:click
   >
     <slot />
-  </div>
+  </button>
 {/if}
 
 <style lang="postcss">
   .DropdownMenuRadioItem {
     @apply transition-all;
+    @apply w-full;
+    @apply text-left;
     @apply flex;
     @apply items-center;
     @apply gap-2;
