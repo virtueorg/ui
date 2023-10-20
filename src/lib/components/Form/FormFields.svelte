@@ -14,7 +14,6 @@
       flex
       flex-col
       gap-2
-    
     `,
   });
 </script>
