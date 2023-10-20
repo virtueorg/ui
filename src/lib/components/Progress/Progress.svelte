@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import type { CreateProgressProps } from "@melt-ui/svelte";
+  import { melt, type CreateProgressProps } from "@melt-ui/svelte";
   import { tv } from "tailwind-variants";
   import ProgressLine from "./ProgressLine.svelte";
   import ctx from "./ctx";
@@ -35,7 +35,7 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <div class={cn(style.base, className)} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
     <ProgressLine value={percentage} />
   </div>
 {/if}
