@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import type { CreateAccordionProps } from "@melt-ui/svelte";
+  import { melt, type CreateAccordionProps } from "@melt-ui/svelte";
   import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
@@ -28,7 +28,7 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <div class={cn(style.base, className)} {...$root} {...$$restProps}>
+  <div use:melt={$root} class={cn(style.base, className)} {...$root} {...$$restProps}>
     <slot />
   </div>
 {/if}
