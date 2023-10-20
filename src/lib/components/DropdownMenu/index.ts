@@ -16,10 +16,6 @@ import DropdownMenuSubTrigger from "./DropdownMenuSubTrigger.svelte";
 import DropdownMenuTrigger from "./DropdownMenuTrigger.svelte";
 
 export {
-  DropdownMenuArrow as Arrow,
-  DropdownMenuCheckboxIndicator as CheckboxIndicator,
-  DropdownMenuCheckboxItem as CheckboxItem,
-  DropdownMenuContent as Content,
   DropdownMenu,
   DropdownMenuArrow,
   DropdownMenuCheckboxIndicator,
@@ -36,16 +32,4 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-  DropdownMenuGroup as Group,
-  DropdownMenuItem as Item,
-  DropdownMenuLabel as Label,
-  DropdownMenuRadioGroup as RadioGroup,
-  DropdownMenuRadioIndicator as RadioIndicator,
-  DropdownMenuRadioItem as RadioItem,
-  DropdownMenu as Root,
-  DropdownMenuSeparator as Separator,
-  DropdownMenuSub as Sub,
-  DropdownMenuSubContent as SubContent,
-  DropdownMenuSubTrigger as SubTrigger,
-  DropdownMenuTrigger as Trigger,
 };

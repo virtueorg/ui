@@ -12,10 +12,6 @@ import DialogTitle from "./DialogTitle.svelte";
 import DialogTrigger from "./DialogTrigger.svelte";
 
 export {
-  DialogAction as Action,
-  DialogClose as Close,
-  DialogContent as Content,
-  DialogDescription as Description,
   Dialog,
   DialogAction,
   DialogClose,
@@ -28,12 +24,4 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
-  DialogFooter as Footer,
-  DialogHeader as Header,
-  DialogInner as Inner,
-  DialogOverlay as Overlay,
-  DialogPortal as Portal,
-  Dialog as Root,
-  DialogTitle as Title,
-  DialogTrigger as Trigger,
 };

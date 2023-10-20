@@ -11,10 +11,6 @@ import DrawerTitle from "./DrawerTitle.svelte";
 import DrawerTrigger from "./DrawerTrigger.svelte";
 
 export {
-  DrawerActions as Actions,
-  DrawerClose as Close,
-  DrawerContent as Content,
-  DrawerDescription as Description,
   Drawer,
   DrawerActions,
   DrawerClose,
@@ -26,11 +22,4 @@ export {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-  DrawerHeader as Header,
-  DrawerInner as Inner,
-  DrawerOverlay as Overlay,
-  DrawerPortal as Portal,
-  Drawer as Root,
-  DrawerTitle as Title,
-  DrawerTrigger as Trigger,
 };

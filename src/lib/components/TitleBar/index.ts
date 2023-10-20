@@ -6,12 +6,6 @@ import TitleBarImage from "./TitleBarImage.svelte";
 import TitleBarTitle from "./TitleBarTitle.svelte";
 
 export {
-  TitleBarDescription as Description,
-  TitleBarHeading as Heading,
-  TitleBarIcon as Icon,
-  TitleBarImage as Image,
-  TitleBar as Root,
-  TitleBarTitle as Title,
   TitleBar,
   TitleBarDescription,
   TitleBarHeading,
