@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLButtonElement> & {
@@ -11,12 +12,22 @@
   export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
-  const item = ctx.getItem();
+  let className = "";
 
+  const style = tv({
+    base: cn`
+      w-full
+      text-left
+      p-5
+      flex
+      items-center
+      justify-between
+    `,
+  });
+
+  const item = ctx.getItem();
   const { elements } = ctx.get();
   const { trigger } = elements;
-
-  let className = "";
 </script>
 
 {#if asChild}
@@ -24,7 +35,7 @@
 {:else}
   <button
     type="button"
-    class={cn("AccordionTrigger", className)}
+    class={cn(style.base, className)}
     use:melt={$trigger(item)}
     {...$$restProps}
     on:click
@@ -32,14 +43,3 @@
     <slot />
   </button>
 {/if}
-
-<style lang="postcss">
-  .AccordionTrigger {
-    @apply w-full;
-    @apply text-left;
-    @apply p-5;
-    @apply flex;
-    @apply items-center;
-    @apply justify-between;
-  }
-</style>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = {
@@ -12,22 +13,22 @@
   export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
+  let className = "";
+
+  const style = tv({
+    base: cn`
+      font-bold
+    `,
+  });
+
   const { elements } = ctx.get();
   const { heading } = elements;
-
-  let className = "";
 </script>
 
 {#if asChild}
   <slot builder={$heading(level || 3)} />
 {:else}
-  <div class={cn("AccordionHeader", className)} use:melt={$heading(level || 3)} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$heading(level || 3)} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .AccordionHeader {
-    @apply font-bold;
-  }
-</style>

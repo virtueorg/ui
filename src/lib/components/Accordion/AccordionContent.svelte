@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -15,6 +16,12 @@
 
   const item = ctx.getItem();
 
+  const style = tv({
+    base: cn`
+      p-5
+    `,
+  });
+
   const { elements, helpers } = ctx.get();
   const { content } = elements;
   const { isSelected } = helpers;
@@ -24,14 +31,8 @@
   {#if asChild}
     <slot builder={$content} />
   {:else}
-    <div class={cn("AccordionContent", className)} use:melt={$content(item)} {...$$restProps}>
+    <div class={cn(style.base, className)} use:melt={$content(item)} {...$$restProps}>
       <slot />
     </div>
   {/if}
 {/if}
-
-<style lang="postcss">
-  .AccordionContent {
-    @apply p-5;
-  }
-</style>
