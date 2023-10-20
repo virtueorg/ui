@@ -11,7 +11,7 @@
 
   const style = tv({
     base: cn`
-      p-5
+      p-4
     `,
   });
 </script>

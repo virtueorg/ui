@@ -14,7 +14,7 @@
   const style = tv({
     base: cn`
       transition-all
-      p-5
+      p-4
       rounded-lg
       flex
       items-center
