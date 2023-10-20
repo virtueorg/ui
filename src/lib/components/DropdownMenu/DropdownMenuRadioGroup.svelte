@@ -1,7 +1,6 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateDropdownMenuRadioGroupProps } from "@melt-ui/svelte";
-  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateDropdownMenuRadioGroupProps, "value"> & {
@@ -15,7 +14,7 @@
 
   let className = "";
 
-  const handleChange: ChangeFn<string | null> = ({ next }) => {
+  const handleChange: CreateDropdownMenuRadioGroupProps["onValueChange"] = ({ next }) => {
     value = String(next);
     return value;
   };

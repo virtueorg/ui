@@ -2,6 +2,7 @@
   import type { IHeadingTag } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLHeadingElement> & {
     tag?: IHeadingTag;
@@ -11,14 +12,14 @@
   export let tag: $$Props["tag"] = "h5";
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      font-bold
+    `,
+  });
 </script>
 
-<svelte:element this={tag} class={cn("CardTitle", className)} {...$$restProps}>
+<svelte:element this={tag} class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </svelte:element>
-
-<style lang="postcss">
-  .CardTitle {
-    @apply font-bold;
-  }
-</style>

@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,6 +14,12 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      text-left
+    `,
+  });
+
   const { elements } = ctx.get();
   const { trigger } = elements;
 </script>
@@ -20,13 +27,7 @@
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <div class={cn("ContextMenuTrigger", className)} use:melt={$trigger} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$trigger} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .ContextMenuTrigger {
-    @apply text-left;
-  }
-</style>

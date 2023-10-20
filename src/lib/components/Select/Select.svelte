@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
   import type { CreateSelectProps } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateSelectProps, "selected" | "multiple"> & {
@@ -13,6 +14,14 @@
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      flex
+      flex-col
+      gap-2
+    `,
+  });
 
   const handleChange: CreateSelectProps["onSelectedChange"] = ({ next }) => {
     selected = next;
@@ -27,14 +36,6 @@
   });
 </script>
 
-<div class={cn("Select", className)} {...$$restProps}>
+<div class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </div>
-
-<style lang="postcss">
-  .Select {
-    @apply flex;
-    @apply flex-col;
-    @apply gap-2;
-  }
-</style>

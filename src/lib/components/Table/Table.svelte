@@ -1,32 +1,28 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLTableAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLTableAttributes;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      w-full
+      min-w-[65rem]
+      caption-bottom
+      rounded-lg
+      overflow-hidden
+      table-fixed
+    `,
+  });
 </script>
 
-<div class={cn("TableContainer")}>
-  <table class={cn("Table", className)} {...$$restProps}>
+<div class="w-full overflow-auto">
+  <table class={cn(style.base, className)} {...$$restProps}>
     <slot />
   </table>
 </div>
-
-<style lang="postcss">
-  .TableContainer {
-    @apply w-full;
-    @apply overflow-auto;
-  }
-
-  .Table {
-    @apply w-full;
-    @apply min-w-[65rem];
-    @apply caption-bottom;
-    @apply rounded-lg;
-    @apply overflow-hidden;
-    @apply table-fixed;
-  }
-</style>

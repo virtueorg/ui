@@ -1,22 +1,23 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLElement>;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      bg-panel
+      flex
+      flex-col
+    `,
+  });
 </script>
 
-<nav class={cn("Nav", className)} {...$$restProps}>
+<nav class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </nav>
-
-<style lang="postcss">
-  .Nav {
-    @apply bg-panel;
-    @apply flex;
-    @apply flex-col;
-  }
-</style>

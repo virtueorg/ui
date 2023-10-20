@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateDropdownMenuRadioGroupProps } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateDropdownMenuRadioGroupProps, "value"> & {
@@ -16,6 +17,24 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      transition-all
+      w-full
+      text-left
+      flex
+      items-center
+      gap-2
+      rounded-lg
+      p-2
+      cursor-pointer
+    
+      active:scale-95
+    
+      hover:bg-muted/5
+    `,
+  });
+
   const { elements } = ctx.createRadioItem(value);
   const { radioItem } = elements;
 </script>
@@ -25,7 +44,7 @@
 {:else}
   <button
     type="button"
-    class={cn("DropdownMenuRadioItem", className)}
+    class={cn(style.base, className)}
     use:melt={$radioItem({ value, disabled })}
     {...$$restProps}
     on:click
@@ -33,21 +52,3 @@
     <slot />
   </button>
 {/if}
-
-<style lang="postcss">
-  .DropdownMenuRadioItem {
-    @apply transition-all;
-    @apply w-full;
-    @apply text-left;
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-    @apply rounded-lg;
-    @apply p-2;
-    @apply cursor-pointer;
-
-    @apply active:scale-95;
-
-    @apply hover:bg-muted/5;
-  }
-</style>

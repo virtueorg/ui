@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLHeadingElement> & {
@@ -15,6 +16,12 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      font-bold
+    `,
+  });
+
   const { elements } = ctx.get();
   const { title } = elements;
 </script>
@@ -22,18 +29,7 @@
 {#if asChild}
   <slot builder={$title} />
 {:else}
-  <svelte:element
-    this={level}
-    class={cn("DrawerTitle", className)}
-    use:melt={$title}
-    {...$$restProps}
-  >
+  <svelte:element this={level} class={cn(style.base, className)} use:melt={$title} {...$$restProps}>
     <slot />
   </svelte:element>
 {/if}
-
-<style lang="postcss">
-  .DrawerTitle {
-    @apply font-bold;
-  }
-</style>

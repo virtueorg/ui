@@ -3,6 +3,7 @@
   import { SpinnerIcon } from "$lib/icons";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAnchorAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import { Icon } from "../Icon";
 
   type $$Props = HTMLAnchorAttributes;
@@ -12,11 +13,37 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      transition-all
+      w-11
+      h-11
+      flex
+      items-center
+      justify-center
+      rounded-lg
+      opacity-50
+      
+      hover:bg-muted/5
+    `,
+    variants: {
+      active: {
+        true: cn`
+          bg-primary/5
+          text-primary
+          opacity-100
+          
+          hover:bg-primary/10
+        `,
+      },
+    },
+  });
+
   $: loading = $navigating?.to?.url.pathname === href;
   $: active = $page.url.pathname === href;
 </script>
 
-<a {href} class={cn("NavLink", { active }, className)} {...$$restProps} on:click>
+<a {href} class={cn(style.base, style({ active }), className)} {...$$restProps} on:click>
   {#if loading}
     <Icon>
       <SpinnerIcon />
@@ -25,26 +52,3 @@
     <slot />
   {/if}
 </a>
-
-<style lang="postcss">
-  .NavLink {
-    @apply transition-all;
-    @apply w-11;
-    @apply h-11;
-    @apply flex;
-    @apply items-center;
-    @apply justify-center;
-    @apply rounded-lg;
-    @apply opacity-50;
-
-    @apply hover:bg-muted/5;
-  }
-
-  .active {
-    @apply bg-primary/5;
-    @apply text-primary;
-    @apply opacity-100;
-
-    @apply hover:bg-primary/10;
-  }
-</style>

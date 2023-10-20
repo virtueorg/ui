@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLInputAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLInputAttributes & {
     hasIcon?: boolean;
@@ -13,27 +14,31 @@
   export let hasLabel: $$Props["hasLabel"] = false;
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      w-full
+      p-3
+      bg-transparent
+      rounded-lg
+    `,
+    variants: {
+      hasIcon: {
+        true: cn`
+          pr-11
+        `,
+      },
+      hasLabel: {
+        true: cn`
+          pt-8
+        `,
+      },
+    },
+  });
 </script>
 
 <input
-  class={cn("TextFieldInput", { hasIcon }, { hasLabel }, className)}
+  class={cn(style.base, style({ hasIcon, hasLabel }), className)}
   {...$$restProps}
   bind:value
 />
-
-<style lang="postcss">
-  .TextFieldInput {
-    @apply w-full;
-    @apply p-3;
-    @apply bg-transparent;
-    @apply rounded-lg;
-  }
-
-  .hasIcon {
-    @apply pr-11;
-  }
-
-  .hasLabel {
-    @apply pt-8;
-  }
-</style>

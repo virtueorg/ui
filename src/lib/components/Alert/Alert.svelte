@@ -1,10 +1,11 @@
 <script lang="ts">
+  import type { IVariant } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
-  import { tv, type VariantProps } from "tailwind-variants";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    variant?: VariantProps<typeof style>["variant"];
+    variant?: IVariant;
   };
 
   export { className as class };

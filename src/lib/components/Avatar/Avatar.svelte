@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { CreateAvatarProps } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateAvatarProps, "src"> & {
@@ -12,6 +13,19 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      w-11
+      h-11
+      flex
+      items-center
+      justify-center
+      bg-muted/5
+      rounded-lg
+      overflow-hidden
+    `,
+  });
+
   ctx.create({
     ...$$restProps,
     src: "",
@@ -21,20 +35,7 @@
 {#if asChild}
   <slot />
 {:else}
-  <div class={cn("Avatar", className)} {...$$restProps}>
+  <div class={cn(style.base, className)} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .Avatar {
-    @apply w-11;
-    @apply h-11;
-    @apply flex;
-    @apply items-center;
-    @apply justify-center;
-    @apply bg-muted/5;
-    @apply rounded-lg;
-    @apply overflow-hidden;
-  }
-</style>

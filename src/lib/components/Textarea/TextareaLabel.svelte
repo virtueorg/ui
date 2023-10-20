@@ -1,25 +1,26 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLLabelAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLLabelAttributes;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      absolute
+      top-0
+      left-0
+      p-3
+      text-sm
+      text-muted
+    `,
+  });
 </script>
 
-<label class={cn("TextareaLabel", className)} {...$$restProps}>
+<label class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </label>
-
-<style lang="postcss">
-  .TextareaLabel {
-    @apply absolute;
-    @apply top-0;
-    @apply left-0;
-    @apply p-3;
-    @apply text-sm;
-    @apply text-muted;
-  }
-</style>

@@ -1,22 +1,23 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLThAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLThAttributes;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      p-5
+      text-left
+      align-middle
+    `,
+  });
 </script>
 
-<th class={cn("TableHead", className)} {...$$restProps}>
+<th class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </th>
-
-<style lang="postcss">
-  .TableHead {
-    @apply p-5;
-    @apply text-left;
-    @apply align-middle;
-  }
-</style>

@@ -1,20 +1,21 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLDivElement>;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      p-5
+    `,
+  });
 </script>
 
-<div class={cn("CardHeader", className)} {...$$restProps}>
+<div class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </div>
-
-<style lang="postcss">
-  .CardHeader {
-    @apply p-5;
-  }
-</style>

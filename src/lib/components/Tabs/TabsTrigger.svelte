@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<HTMLButtonAttributes, "disabled"> & {
@@ -17,6 +18,25 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      transition-all
+      text-left
+      flex
+      items-center
+      gap-2
+      py-3
+      px-5
+      border-b-2
+      border-muted/20
+      opacity-50
+
+      data-[state=active]:border-primary
+      data-[state=active]:text-primary
+      data-[state=active]:opacity-100
+    `,
+  });
+
   const { elements } = ctx.get();
   const { trigger } = elements;
 </script>
@@ -26,29 +46,10 @@
 {:else}
   <button
     type="button"
-    class={cn("TabsTrigger", className)}
+    class={cn(style.base, className)}
     use:melt={$trigger({ value, disabled })}
     {...$$restProps}
   >
     <slot />
   </button>
 {/if}
-
-<style lang="postcss">
-  .TabsTrigger {
-    @apply transition-all;
-    @apply text-left;
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-    @apply py-3;
-    @apply px-5;
-    @apply border-b-2;
-    @apply border-muted/20;
-    @apply opacity-50;
-
-    @apply data-[state=active]:border-primary;
-    @apply data-[state=active]:text-primary;
-    @apply data-[state=active]:opacity-100;
-  }
-</style>

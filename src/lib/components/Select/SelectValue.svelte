@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
@@ -14,6 +15,12 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      font-bold
+    `,
+  });
+
   const { states } = ctx.get();
   const { selectedLabel } = states;
 </script>
@@ -21,13 +28,7 @@
 {#if asChild}
   <slot label={$selectedLabel || placeholder} />
 {:else}
-  <span class={cn("SelectValue", className)} {...$$restProps}>
+  <span class={cn(style.base, className)} {...$$restProps}>
     {$selectedLabel || placeholder}
   </span>
 {/if}
-
-<style lang="postcss">
-  .SelectValue {
-    @apply font-bold;
-  }
-</style>

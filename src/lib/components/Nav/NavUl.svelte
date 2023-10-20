@@ -1,23 +1,24 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLUListElement>;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      p-5
+      flex
+      flex-col
+      gap-2
+    `,
+  });
 </script>
 
-<ul class={cn("NavUl", className)} {...$$restProps}>
+<ul class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </ul>
-
-<style lang="postcss">
-  .NavUl {
-    @apply p-5;
-    @apply flex;
-    @apply flex-col;
-    @apply gap-2;
-  }
-</style>

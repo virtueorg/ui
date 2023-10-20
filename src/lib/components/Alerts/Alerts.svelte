@@ -2,6 +2,7 @@
   import { alerts } from "$lib/stores/alerts";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import AlertItem from "./AlertItem.svelte";
 
   type $$Props = HTMLAttributes<HTMLDivElement>;
@@ -9,28 +10,28 @@
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      fixed
+      top-0
+      right-0
+      w-full
+      p-5
+      flex
+      flex-col
+      gap-2
+      z-50
+
+      md:max-w-lg
+    `,
+  });
 </script>
 
 {#if $alerts.length}
-  <div class={cn("Alerts", className)} {...$$restProps}>
+  <div class={cn(style.base, className)} {...$$restProps}>
     {#each $alerts as alert (alert.id)}
       <AlertItem {alert} />
     {/each}
   </div>
 {/if}
-
-<style lang="postcss">
-  .Alerts {
-    @apply fixed;
-    @apply top-0;
-    @apply right-0;
-    @apply w-full;
-    @apply p-5;
-    @apply flex;
-    @apply flex-col;
-    @apply gap-2;
-    @apply z-50;
-
-    @apply md:max-w-lg;
-  }
-</style>

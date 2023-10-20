@@ -1,12 +1,11 @@
-<!-- TODO: Remove tailwind-variants from the dependencies (see Alert component to learn how) -->
-
 <script lang="ts">
+  import type { IVariant } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import { tv, type VariantProps } from "tailwind-variants";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLButtonAttributes & {
-    variant?: VariantProps<typeof style>["variant"];
+    variant?: IVariant;
   };
 
   export { className as class };

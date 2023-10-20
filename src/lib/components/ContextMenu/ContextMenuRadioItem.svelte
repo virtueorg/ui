@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
@@ -16,6 +17,22 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      transition-all
+      flex
+      items-center
+      gap-2
+      rounded-lg
+      p-2
+      cursor-pointer
+
+      active:scale-95
+
+      hover:bg-muted/5
+    `,
+  });
+
   const { elements } = ctx.createRadioItem(value);
   const { radioItem } = elements;
 </script>
@@ -24,26 +41,10 @@
   <slot builder={$radioItem({ value, disabled })} />
 {:else}
   <div
-    class={cn("ContextMenuRadioItem", className)}
+    class={cn(style.base, className)}
     use:melt={$radioItem({ value, disabled })}
     {...$$restProps}
   >
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .ContextMenuRadioItem {
-    @apply transition-all;
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-    @apply rounded-lg;
-    @apply p-2;
-    @apply cursor-pointer;
-
-    @apply active:scale-95;
-
-    @apply hover:bg-muted/5;
-  }
-</style>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateSliderProps } from "@melt-ui/svelte";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateSliderProps, "value"> & {
@@ -15,6 +16,18 @@
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      relative
+      flex
+      w-full
+      h-2
+      items-center
+      bg-muted/5
+      rounded-lg
+    `,
+  });
 
   const handleChange: CreateSliderProps["onValueChange"] = ({ next }) => {
     value = next;
@@ -34,19 +47,7 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <span class={cn("Slider", className)} use:melt={$root} {...$$restProps}>
+  <span class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
     <slot />
   </span>
 {/if}
-
-<style lang="postcss">
-  .Slider {
-    @apply relative;
-    @apply flex;
-    @apply w-full;
-    @apply h-2;
-    @apply items-center;
-    @apply bg-muted/5;
-    @apply rounded-lg;
-  }
-</style>

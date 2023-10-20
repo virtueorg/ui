@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuCheckboxItemProps } from "@melt-ui/svelte";
-  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuCheckboxItemProps, "checked"> & {
@@ -16,7 +16,23 @@
 
   let className = "";
 
-  const handleChange: ChangeFn<boolean | "indeterminate"> = ({ next }) => {
+  const style = tv({
+    base: cn`
+      transition-all
+      flex
+      items-center
+      gap-2
+      rounded-lg
+      p-2
+      cursor-pointer
+
+      active:scale-95
+
+      hover:bg-muted/5
+    `,
+  });
+
+  const handleChange: CreateContextMenuCheckboxItemProps["onCheckedChange"] = ({ next }) => {
     checked = Boolean(next);
     return checked;
   };
@@ -32,23 +48,7 @@
 {#if asChild}
   <slot builder={$checkboxItem} />
 {:else}
-  <div class={cn("ContextMenuCheckboxItem", className)} use:melt={$checkboxItem} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$checkboxItem} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .ContextMenuCheckboxItem {
-    @apply transition-all;
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-    @apply rounded-lg;
-    @apply p-2;
-    @apply cursor-pointer;
-
-    @apply active:scale-95;
-
-    @apply hover:bg-muted/5;
-  }
-</style>

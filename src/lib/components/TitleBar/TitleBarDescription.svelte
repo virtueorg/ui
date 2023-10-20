@@ -1,22 +1,23 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLParagraphElement>;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      text-sm
+      text-muted
+      truncate
+    `,
+  });
 </script>
 
-<p class={cn("TitleBarDescription", className)} {...$$restProps}>
+<p class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </p>
-
-<style lang="postcss">
-  .TitleBarDescription {
-    @apply text-sm;
-    @apply text-muted;
-    @apply truncate;
-  }
-</style>

@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
@@ -13,6 +14,12 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      text-muted
+    `,
+  });
+
   const { elements } = ctx.get();
   const { fallback } = elements;
 </script>
@@ -20,13 +27,7 @@
 {#if asChild}
   <slot builder={$fallback} />
 {:else}
-  <span class={cn("AvatarFallback", className)} use:melt={$fallback} {...$$restProps}>
+  <span class={cn(style.base, className)} use:melt={$fallback} {...$$restProps}>
     <slot />
   </span>
 {/if}
-
-<style lang="postcss">
-  .AvatarFallback {
-    @apply text-muted;
-  }
-</style>

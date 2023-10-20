@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,20 +14,20 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      text-muted
+      text-sm
+    `,
+  });
+
   const { groupLabel, id } = ctx.getGroupLabel();
 </script>
 
 {#if asChild}
   <slot builder={$groupLabel(id)} />
 {:else}
-  <div class={cn("ContextMenuLabel", className)} use:melt={$groupLabel(id)} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$groupLabel(id)} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .ContextMenuLabel {
-    @apply text-muted;
-    @apply text-sm;
-  }
-</style>
