@@ -13,8 +13,6 @@
 
   let className = "";
 
-  // TODO: Check why the thumb animation is not working
-
   const style = tv({
     base: cn`
       transition-all
