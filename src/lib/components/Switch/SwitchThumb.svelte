@@ -26,10 +26,14 @@
       bg-background
       shadow-lg
       ring-0
-
-      data-[state=checked]:translate-x-5
-      data-[state=unchecked]:translate-x-0
     `,
+    variants: {
+      checked: {
+        true: cn`
+          translate-x-5
+        `,
+      },
+    },
   });
 
   const { states } = ctx.get();
@@ -39,7 +43,7 @@
 {#if asChild}
   <slot checked={$checked} />
 {:else}
-  <span class={cn(style.base, className)} {...$$restProps}>
+  <span class={cn(style.base, style({ checked: $checked }), className)} {...$$restProps}>
     <slot checked={$checked} />
   </span>
 {/if}

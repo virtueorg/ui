@@ -29,14 +29,19 @@
       items-center
       rounded-full
       border-2
-      bg-muted
+      bg-muted/50
       border-transparent
 
       disabled:cursor-not-allowed
       disabled:opacity-50
-
-      data-[state=checked]:bg-primary
     `,
+    variants: {
+      checked: {
+        true: cn`
+          bg-primary
+        `,
+      },
+    },
   });
 
   const handleChange: CreateSwitchProps["onCheckedChange"] = ({ next }) => {
@@ -57,7 +62,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ checked }), className)}
     use:melt={$root}
     {...$$restProps}
     on:click
