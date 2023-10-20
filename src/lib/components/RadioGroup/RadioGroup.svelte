@@ -4,13 +4,14 @@
   import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
-  type $$Props = CreateRadioGroupProps & {
+  type $$Props = Omit<CreateRadioGroupProps, "value"> & {
     value?: CreateRadioGroupProps["defaultValue"];
     asChild?: boolean;
   };
 
   export { className as class };
   export let value: $$Props["value"] = undefined;
+  export let onValueChange: $$Props["onValueChange"] = undefined;
 
   export let asChild: boolean = false;
 
@@ -24,9 +25,16 @@
 
   let className = "";
 
+  const handleChange: CreateRadioGroupProps["onValueChange"] = ({ next }) => {
+    value = next;
+
+    return next;
+  };
+
   const { elements } = ctx.create({
     ...$$restProps,
     defaultValue: value,
+    onValueChange: onValueChange || handleChange,
   });
   const { root } = elements;
 </script>
