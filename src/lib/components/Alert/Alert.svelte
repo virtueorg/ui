@@ -16,7 +16,7 @@
       rounded-lg
       flex
       items-center
-      p-5
+      p-4
       gap-2
     `,
     variants: {

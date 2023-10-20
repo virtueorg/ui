@@ -18,7 +18,7 @@
     base: cn`
       w-full
       text-left
-      p-5
+      p-4
       flex
       items-center
       justify-between

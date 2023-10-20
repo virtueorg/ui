@@ -17,7 +17,7 @@
       top-0
       right-0
       w-full
-      p-5
+      p-4
       flex
       flex-col
       gap-2
