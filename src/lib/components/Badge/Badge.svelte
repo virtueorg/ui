@@ -1,16 +1,27 @@
 <script lang="ts">
+  import type { IVariant } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
-  import { tv, type VariantProps } from "tailwind-variants";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
-    variant?: VariantProps<typeof badgeVariants>["variant"];
+    variant?: IVariant;
   };
 
   export { className as class };
   export let variant: $$Props["variant"] = "default";
 
-  const badgeVariants = tv({
+  let className = "";
+
+  const style = tv({
+    base: cn`
+      inline-flex
+      items-center
+      gap-2
+      py-2
+      px-3
+      rounded-lg
+    `,
     variants: {
       variant: {
         default: cn`
@@ -35,22 +46,8 @@
       },
     },
   });
-
-  let className = "";
 </script>
 
-<span
-  class={cn`
-    inline-flex
-    items-center
-    gap-2
-    py-2
-    px-3
-    rounded-lg
-    ${badgeVariants({ variant })}
-    ${className}
-  `}
-  {...$$restProps}
->
+<span class={cn(style.base, style({ variant }), className)} {...$$restProps}>
   <slot />
 </span>

@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,20 +14,20 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      text-sm
+      text-muted
+    `,
+  });
+
   const { groupLabel, id } = ctx.getGroup();
 </script>
 
 {#if asChild}
   <slot builder={$groupLabel(id)} />
 {:else}
-  <div class={cn("SelectLabel", className)} {...$$restProps} use:melt={$groupLabel(id)}>
+  <div class={cn(style.base, className)} use:melt={$groupLabel(id)} {...$$restProps}>
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .SelectLabel {
-    @apply text-sm;
-    @apply text-muted;
-  }
-</style>

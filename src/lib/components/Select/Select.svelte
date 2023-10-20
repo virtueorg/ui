@@ -1,12 +1,11 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
   import type { CreateSelectProps } from "@melt-ui/svelte";
-  import type { ListboxOption } from "@melt-ui/svelte/dist/builders/listbox/types";
-  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateSelectProps, "selected" | "multiple"> & {
-    selected?: ListboxOption<unknown>;
+    selected?: CreateSelectProps["defaultSelected"];
     multiple?: boolean;
   };
 
@@ -16,7 +15,15 @@
 
   let className = "";
 
-  const handleChange: ChangeFn<ListboxOption<unknown> | undefined> = ({ next }) => {
+  const style = tv({
+    base: cn`
+      flex
+      flex-col
+      gap-2
+    `,
+  });
+
+  const handleChange: CreateSelectProps["onSelectedChange"] = ({ next }) => {
     selected = next;
 
     return next;
@@ -29,14 +36,6 @@
   });
 </script>
 
-<div class={cn("Select", className)} {...$$restProps}>
+<div class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </div>
-
-<style lang="postcss">
-  .Select {
-    @apply flex;
-    @apply flex-col;
-    @apply gap-2;
-  }
-</style>

@@ -1,22 +1,23 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLDivElement>;
 
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      flex
+      items-center
+      gap-2
+    `,
+  });
 </script>
 
-<div class={cn("DrawerActions", className)} {...$$restProps}>
+<div class={cn(style.base, className)} {...$$restProps}>
   <slot />
 </div>
-
-<style lang="postcss">
-  .DrawerActions {
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-  }
-</style>

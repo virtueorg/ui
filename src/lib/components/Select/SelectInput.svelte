@@ -20,5 +20,5 @@
 {#if asChild}
   <slot builder={$hiddenInput} />
 {:else}
-  <input class={cn(className)} {...$$restProps} use:melt={$hiddenInput} />
+  <input class={cn(className)} use:melt={$hiddenInput} {...$$restProps} />
 {/if}

@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,6 +14,12 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      text-left
+    `,
+  });
+
   const { elements } = ctx.get();
   const { close } = elements;
 </script>
@@ -22,17 +29,11 @@
 {:else}
   <button
     type="button"
-    class={cn("DrawerClose", className)}
-    {...$$restProps}
+    class={cn(style.base, className)}
     use:melt={$close}
+    {...$$restProps}
     on:click
   >
     <slot />
   </button>
 {/if}
-
-<style lang="postcss">
-  .DrawerClose {
-    @apply text-left;
-  }
-</style>

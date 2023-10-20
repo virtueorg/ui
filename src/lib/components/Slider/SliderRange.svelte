@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
@@ -13,6 +14,16 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      h-2
+      grow
+      overflow-hidden
+      rounded-full
+      bg-primary
+    `,
+  });
+
   const { elements } = ctx.get();
   const { range } = elements;
 </script>
@@ -20,15 +31,5 @@
 {#if asChild}
   <slot builder={$range} />
 {:else}
-  <span class={cn("SliderRange", className)} {...$$restProps} use:melt={$range} />
+  <span class={cn(style.base, className)} use:melt={$range} {...$$restProps} />
 {/if}
-
-<style lang="postcss">
-  .SliderRange {
-    @apply h-2;
-    @apply grow;
-    @apply overflow-hidden;
-    @apply rounded-full;
-    @apply bg-primary;
-  }
-</style>

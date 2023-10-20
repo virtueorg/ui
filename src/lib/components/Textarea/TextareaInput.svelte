@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import type { HTMLTextareaAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLTextareaAttributes & {
     hasLabel?: boolean;
@@ -13,6 +14,23 @@
   let className = "";
   let element: HTMLTextAreaElement;
 
+  const style = tv({
+    base: cn`
+      w-full
+      p-3
+      bg-transparent
+      rounded-lg
+      resize-none
+    `,
+    variants: {
+      hasLabel: {
+        true: cn`
+          pt-8
+        `,
+      },
+    },
+  });
+
   const autoGrow = () => {
     element.style.height = "auto";
     element.style.height = element.scrollHeight + "px";
@@ -20,15 +38,7 @@
 </script>
 
 <textarea
-  class={cn`
-    w-full
-    p-3
-    bg-transparent
-    rounded-lg
-    resize-none
-    ${hasLabel && "pt-8"}
-    ${className}
-  `}
+  class={cn(style.base, style({ hasLabel }), className)}
   {...$$restProps}
   bind:value
   bind:this={element}

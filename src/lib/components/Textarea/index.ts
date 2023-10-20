@@ -1,6 +1,6 @@
 import Textarea from "./Textarea.svelte";
-import TextareaField from "./TextareaField.svelte";
+import TextareaInput from "./TextareaInput.svelte";
 import TextareaLabel from "./TextareaLabel.svelte";
 import TextareaMessage from "./TextareaMessage.svelte";
 
-export { Textarea, TextareaField, TextareaLabel, TextareaMessage };
+export { Textarea, TextareaInput, TextareaLabel, TextareaMessage };

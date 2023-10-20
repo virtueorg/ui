@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -19,6 +20,33 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      transition-all
+      flex
+      items-center
+      gap-2
+      rounded-lg
+      p-2
+      border
+      border-transparent
+      cursor-pointer
+      
+      active:scale-95
+      
+      hover:bg-muted/5
+      
+      data-[selected]:border-primary
+    `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+        `,
+      },
+    },
+  });
+
   const { elements } = ctx.createItem(value);
   const { option } = elements;
 </script>
@@ -27,35 +55,10 @@
   <slot builder={$option({ value, disabled, label })} />
 {:else}
   <div
-    class={cn("SelectItem", className)}
-    class:disabled
-    {...$$restProps}
+    class={cn(style.base, style({ disabled }), className)}
     use:melt={$option({ value, disabled, label })}
+    {...$$restProps}
   >
     <slot />
   </div>
 {/if}
-
-<style lang="postcss">
-  .SelectItem {
-    @apply transition-all;
-    @apply flex;
-    @apply items-center;
-    @apply gap-2;
-    @apply rounded-lg;
-    @apply p-2;
-    @apply border;
-    @apply border-transparent;
-    @apply cursor-pointer;
-
-    @apply active:scale-95;
-
-    @apply hover:bg-muted/5;
-
-    @apply data-[selected]:border-primary;
-  }
-
-  .disabled {
-    @apply opacity-50;
-  }
-</style>

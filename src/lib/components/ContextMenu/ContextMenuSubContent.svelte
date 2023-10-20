@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,6 +14,14 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      w-64
+      bg-panel
+      rounded-lg
+    `,
+  });
+
   const { elements, states } = ctx.getSub();
   const { subMenu } = elements;
   const { subOpen } = states;
@@ -22,16 +31,8 @@
   {#if asChild}
     <slot builder={$subMenu} />
   {:else}
-    <div class={cn("ContextMenuSubContent", className)} {...$$restProps} use:melt={$subMenu}>
+    <div class={cn(style.base, className)} use:melt={$subMenu} {...$$restProps}>
       <slot />
     </div>
   {/if}
 {/if}
-
-<style lang="postcss">
-  .ContextMenuSubContent {
-    @apply w-64;
-    @apply bg-panel;
-    @apply rounded-lg;
-  }
-</style>

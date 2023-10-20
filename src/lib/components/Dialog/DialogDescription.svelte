@@ -1,21 +1,34 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
-  import { Dialog } from "bits-ui";
+  import { melt } from "@melt-ui/svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
+  import ctx from "./ctx";
 
-  type $$Props = Dialog.DescriptionProps;
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  };
 
+  export let asChild: $$Props["asChild"] = false;
   export { className as class };
 
   let className = "";
+
+  const style = tv({
+    base: cn`
+      text-sm 
+      text-muted
+    `,
+  });
+
+  const { elements } = ctx.get();
+  const { description } = elements;
 </script>
 
-<Dialog.Description
-  class={cn`
-    text-sm
-    text-muted
-    ${className}
-  `}
-  {...$$restProps}
->
-  <slot />
-</Dialog.Description>
+{#if asChild}
+  <slot builder={$description} />
+{:else}
+  <div class={cn(style.base, className)} use:melt={$description} {...$$restProps}>
+    <slot />
+  </div>
+{/if}

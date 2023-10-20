@@ -1,7 +1,6 @@
 <script lang="ts">
   import { cn } from "$lib/utils/misc";
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
-  import type { ChangeFn } from "@melt-ui/svelte/internal/helpers";
   import ctx from "./ctx";
 
   type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
@@ -15,7 +14,7 @@
 
   let className = "";
 
-  const handleChange: ChangeFn<string | null> = ({ next }) => {
+  const handleChange: CreateContextMenuRadioGroupProps["onValueChange"] = ({ next }) => {
     value = String(next);
     return value;
   };
@@ -31,7 +30,7 @@
 {#if asChild}
   <slot builder={$radioGroup} />
 {:else}
-  <div class={cn(className)} {...$$restProps} use:melt={$radioGroup}>
+  <div class={cn(className)} use:melt={$radioGroup} {...$$restProps}>
     <slot />
   </div>
 {/if}

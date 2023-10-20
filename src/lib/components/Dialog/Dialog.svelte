@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { Dialog } from "bits-ui";
+  import type { CreateDialogProps } from "@melt-ui/svelte";
+  import ctx from "./ctx";
 
-  type $$Props = Dialog.Props;
+  type $$Props = CreateDialogProps;
+
+  ctx.create($$restProps);
 </script>
 
-<Dialog.Root {...$$restProps}>
-  <slot />
-</Dialog.Root>
+<slot />

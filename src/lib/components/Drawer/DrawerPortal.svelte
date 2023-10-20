@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils/misc";
   import { melt } from "@melt-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import { tv } from "tailwind-variants";
   import ctx from "./ctx";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,6 +14,18 @@
 
   let className = "";
 
+  const style = tv({
+    base: cn`
+      fixed
+      inset-0
+      pointer-events-none
+      flex
+      items-center
+      justify-end
+      z-10
+    `,
+  });
+
   const { elements, states } = ctx.get();
   const { portalled } = elements;
   const { open } = states;
@@ -22,20 +35,8 @@
   {#if asChild}
     <slot builder={$portalled} />
   {:else}
-    <div class={cn("DrawerPortal", className)} {...$$restProps} use:melt={$portalled}>
+    <div class={cn(style.base, className)} use:melt={$portalled} {...$$restProps}>
       <slot />
     </div>
   {/if}
 {/if}
-
-<style lang="postcss">
-  .DrawerPortal {
-    @apply fixed;
-    @apply inset-0;
-    @apply pointer-events-none;
-    @apply flex;
-    @apply items-center;
-    @apply justify-end;
-    @apply z-10;
-  }
-</style>

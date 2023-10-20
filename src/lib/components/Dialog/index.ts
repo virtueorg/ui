@@ -1,4 +1,5 @@
 import Dialog from "./Dialog.svelte";
+import DialogAction from "./DialogAction.svelte";
 import DialogClose from "./DialogClose.svelte";
 import DialogContent from "./DialogContent.svelte";
 import DialogDescription from "./DialogDescription.svelte";
@@ -12,6 +13,7 @@ import DialogTrigger from "./DialogTrigger.svelte";
 
 export {
   Dialog,
+  DialogAction,
   DialogClose,
   DialogContent,
   DialogDescription,

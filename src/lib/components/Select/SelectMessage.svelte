@@ -1,16 +1,22 @@
 <script lang="ts">
+  import type { IVariant } from "$lib/types";
   import { cn } from "$lib/utils/misc";
   import type { HTMLAttributes } from "svelte/elements";
-  import { tv, type VariantProps } from "tailwind-variants";
+  import { tv } from "tailwind-variants";
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    variant?: VariantProps<typeof selectMessageVariants>["variant"];
+    variant?: IVariant;
   };
 
   export { className as class };
   export let variant: $$Props["variant"] = "default";
 
-  const selectMessageVariants = tv({
+  let className = "";
+
+  const style = tv({
+    base: cn`
+      text-sm
+    `,
     variants: {
       variant: {
         default: cn`
@@ -31,16 +37,8 @@
       },
     },
   });
-
-  let className = "";
 </script>
 
-<div class={cn("SelectMessage", selectMessageVariants({ variant }), className)} {...$$restProps}>
+<div class={cn(style.base, style({ variant }), className)} {...$$restProps}>
   <slot />
 </div>
-
-<style lang="postcss">
-  .SelectMessage {
-    @apply text-sm;
-  }
-</style>

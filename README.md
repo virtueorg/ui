@@ -1,6 +1,6 @@
 # Virtue UI
 
-A simple Svelte component library built on top of `bits-ui` and `TailwindCSS`.
+A simple Svelte component library built on top of `melt-ui` and `TailwindCSS`.
 
 ## Prerequisites
 
