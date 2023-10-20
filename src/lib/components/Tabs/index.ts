@@ -3,4 +3,13 @@ import TabsContent from "./TabsContent.svelte";
 import TabsList from "./TabsList.svelte";
 import TabsTrigger from "./TabsTrigger.svelte";
 
-export { Tabs, TabsContent, TabsList, TabsTrigger };
+export {
+  TabsContent as Content,
+  TabsList as List,
+  Tabs as Root,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  TabsTrigger as Trigger,
+};

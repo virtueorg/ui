@@ -3,4 +3,13 @@ import SliderInput from "./SliderInput.svelte";
 import SliderRange from "./SliderRange.svelte";
 import SliderThumb from "./SliderThumb.svelte";
 
-export { Slider, SliderInput, SliderRange, SliderThumb };
+export {
+  SliderInput as Input,
+  SliderRange as Range,
+  Slider as Root,
+  Slider,
+  SliderInput,
+  SliderRange,
+  SliderThumb,
+  SliderThumb as Thumb,
+};

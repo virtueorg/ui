@@ -7,4 +7,21 @@ import TableHead from "./TableHead.svelte";
 import TableHeader from "./TableHeader.svelte";
 import TableRow from "./TableRow.svelte";
 
-export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow };
+export {
+  TableBody as Body,
+  TableCaption as Caption,
+  TableCell as Cell,
+  TableFooter as Footer,
+  TableHead as Head,
+  TableHeader as Header,
+  Table as Root,
+  TableRow as Row,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+};

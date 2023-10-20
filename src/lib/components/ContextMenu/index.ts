@@ -16,6 +16,10 @@ import ContextMenuSubTrigger from "./ContextMenuSubTrigger.svelte";
 import ContextMenuTrigger from "./ContextMenuTrigger.svelte";
 
 export {
+  ContextMenuArrow as Arrow,
+  ContextMenuCheckboxIndicator as CheckboxIndicator,
+  ContextMenuCheckboxItem as CheckboxItem,
+  ContextMenuContent as Content,
   ContextMenu,
   ContextMenuArrow,
   ContextMenuCheckboxIndicator,
@@ -32,4 +36,16 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
+  ContextMenuGroup as Group,
+  ContextMenuItem as Item,
+  ContextMenuLabel as Label,
+  ContextMenuRadioGroup as RadioGroup,
+  ContextMenuRadioIndicator as RadioIndicator,
+  ContextMenuRadioItem as RadioItem,
+  ContextMenu as Root,
+  ContextMenuSeparator as Separator,
+  ContextMenuSub as Sub,
+  ContextMenuSubContent as SubContent,
+  ContextMenuSubTrigger as SubTrigger,
+  ContextMenuTrigger as Trigger,
 };

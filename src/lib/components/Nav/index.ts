@@ -5,4 +5,16 @@ import NavLi from "./NavLi.svelte";
 import NavLink from "./NavLink.svelte";
 import NavUl from "./NavUl.svelte";
 
-export { Nav, NavBrand, NavFooter, NavLi, NavLink, NavUl };
+export {
+    NavBrand as Brand,
+    NavFooter as Footer,
+    NavLi as Li,
+    NavLink as Link, Nav,
+    NavBrand,
+    NavFooter,
+    NavLi,
+    NavLink,
+    NavUl,
+    Nav as Root, NavUl as Ul
+};
+

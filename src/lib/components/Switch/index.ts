@@ -2,4 +2,11 @@ import Switch from "./Switch.svelte";
 import SwitchInput from "./SwitchInput.svelte";
 import SwitchThumb from "./SwitchThumb.svelte";
 
-export { Switch, SwitchInput, SwitchThumb };
+export {
+  SwitchInput as Input,
+  Switch as Root,
+  Switch,
+  SwitchInput,
+  SwitchThumb,
+  SwitchThumb as Thumb,
+};

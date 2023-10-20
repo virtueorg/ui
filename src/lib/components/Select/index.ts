@@ -11,6 +11,15 @@ import SelectTrigger from "./SelectTrigger.svelte";
 import SelectValue from "./SelectValue.svelte";
 
 export {
+  SelectArrow as Arrow,
+  SelectContent as Content,
+  SelectGroup as Group,
+  SelectInput as Input,
+  SelectItem as Item,
+  SelectItemIndicator as ItemIndicator,
+  SelectLabel as Label,
+  SelectMessage as Message,
+  Select as Root,
   Select,
   SelectArrow,
   SelectContent,
@@ -22,4 +31,6 @@ export {
   SelectMessage,
   SelectTrigger,
   SelectValue,
+  SelectTrigger as Trigger,
+  SelectValue as Value,
 };
