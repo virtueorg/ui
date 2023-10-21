@@ -1,6 +1,6 @@
 import Page from "./Page.svelte";
 import PageActions from "./PageActions.svelte";
 import PageContent from "./PageContent.svelte";
-import PageHeading from "./PageHeading.svelte";
+import PageHeader from "./PageHeader.svelte";
 
-export { Page, PageActions, PageContent, PageHeading };
+export { Page, PageActions, PageContent, PageHeader };
