@@ -1,20 +1,20 @@
 import { createDialog, type CreateDialogProps, type Dialog } from "@melt-ui/svelte";
 import { getContext, setContext } from "svelte";
 
-const NAME = "dialog";
+const NAME = "modal";
 
 const create = (props: CreateDialogProps) => {
-  const dialog = createDialog(props);
+  const modal = createDialog(props);
 
-  setContext(NAME, dialog);
+  setContext(NAME, modal);
 
-  return dialog;
+  return modal;
 };
 
 const get = () => {
-  const dialog: Dialog = getContext(NAME);
+  const modal: Dialog = getContext(NAME);
 
-  return dialog;
+  return modal;
 };
 
 const ctx = {

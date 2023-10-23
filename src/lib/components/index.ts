@@ -9,7 +9,7 @@ export * from "./Card";
 export * from "./Checkbox";
 export * from "./ContextMenu";
 export * from "./Detail";
-export * from "./Dialog";
+export * from "./Modal";
 export * from "./Drawer";
 export * from "./DropdownMenu";
 export * from "./EmptyState";
