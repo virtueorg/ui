@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { ChevronDownIcon } from "$lib/icons";
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLButtonAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import { Icon } from "../Icon";
-  import ctx from "./ctx";
+  import { ChevronDownIcon } from "$lib/icons"
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import { Icon } from "../Icon"
+  import ctx from "./ctx"
 
   type $$Props = HTMLButtonAttributes & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -27,10 +27,10 @@
       items-center
       justify-between
     `,
-  });
+  })
 
-  const { elements } = ctx.get();
-  const { trigger } = elements;
+  const { elements } = ctx.get()
+  const { trigger } = elements
 </script>
 
 {#if asChild}

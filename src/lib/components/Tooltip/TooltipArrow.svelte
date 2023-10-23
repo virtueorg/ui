@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLAttributes } from "svelte/elements";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLAttributes } from "svelte/elements"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
-  const { elements } = ctx.get();
-  const { arrow } = elements;
+  const { elements } = ctx.get()
+  const { arrow } = elements
 </script>
 
 {#if asChild}

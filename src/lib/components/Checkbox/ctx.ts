@@ -1,25 +1,25 @@
-import { createCheckbox, type Checkbox, type CreateCheckboxProps } from "@melt-ui/svelte";
-import { getContext, setContext } from "svelte";
+import { createCheckbox, type Checkbox, type CreateCheckboxProps } from "@melt-ui/svelte"
+import { getContext, setContext } from "svelte"
 
-const NAME = "checkbox";
+const NAME = "checkbox"
 
 const create = (props: CreateCheckboxProps) => {
-  const checkbox = createCheckbox(props);
+  const checkbox = createCheckbox(props)
 
-  setContext(NAME, checkbox);
+  setContext(NAME, checkbox)
 
-  return checkbox;
-};
+  return checkbox
+}
 
 const get = () => {
-  const checkbox: Checkbox = getContext(NAME);
+  const checkbox: Checkbox = getContext(NAME)
 
-  return checkbox;
-};
+  return checkbox
+}
 
 const ctx = {
   create,
   get,
-};
+}
 
-export default ctx;
+export default ctx

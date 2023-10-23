@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt, type CreateSwitchProps } from "@melt-ui/svelte";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt, type CreateSwitchProps } from "@melt-ui/svelte"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = Omit<CreateSwitchProps, "checked"> & {
-    checked?: CreateSwitchProps["defaultChecked"];
-    asChild?: boolean;
-  };
+    checked?: CreateSwitchProps["defaultChecked"]
+    asChild?: boolean
+  }
 
-  export { className as class };
+  export { className as class }
 
-  export let checked: $$Props["checked"] = false;
-  export let onCheckedChange: $$Props["onCheckedChange"] = undefined;
-  export let asChild: $$Props["asChild"] = false;
+  export let checked: $$Props["checked"] = false
+  export let onCheckedChange: $$Props["onCheckedChange"] = undefined
+  export let asChild: $$Props["asChild"] = false
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -42,19 +42,19 @@
         `,
       },
     },
-  });
+  })
 
   const handleChange: CreateSwitchProps["onCheckedChange"] = ({ next }) => {
-    checked = next;
-    return next;
-  };
+    checked = next
+    return next
+  }
 
   const { elements } = ctx.create({
     ...$$restProps,
     defaultChecked: checked,
     onCheckedChange: onCheckedChange || handleChange,
-  });
-  const { root } = elements;
+  })
+  const { root } = elements
 </script>
 
 {#if asChild}

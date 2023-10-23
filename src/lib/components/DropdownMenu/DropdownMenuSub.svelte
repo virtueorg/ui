@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { CreateDropdownSubmenuProps } from "@melt-ui/svelte";
-  import ctx from "./ctx";
+  import type { CreateDropdownSubmenuProps } from "@melt-ui/svelte"
+  import ctx from "./ctx"
 
-  type $$Props = CreateDropdownSubmenuProps;
+  type $$Props = CreateDropdownSubmenuProps
 
-  ctx.createSub($$restProps);
+  ctx.createSub($$restProps)
 </script>
 
 <slot />

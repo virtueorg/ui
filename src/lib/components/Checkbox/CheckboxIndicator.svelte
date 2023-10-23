@@ -1,29 +1,29 @@
 <script lang="ts">
-  import { MinusIcon, TickIcon } from "$lib/icons";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import { Icon } from "../Icon";
-  import ctx from "./ctx";
+  import { MinusIcon, TickIcon } from "$lib/icons"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import { Icon } from "../Icon"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
   const style = tv({
     base: cn`
       ml-auto
       text-primary
     `,
-  });
+  })
 
-  export { className as class };
-  export let asChild: $$Props["asChild"] = false;
+  export { className as class }
+  export let asChild: $$Props["asChild"] = false
 
-  let className = "";
+  let className = ""
 
-  const { helpers } = ctx.get();
-  const { isChecked, isIndeterminate } = helpers;
+  const { helpers } = ctx.get()
+  const { isChecked, isIndeterminate } = helpers
 </script>
 
 {#if asChild}

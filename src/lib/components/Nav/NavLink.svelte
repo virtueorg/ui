@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { navigating, page } from "$app/stores";
-  import { SpinnerIcon } from "$lib/icons";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAnchorAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import { Icon } from "../Icon";
+  import { navigating, page } from "$app/stores"
+  import { SpinnerIcon } from "$lib/icons"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAnchorAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import { Icon } from "../Icon"
 
-  type $$Props = HTMLAnchorAttributes;
+  type $$Props = HTMLAnchorAttributes
 
-  export let href: $$Props["href"] = "";
-  export { className as class };
+  export let href: $$Props["href"] = ""
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -37,10 +37,10 @@
         `,
       },
     },
-  });
+  })
 
-  $: loading = $navigating?.to?.url.pathname === href;
-  $: active = $page.url.pathname === href;
+  $: loading = $navigating?.to?.url.pathname === href
+  $: active = $page.url.pathname === href
 </script>
 
 <a {href} class={cn(style.base, style({ active }), className)} {...$$restProps} on:click>

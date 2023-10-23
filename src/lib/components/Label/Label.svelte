@@ -1,28 +1,28 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLLabelAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLLabelAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = HTMLLabelAttributes & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export { className as class };
-  export let asChild: $$Props["asChild"] = false;
+  export { className as class }
+  export let asChild: $$Props["asChild"] = false
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
       text-sm
       text-muted
     `,
-  });
+  })
 
-  const { elements } = ctx.create();
-  const { root } = elements;
+  const { elements } = ctx.create()
+  const { root } = elements
 </script>
 
 {#if asChild}

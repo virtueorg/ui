@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -25,10 +25,10 @@
       disabled:pointer-events-none
       disabled:opacity-50
     `,
-  });
+  })
 
-  const { elements } = ctx.get();
-  const { thumb } = elements;
+  const { elements } = ctx.get()
+  const { thumb } = elements
 </script>
 
 {#if asChild}

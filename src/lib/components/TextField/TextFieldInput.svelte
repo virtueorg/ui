@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLInputAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLInputAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
   type $$Props = HTMLInputAttributes & {
-    hasIcon?: boolean;
-    hasLabel?: boolean;
-  };
+    hasIcon?: boolean
+    hasLabel?: boolean
+  }
 
-  export { className as class };
-  export let value: $$Props["value"] = undefined;
-  export let hasIcon: $$Props["hasIcon"] = false;
-  export let hasLabel: $$Props["hasLabel"] = false;
+  export { className as class }
+  export let value: $$Props["value"] = undefined
+  export let hasIcon: $$Props["hasIcon"] = false
+  export let hasLabel: $$Props["hasLabel"] = false
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -34,7 +34,7 @@
         `,
       },
     },
-  });
+  })
 </script>
 
 <input

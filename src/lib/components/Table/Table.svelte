@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLTableAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLTableAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLTableAttributes;
+  type $$Props = HTMLTableAttributes
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -18,7 +18,7 @@
       overflow-hidden
       table-fixed
     `,
-  });
+  })
 </script>
 
 <div class="w-full overflow-auto">

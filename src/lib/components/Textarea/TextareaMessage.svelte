@@ -1,17 +1,17 @@
 <script lang="ts">
-  import type { IVariant } from "$lib/types";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import type { IVariant } from "$lib/types"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    variant?: IVariant;
-  };
+    variant?: IVariant
+  }
 
-  export { className as class };
-  export let variant: $$Props["variant"] = "default";
+  export { className as class }
+  export let variant: $$Props["variant"] = "default"
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -36,7 +36,7 @@
         `,
       },
     },
-  });
+  })
 </script>
 
 <div class={cn(style.base, style({ variant }), className)} {...$$restProps}>

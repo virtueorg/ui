@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLUListElement>;
+  type $$Props = HTMLAttributes<HTMLUListElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -16,7 +16,7 @@
       flex-col
       gap-2
     `,
-  });
+  })
 </script>
 
 <ul class={cn(style.base, className)} {...$$restProps}>

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLSpanElement> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export { className as class };
-  export let asChild: $$Props["asChild"] = false;
+  export { className as class }
+  export let asChild: $$Props["asChild"] = false
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -32,10 +32,10 @@
         `,
       },
     },
-  });
+  })
 
-  const { states } = ctx.get();
-  const { checked } = states;
+  const { states } = ctx.get()
+  const { checked } = states
 </script>
 
 {#if asChild}

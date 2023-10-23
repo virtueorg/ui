@@ -1,4 +1,4 @@
-import Progress from "./Progress.svelte";
-import ProgressLine from "./ProgressLine.svelte";
+import Progress from "./Progress.svelte"
+import ProgressLine from "./ProgressLine.svelte"
 
-export { Progress, ProgressLine };
+export { Progress, ProgressLine }

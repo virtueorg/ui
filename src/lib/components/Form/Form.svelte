@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLFormAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLFormAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
   type $$Props = HTMLFormAttributes & {
-    enhance?: (node: HTMLFormElement) => void;
-  };
+    enhance?: (node: HTMLFormElement) => void
+  }
 
-  export let enhance: $$Props["enhance"] = undefined;
-  export { className as class };
+  export let enhance: $$Props["enhance"] = undefined
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -18,7 +18,7 @@
       flex-col
       gap-4
     `,
-  });
+  })
 </script>
 
 {#if enhance}

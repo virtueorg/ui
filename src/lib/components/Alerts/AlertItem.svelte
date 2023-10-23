@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { CloseIcon } from "$lib/icons";
-  import { removeAlert } from "$lib/stores/alerts";
-  import type { IAlert } from "$lib/types";
-  import { Alert, AlertAction, AlertIcon, AlertTitle } from "../Alert";
-  import { Button } from "../Button";
-  import { Icon } from "../Icon";
+  import { CloseIcon } from "$lib/icons"
+  import { removeAlert } from "$lib/stores/alerts"
+  import type { IAlert } from "$lib/types"
+  import { Alert, AlertAction, AlertIcon, AlertTitle } from "../Alert"
+  import { Button } from "../Button"
+  import { Icon } from "../Icon"
 
-  export let alert: IAlert;
+  export let alert: IAlert
 </script>
 
 <Alert variant={alert.variant}>

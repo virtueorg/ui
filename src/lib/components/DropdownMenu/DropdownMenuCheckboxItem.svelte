@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt, type CreateDropdownMenuCheckboxItemProps } from "@melt-ui/svelte";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt, type CreateDropdownMenuCheckboxItemProps } from "@melt-ui/svelte"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = Omit<CreateDropdownMenuCheckboxItemProps, "checked"> & {
-    asChild?: boolean;
-    checked?: boolean;
-  };
+    asChild?: boolean
+    checked?: boolean
+  }
 
-  export let checked: $$Props["checked"] = false;
-  export let onCheckedChange: $$Props["onCheckedChange"] = undefined;
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let checked: $$Props["checked"] = false
+  export let onCheckedChange: $$Props["onCheckedChange"] = undefined
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -30,19 +30,19 @@
     
       hover:bg-muted/5
     `,
-  });
+  })
 
   const handleChange: CreateDropdownMenuCheckboxItemProps["onCheckedChange"] = ({ next }) => {
-    checked = Boolean(next);
-    return checked;
-  };
+    checked = Boolean(next)
+    return checked
+  }
 
   const { elements } = ctx.createCheckboxItem({
     ...$$restProps,
     defaultChecked: checked,
     onCheckedChange: onCheckedChange || handleChange,
-  });
-  const { checkboxItem } = elements;
+  })
+  const { checkboxItem } = elements
 </script>
 
 {#if asChild}

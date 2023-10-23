@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLTableSectionElement>;
+  type $$Props = HTMLAttributes<HTMLTableSectionElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
       bg-primary
     `,
-  });
+  })
 </script>
 
 <tfoot class={cn(style.base, className)} {...$$restProps}>

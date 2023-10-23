@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
-    value: string;
-    disabled?: boolean;
-    asChild?: boolean;
-  };
+    value: string
+    disabled?: boolean
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export let value: $$Props["value"];
-  export let disabled: $$Props["disabled"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"]
+  export let disabled: $$Props["disabled"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -31,10 +31,10 @@
 
       hover:bg-muted/5
     `,
-  });
+  })
 
-  const { elements } = ctx.createRadioItem(value);
-  const { radioItem } = elements;
+  const { elements } = ctx.createRadioItem(value)
+  const { radioItem } = elements
 </script>
 
 {#if asChild}

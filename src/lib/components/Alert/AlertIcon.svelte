@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
 
-  type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLDivElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 </script>
 
 <div class={cn(className)} {...$$restProps}>

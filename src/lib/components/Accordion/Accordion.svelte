@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt, type CreateAccordionProps } from "@melt-ui/svelte";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt, type CreateAccordionProps } from "@melt-ui/svelte"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = CreateAccordionProps<boolean> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -19,10 +19,10 @@
       flex-col
       gap-2
     `,
-  });
+  })
 
-  const { elements } = ctx.create($$restProps);
-  const { root } = elements;
+  const { elements } = ctx.create($$restProps)
+  const { root } = elements
 </script>
 
 {#if asChild}

@@ -1,28 +1,28 @@
 <script lang="ts">
-  import TickIcon from "$lib/icons/TickIcon.svelte";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import Icon from "../Icon/Icon.svelte";
-  import ctx from "./ctx";
+  import TickIcon from "$lib/icons/TickIcon.svelte"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import Icon from "../Icon/Icon.svelte"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
       ml-auto
     `,
-  });
+  })
 
-  const { states } = ctx.getCheckboxItem();
-  const { checked } = states;
+  const { states } = ctx.getCheckboxItem()
+  const { checked } = states
 </script>
 
 {#if $checked}

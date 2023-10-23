@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
 
-  type $$Props = HTMLAttributes<HTMLTableSectionElement>;
+  type $$Props = HTMLAttributes<HTMLTableSectionElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 </script>
 
 <tbody class={cn(className)} {...$$restProps}>

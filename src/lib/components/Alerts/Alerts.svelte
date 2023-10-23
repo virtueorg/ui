@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { alerts } from "$lib/stores/alerts";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import AlertItem from "./AlertItem.svelte";
+  import { alerts } from "$lib/stores/alerts"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import AlertItem from "./AlertItem.svelte"
 
-  type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLDivElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -25,7 +25,7 @@
 
       md:max-w-lg
     `,
-  });
+  })
 </script>
 
 {#if $alerts.length}

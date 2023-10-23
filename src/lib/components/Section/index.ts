@@ -1,5 +1,5 @@
-import Section from "./Section.svelte";
-import SectionContent from "./SectionContent.svelte";
-import SectionTitle from "./SectionTitle.svelte";
+import Section from "./Section.svelte"
+import SectionContent from "./SectionContent.svelte"
+import SectionTitle from "./SectionTitle.svelte"
 
-export { Section, SectionContent, SectionTitle };
+export { Section, SectionContent, SectionTitle }

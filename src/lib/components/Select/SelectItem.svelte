@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean;
-    value: string;
-    disabled?: boolean;
-    label?: string;
-  };
+    asChild?: boolean
+    value: string
+    disabled?: boolean
+    label?: string
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export let value: $$Props["value"];
-  export let disabled: $$Props["disabled"] = false;
-  export let label: $$Props["label"] = "";
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"]
+  export let disabled: $$Props["disabled"] = false
+  export let label: $$Props["label"] = ""
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -45,10 +45,10 @@
         `,
       },
     },
-  });
+  })
 
-  const { elements } = ctx.createItem(value);
-  const { option } = elements;
+  const { elements } = ctx.createItem(value)
+  const { option } = elements
 </script>
 
 {#if asChild}

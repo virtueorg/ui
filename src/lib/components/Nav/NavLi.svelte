@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLAttributes } from "svelte/elements";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLAttributes } from "svelte/elements"
 
-  type $$Props = HTMLAttributes<HTMLLIElement>;
+  type $$Props = HTMLAttributes<HTMLLIElement>
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 </script>
 
 <li class={cn(className)} {...$$restProps}>

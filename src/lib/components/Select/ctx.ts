@@ -1,60 +1,60 @@
-import { createSelect, type CreateSelectProps, type Select } from "@melt-ui/svelte";
-import { nanoid } from "nanoid";
-import { getContext, setContext } from "svelte";
+import { createSelect, type CreateSelectProps, type Select } from "@melt-ui/svelte"
+import { nanoid } from "nanoid"
+import { getContext, setContext } from "svelte"
 
-const NAME = "select";
-const GROUP_NAME = "select-group";
-const ITEM_NAME = "select-item";
+const NAME = "select"
+const GROUP_NAME = "select-group"
+const ITEM_NAME = "select-item"
 
 const create = (props: CreateSelectProps) => {
-  const select = createSelect(props);
+  const select = createSelect(props)
 
-  setContext(NAME, select);
+  setContext(NAME, select)
 
-  return select;
-};
+  return select
+}
 
 const get = () => {
-  const select: Select = getContext(NAME);
+  const select: Select = getContext(NAME)
 
-  return select;
-};
+  return select
+}
 
 const createGroup = () => {
-  const id = nanoid();
+  const id = nanoid()
 
-  setContext(GROUP_NAME, id);
+  setContext(GROUP_NAME, id)
 
-  const { elements } = get();
-  const { group } = elements;
+  const { elements } = get()
+  const { group } = elements
 
-  return { group, id };
-};
+  return { group, id }
+}
 
 const createItem = (value: string) => {
-  const select = get();
+  const select = get()
 
-  setContext(ITEM_NAME, value);
+  setContext(ITEM_NAME, value)
 
-  return select;
-};
+  return select
+}
 
 const getItem = () => {
-  const value: string = getContext(ITEM_NAME);
+  const value: string = getContext(ITEM_NAME)
 
-  return value;
-};
+  return value
+}
 
 const getGroup = () => {
-  const id: string = getContext(GROUP_NAME);
-  const { elements } = get();
-  const { groupLabel } = elements;
+  const id: string = getContext(GROUP_NAME)
+  const { elements } = get()
+  const { groupLabel } = elements
 
   return {
     id,
     groupLabel,
-  };
-};
+  }
+}
 
 const ctx = {
   create,
@@ -63,6 +63,6 @@ const ctx = {
   createItem,
   getItem,
   getGroup,
-};
+}
 
-export default ctx;
+export default ctx

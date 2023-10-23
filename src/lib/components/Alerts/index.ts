@@ -1,3 +1,3 @@
-import Alerts from "./Alerts.svelte";
+import Alerts from "./Alerts.svelte"
 
-export { Alerts };
+export { Alerts }

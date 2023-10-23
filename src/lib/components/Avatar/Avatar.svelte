@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { CreateAvatarProps } from "@melt-ui/svelte";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import type { CreateAvatarProps } from "@melt-ui/svelte"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = Omit<CreateAvatarProps, "src"> & {
-    asChild?: boolean;
-  };
+    asChild?: boolean
+  }
 
-  export let asChild: $$Props["asChild"] = false;
-  export { className as class };
+  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -24,12 +24,12 @@
       rounded-lg
       overflow-hidden
     `,
-  });
+  })
 
   ctx.create({
     ...$$restProps,
     src: "",
-  });
+  })
 </script>
 
 {#if asChild}

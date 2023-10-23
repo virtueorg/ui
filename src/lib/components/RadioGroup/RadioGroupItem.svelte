@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import { melt } from "@melt-ui/svelte";
-  import type { HTMLButtonAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
-  import ctx from "./ctx";
+  import { cn } from "$lib/utils/misc"
+  import { melt } from "@melt-ui/svelte"
+  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
   type $$Props = Omit<HTMLButtonAttributes, "value"> & {
-    value: string;
-    disabled?: boolean;
-    asChild?: boolean;
-  };
+    value: string
+    disabled?: boolean
+    asChild?: boolean
+  }
 
-  export { className as class };
-  export let asChild: $$Props["asChild"] = false;
-  export let value: $$Props["value"];
-  export let disabled: $$Props["disabled"] = false;
+  export { className as class }
+  export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"]
+  export let disabled: $$Props["disabled"] = false
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -35,10 +35,10 @@
 
       data-[state=checked]:border-primary
     `,
-  });
+  })
 
-  const { elements } = ctx.createItem(value);
-  const { item } = elements;
+  const { elements } = ctx.createItem(value)
+  const { item } = elements
 </script>
 
 {#if asChild}

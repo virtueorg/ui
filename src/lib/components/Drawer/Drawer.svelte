@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { CreateDialogProps } from "@melt-ui/svelte";
-  import ctx from "./ctx";
+  import type { CreateDialogProps } from "@melt-ui/svelte"
+  import ctx from "./ctx"
 
-  type $$Props = CreateDialogProps;
+  type $$Props = CreateDialogProps
 
-  ctx.create($$restProps);
+  ctx.create($$restProps)
 </script>
 
 <slot />

@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLThAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLThAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLThAttributes;
+  type $$Props = HTMLThAttributes
 
-  export { className as class };
+  export { className as class }
 
-  let className = "";
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -15,7 +15,7 @@
       text-left
       align-middle
     `,
-  });
+  })
 </script>
 
 <th class={cn(style.base, className)} {...$$restProps}>

@@ -1,3 +1,3 @@
-import BoxIllustration from "./BoxIllustration.svelte";
+import BoxIllustration from "./BoxIllustration.svelte"
 
-export { BoxIllustration };
+export { BoxIllustration }

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { CreateTooltipProps } from "@melt-ui/svelte";
-  import ctx from "./ctx";
+  import type { CreateTooltipProps } from "@melt-ui/svelte"
+  import ctx from "./ctx"
 
-  type $$Props = CreateTooltipProps;
+  type $$Props = CreateTooltipProps
 
-  ctx.create($$restProps);
+  ctx.create($$restProps)
 </script>
 
 <slot />

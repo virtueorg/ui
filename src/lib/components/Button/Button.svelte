@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type { IVariant } from "$lib/types";
-  import { cn } from "$lib/utils/misc";
-  import type { HTMLButtonAttributes } from "svelte/elements";
-  import { tv } from "tailwind-variants";
+  import type { IVariant } from "$lib/types"
+  import { cn } from "$lib/utils/misc"
+  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
 
   type $$Props = HTMLButtonAttributes & {
-    variant?: IVariant;
-  };
+    variant?: IVariant
+  }
 
-  export { className as class };
-  export let variant: $$Props["variant"] = "default";
+  export { className as class }
+  export let variant: $$Props["variant"] = "default"
 
   const style = tv({
     base: cn`
@@ -55,9 +55,9 @@
         `,
       },
     },
-  });
+  })
 
-  let className = "";
+  let className = ""
 </script>
 
 <button class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
