@@ -1,4 +1,3 @@
-import Select from "./Select.svelte"
 import SelectArrow from "./SelectArrow.svelte"
 import SelectContent from "./SelectContent.svelte"
 import SelectGroup from "./SelectGroup.svelte"
@@ -7,6 +6,7 @@ import SelectItem from "./SelectItem.svelte"
 import SelectItemIndicator from "./SelectItemIndicator.svelte"
 import SelectLabel from "./SelectLabel.svelte"
 import SelectMessage from "./SelectMessage.svelte"
+import Select from "./SelectRoot.svelte"
 import SelectTrigger from "./SelectTrigger.svelte"
 import SelectValue from "./SelectValue.svelte"
 
@@ -21,5 +21,6 @@ export {
   SelectLabel,
   SelectMessage,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 }
+

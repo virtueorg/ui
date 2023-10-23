@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { TickIcon } from "$lib/icons"
+  import { Icon, TickIcon } from "$lib"
   import { tv } from "tailwind-variants"
-  import { Icon } from "../Icon"
 
-  import { cn } from "$lib/utils"
+  import { cn } from "$lib"
   import ctx from "./ctx"
 
   const style = tv({

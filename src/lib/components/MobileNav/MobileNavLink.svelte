@@ -1,10 +1,8 @@
 <script lang="ts">
   import { navigating, page } from "$app/stores"
-  import { SpinnerIcon } from "$lib/icons"
-  import { cn } from "$lib/utils/misc"
+  import { Icon, SpinnerIcon, cn } from "$lib"
   import type { HTMLAnchorAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import { Icon } from "../Icon"
 
   type $$Props = HTMLAnchorAttributes
 

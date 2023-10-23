@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { MinusIcon, TickIcon } from "$lib/icons"
-  import { cn } from "$lib/utils/misc"
+  import { Icon, MinusIcon, TickIcon, cn } from "$lib"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import { Icon } from "../Icon"
   import ctx from "./ctx"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & {

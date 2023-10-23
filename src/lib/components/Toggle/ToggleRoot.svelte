@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
-  import { melt, type CreateCheckboxProps } from "@melt-ui/svelte"
+  import { cn } from "$lib"
+  import { melt, type CreateSwitchProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateCheckboxProps, "checked"> & {
-    checked?: CreateCheckboxProps["defaultChecked"]
+  type $$Props = Omit<CreateSwitchProps, "checked"> & {
+    checked?: CreateSwitchProps["defaultChecked"]
     asChild?: boolean
   }
 
   export { className as class }
+
   export let checked: $$Props["checked"] = false
   export let onCheckedChange: $$Props["onCheckedChange"] = undefined
   export let asChild: $$Props["asChild"] = false
@@ -20,23 +20,31 @@
   const style = tv({
     base: cn`
       transition-all
-      flex
+      peer
+      inline-flex
+      h-6
+      w-11
+      shrink-0
+      cursor-pointer
       items-center
-      w-full
-      border
+      rounded-full
+      border-2
+      bg-muted/50
       border-transparent
-      bg-muted/5
-      text-left
-      p-3
-      rounded-lg
 
-      hover:bg-muted/10
-
-      data-[state=checked]:border-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-50
     `,
+    variants: {
+      checked: {
+        true: cn`
+          bg-primary
+        `,
+      },
+    },
   })
 
-  const handleChange: CreateCheckboxProps["onCheckedChange"] = ({ next }) => {
+  const handleChange: CreateSwitchProps["onCheckedChange"] = ({ next }) => {
     checked = next
     return next
   }
@@ -46,7 +54,6 @@
     defaultChecked: checked,
     onCheckedChange: onCheckedChange || handleChange,
   })
-
   const { root } = elements
 </script>
 
@@ -55,7 +62,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ checked }), className)}
     use:melt={$root}
     {...$$restProps}
     on:click

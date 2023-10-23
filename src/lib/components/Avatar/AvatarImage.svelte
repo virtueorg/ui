@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLImgAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"

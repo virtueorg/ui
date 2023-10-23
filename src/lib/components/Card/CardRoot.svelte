@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLElement>
+  type $$Props = HTMLAttributes<HTMLDivElement>
 
   export { className as class }
 
@@ -11,13 +11,12 @@
 
   const style = tv({
     base: cn`
-      w-full
-      bg-panel
-      p-2
+      rounded-lg
+      bg-muted/5
     `,
   })
 </script>
 
-<nav class={cn(style.base, className)} {...$$restProps}>
+<div class={cn(style.base, className)} {...$$restProps}>
   <slot />
-</nav>
+</div>

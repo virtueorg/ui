@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import { melt, type AccordionItemProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"

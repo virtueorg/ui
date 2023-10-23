@@ -9,7 +9,7 @@ import { getContext, setContext } from "svelte"
 const NAME = "accordion"
 const ITEM_NAME = "accordion-item"
 
-const create = (props: CreateAccordionProps) => {
+const create = (props: CreateAccordionProps<boolean>) => {
   const accordion = createAccordion(props)
 
   setContext(NAME, accordion)

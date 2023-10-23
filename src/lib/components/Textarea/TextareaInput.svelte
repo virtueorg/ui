@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import type { HTMLTextareaAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 

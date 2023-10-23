@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import { melt, type CreateRadioGroupProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
@@ -42,7 +42,7 @@
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <div use:melt={$root} class={cn(style.base, className)} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
     <slot />
   </div>
 {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import { melt, type CreateTabsProps } from "@melt-ui/svelte"
   import ctx from "./ctx"
 

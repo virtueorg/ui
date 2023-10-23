@@ -1,4 +1,3 @@
-import DropdownMenu from "./DropdownMenu.svelte"
 import DropdownMenuArrow from "./DropdownMenuArrow.svelte"
 import DropdownMenuCheckboxIndicator from "./DropdownMenuCheckboxIndicator.svelte"
 import DropdownMenuCheckboxItem from "./DropdownMenuCheckboxItem.svelte"
@@ -9,6 +8,7 @@ import DropdownMenuLabel from "./DropdownMenuLabel.svelte"
 import DropdownMenuRadioGroup from "./DropdownMenuRadioGroup.svelte"
 import DropdownMenuRadioIndicator from "./DropdownMenuRadioIndicator.svelte"
 import DropdownMenuRadioItem from "./DropdownMenuRadioItem.svelte"
+import DropdownMenu from "./DropdownMenuRoot.svelte"
 import DropdownMenuSeparator from "./DropdownMenuSeparator.svelte"
 import DropdownMenuSub from "./DropdownMenuSub.svelte"
 import DropdownMenuSubContent from "./DropdownMenuSubContent.svelte"
@@ -31,5 +31,6 @@ export {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 }
+

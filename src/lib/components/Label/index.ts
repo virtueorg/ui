@@ -1,3 +1,3 @@
-import Label from "./Label.svelte"
+import Label from "./LabelRoot.svelte"
 
 export { Label }

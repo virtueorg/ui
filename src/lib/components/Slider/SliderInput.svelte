@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import type { HTMLInputAttributes } from "svelte/elements"
   import ctx from "./ctx"
 

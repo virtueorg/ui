@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte"
   import ctx from "./ctx"
 

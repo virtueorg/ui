@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { cn } from "$lib"
   import type { IHeadingTag } from "$lib/types"
-  import { cn } from "$lib/utils/misc"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 

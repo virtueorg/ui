@@ -1,3 +1,3 @@
-import Icon from "./Icon.svelte"
+import Icon from "./IconRoot.svelte"
 
 export { Icon }

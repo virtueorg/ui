@@ -1,10 +1,10 @@
 <script lang="ts">
+  import { cn } from "$lib"
   import type { IVariant } from "$lib/types"
-  import { cn } from "$lib/utils/misc"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & {
+  type $$Props = HTMLAttributes<HTMLDivElement> & {
     variant?: IVariant
   }
 
@@ -15,32 +15,25 @@
 
   const style = tv({
     base: cn`
-      inline-flex
-      items-center
-      gap-2
-      py-2
-      px-3
-      rounded-lg
+      w-5
+      h-5
+      shrink-0
     `,
     variants: {
       variant: {
         default: cn`
-          bg-transparent
+          text-inherit
         `,
         success: cn`
-          bg-primary/5
           text-primary
         `,
         info: cn`
-          bg-muted/5
           text-muted
         `,
         warning: cn`
-          bg-warning/5
           text-warning
         `,
         error: cn`
-          bg-error/5
           text-error
         `,
       },
@@ -48,6 +41,6 @@
   })
 </script>
 
-<span class={cn(style.base, style({ variant }), className)} {...$$restProps}>
+<div class={cn(style.base, style({ variant }), className)} {...$$restProps}>
   <slot />
-</span>
+</div>

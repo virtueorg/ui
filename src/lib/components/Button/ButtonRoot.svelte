@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { cn } from "$lib"
   import type { IVariant } from "$lib/types"
-  import { cn } from "$lib/utils/misc"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 

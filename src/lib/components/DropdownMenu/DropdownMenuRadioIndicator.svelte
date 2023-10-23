@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { DotIcon } from "$lib/icons"
-  import Icon from "../Icon/Icon.svelte"
+  import { DotIcon, Icon } from "$lib"
   import ctx from "./ctx"
 
   const { helpers, value } = ctx.getRadioItem()

@@ -1,5 +1,5 @@
+import { ALERT_TIMEOUT } from "$lib"
 import type { IAlert } from "$lib/types"
-import { ALERT_TIMEOUT } from "$lib/utils/const"
 import { nanoid } from "nanoid"
 import { writable, type Writable } from "svelte/store"
 

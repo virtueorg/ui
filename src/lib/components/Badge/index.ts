@@ -1,3 +1,3 @@
-import Badge from "./Badge.svelte"
+import Badge from "./BadgeRoot.svelte"
 
 export { Badge }

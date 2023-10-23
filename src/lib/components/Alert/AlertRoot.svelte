@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { cn } from "$lib"
   import type { IVariant } from "$lib/types"
-  import { cn } from "$lib/utils/misc"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
@@ -11,36 +11,42 @@
   export { className as class }
   export let variant: $$Props["variant"] = "default"
 
-  let className = ""
-
   const style = tv({
     base: cn`
+      rounded-lg
       flex
       items-center
+      p-4
       gap-2
     `,
     variants: {
       variant: {
         default: cn`
-          text-inherit
+          bg-panel
         `,
         success: cn`
-          text-primary
+          bg-primary
+          text-background
         `,
         info: cn`
+          bg-panel
           text-muted
         `,
         warning: cn`
-          text-warning
+          bg-warning
+          text-background
         `,
         error: cn`
-          text-error
+          bg-error
+          text-background
         `,
       },
     },
   })
+
+  let className = ""
 </script>
 
-<div class={cn(style.base, style({ variant }), className)} {...$$restProps}>
+<div role="alert" class={cn(style.base, style({ variant }), className)} {...$$restProps}>
   <slot />
 </div>

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { TickIcon } from "$lib/icons"
-  import { Icon } from "../Icon"
+  import { Icon, TickIcon } from "$lib"
   import ctx from "./ctx"
 
   const value = ctx.getItem()

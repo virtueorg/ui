@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils"
+  import { cn } from "$lib"
   import type { CreateSelectProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"

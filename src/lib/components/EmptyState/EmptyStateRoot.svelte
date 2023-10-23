@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/misc"
+  import { cn } from "$lib"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
@@ -13,7 +13,10 @@
     base: cn`
       flex
       flex-col
-      gap-2
+      items-center
+      justify-center
+      gap-3
+      text-center
     `,
   })
 </script>

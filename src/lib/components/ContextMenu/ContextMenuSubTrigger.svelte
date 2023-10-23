@@ -1,10 +1,8 @@
 <script lang="ts">
-  import ChevronRightIcon from "$lib/icons/ChevronRightIcon.svelte"
-  import { cn } from "$lib/utils/misc"
+  import { ChevronRightIcon, cn, Icon } from "$lib"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import Icon from "../Icon/Icon.svelte"
   import ctx from "./ctx"
 
   type $$Props = HTMLButtonAttributes & {
