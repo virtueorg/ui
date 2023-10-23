@@ -11,8 +11,8 @@
 
   const style = tv({
     base: cn`
-      w-40;
-      h-40;
+      w-40
+      h-40
     `,
   });
 </script>
