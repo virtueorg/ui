@@ -6,7 +6,7 @@ const NAME = "select"
 const GROUP_NAME = "select-group"
 const ITEM_NAME = "select-item"
 
-const create = (props: CreateSelectProps) => {
+const create = (props: CreateSelectProps<string, boolean>) => {
   const select = createSelect(props)
 
   setContext(NAME, select)
@@ -15,7 +15,7 @@ const create = (props: CreateSelectProps) => {
 }
 
 const get = () => {
-  const select: Select = getContext(NAME)
+  const select: Select<string, boolean> = getContext(NAME)
 
   return select
 }

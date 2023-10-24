@@ -4,8 +4,8 @@
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateSelectProps, "selected" | "multiple"> & {
-    selected?: CreateSelectProps["defaultSelected"]
+  type $$Props = Omit<CreateSelectProps<string, boolean>, "selected" | "multiple"> & {
+    selected?: CreateSelectProps<string, boolean>["defaultSelected"]
     multiple?: boolean
   }
 
@@ -23,7 +23,7 @@
     `,
   })
 
-  const handleChange: CreateSelectProps["onSelectedChange"] = ({ next }) => {
+  const handleChange: CreateSelectProps<string, boolean>["onSelectedChange"] = ({ next }) => {
     selected = next
 
     return next
