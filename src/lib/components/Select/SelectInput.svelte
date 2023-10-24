@@ -9,6 +9,7 @@
   }
 
   export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"] = undefined
   export { className as class }
 
   let className = ""
@@ -20,5 +21,5 @@
 {#if asChild}
   <slot builder={$hiddenInput} />
 {:else}
-  <input class={cn(className)} use:melt={$hiddenInput} {...$$restProps} />
+  <input class={cn(className)} use:melt={$hiddenInput} {...$$restProps} bind:value />
 {/if}
