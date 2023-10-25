@@ -15,7 +15,7 @@
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
   export let disabled: $$Props["disabled"] = false
-  export let label: $$Props["label"] = ""
+  export let label: $$Props["label"] = undefined
   export { className as class }
 
   let className = ""
