@@ -32,8 +32,6 @@
       border-transparent
       cursor-pointer
       
-      active:scale-95
-      
       hover:bg-muted/5
       
       data-[selected]:border-primary
