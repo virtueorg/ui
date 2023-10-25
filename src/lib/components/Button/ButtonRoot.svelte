@@ -21,11 +21,8 @@
       justify-center
       gap-2
 
-      active:scale-95
-
       disabled:bg-muted/5
       disabled:text-muted
-      disabled:active:scale-100
     `,
     variants: {
       variant: {

@@ -21,10 +21,6 @@
       justify-center
       rounded-lg
       opacity-50
-        
-      hover:bg-muted/5
-        
-      active:scale-95
     `,
     variants: {
       active: {

@@ -29,8 +29,6 @@
       p-2
       cursor-pointer
     
-      active:scale-95
-    
       hover:bg-muted/5
     `,
   })
