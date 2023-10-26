@@ -47,11 +47,14 @@
 {#if asChild}
   <slot builder={$radioItem({ value, disabled })} />
 {:else}
-  <div
+  <button
+    type="button"
     class={cn(style.base, style({ disabled }), className)}
     use:melt={$radioItem({ value, disabled })}
+    {disabled}
     {...$$restProps}
+    on:click
   >
     <slot />
-  </div>
+  </button>
 {/if}
