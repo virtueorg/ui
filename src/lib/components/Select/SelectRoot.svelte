@@ -6,6 +6,7 @@
 
   type $$Props = CreateSelectProps<string, boolean>
 
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -16,11 +17,19 @@
       flex-col
       gap-2
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  ctx.create($$restProps)
+  ctx.create({ ...$$restProps, disabled })
 </script>
 
-<div class={cn(style.base, className)} {...$$restProps}>
+<div class={cn(style.base, style({ disabled }), className)} {...$$restProps}>
   <slot />
 </div>
