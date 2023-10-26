@@ -1,13 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import ctx from "./ctx"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean
-    value: string
-  }
+  type $$Props = HTMLAttributes<HTMLDivElement> &
+    AsChild & {
+      value: string
+    }
 
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]

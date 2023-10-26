@@ -10,6 +10,7 @@
 
   export { className as class }
   export let variant: $$Props["variant"] = "default"
+  export let disabled: $$Props["disabled"] = false
 
   const style = tv({
     base: cn`
@@ -20,9 +21,6 @@
       items-center
       justify-center
       gap-2
-
-      disabled:bg-muted/5
-      disabled:text-muted
     `,
     variants: {
       variant: {
@@ -51,12 +49,24 @@
           hover:bg-error/10
         `,
       },
+      disabled: {
+        true: cn`
+            bg-muted/5
+            text-muted
+            cursor-default
+          `,
+      },
     },
   })
 
   let className = ""
 </script>
 
-<button class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
+<button
+  class={cn(style.base, style({ variant, disabled: disabled || false }), className)}
+  {...$$restProps}
+  {disabled}
+  on:click
+>
   <slot />
 </button>

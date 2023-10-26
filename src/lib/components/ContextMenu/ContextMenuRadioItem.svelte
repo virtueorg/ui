@@ -1,17 +1,18 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> & {
-    value: string
-    disabled?: boolean
-    asChild?: boolean
-  }
+  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> &
+    AsChild & {
+      value: string
+      disabled?: boolean
+    }
 
-  export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
+  export let asChild: $$Props["asChild"] = false
   export let disabled: $$Props["disabled"] = false
   export { className as class }
 
@@ -29,6 +30,14 @@
 
       hover:bg-muted/5
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
   const { elements } = ctx.createRadioItem(value)
@@ -39,7 +48,7 @@
   <slot builder={$radioItem({ value, disabled })} />
 {:else}
   <div
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     use:melt={$radioItem({ value, disabled })}
     {...$$restProps}
   >

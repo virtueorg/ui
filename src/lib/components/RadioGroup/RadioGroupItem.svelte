@@ -1,20 +1,22 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<HTMLButtonAttributes, "value"> & {
-    value: string
-    disabled?: boolean
-    asChild?: boolean
-  }
+  // TODO: Review this
+  type $$Props = Omit<HTMLButtonAttributes, "value"> &
+    AsChild & {
+      value: string
+      disabled?: boolean
+    }
 
   export { className as class }
-  export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
   export let disabled: $$Props["disabled"] = false
+  export let asChild: $$Props["asChild"] = false
 
   let className = ""
 
@@ -35,6 +37,13 @@
 
       data-[state=checked]:border-primary
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+        `,
+      },
+    },
   })
 
   const { elements } = ctx.createItem(value)
@@ -47,7 +56,7 @@
   <button
     type="button"
     use:melt={$item({ value, disabled })}
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     {...$$restProps}
     on:click
   >

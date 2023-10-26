@@ -10,6 +10,7 @@
 
   export { className as class }
   export let value: $$Props["value"] = undefined
+  export let disabled: $$Props["disabled"] = false
   export let hasIcon: $$Props["hasIcon"] = false
   export let hasLabel: $$Props["hasLabel"] = false
 
@@ -33,12 +34,19 @@
           pt-8
         `,
       },
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
     },
   })
 </script>
 
 <input
-  class={cn(style.base, style({ hasIcon, hasLabel }), className)}
+  class={cn(style.base, style({ hasIcon, hasLabel, disabled: disabled || false }), className)}
+  {disabled}
   {...$$restProps}
   bind:value
 />

@@ -1,11 +1,11 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = {
-    asChild?: boolean
+  type $$Props = AsChild & {
     level?: 1 | 2 | 3 | 4 | 5 | 6
   }
 

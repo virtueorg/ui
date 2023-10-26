@@ -1,18 +1,13 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateProgressProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ProgressLine from "./ProgressLine.svelte"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateProgressProps, "value"> & {
-    value?: CreateProgressProps["defaultValue"]
-    asChild?: boolean
-  }
+  type $$Props = CreateProgressProps & AsChild
 
   export { className as class }
-  export let max: $$Props["max"] = 100
-  export let value: $$Props["value"] = 0
   export let asChild: $$Props["asChild"] = false
 
   let className = ""
@@ -28,14 +23,12 @@
 
   const { elements } = ctx.create($$restProps)
   const { root } = elements
-
-  $: percentage = (value! * 100) / max!
 </script>
 
 {#if asChild}
   <slot builder={$root} />
 {:else}
   <div class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
-    <ProgressLine value={percentage} />
+    <slot />
   </div>
 {/if}

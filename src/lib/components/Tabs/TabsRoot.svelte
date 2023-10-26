@@ -1,11 +1,10 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateTabsProps } from "@melt-ui/svelte"
   import ctx from "./ctx"
 
-  type $$Props = CreateTabsProps & {
-    asChild?: boolean
-  }
+  type $$Props = CreateTabsProps & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

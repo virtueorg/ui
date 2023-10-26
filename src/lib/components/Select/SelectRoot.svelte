@@ -4,13 +4,9 @@
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateSelectProps<string, boolean>, "selected" | "multiple"> & {
-    selected?: CreateSelectProps<string, boolean>["defaultSelected"]
-    multiple?: boolean
-  }
+  type $$Props = CreateSelectProps<string, boolean>
 
-  export let selected: $$Props["selected"] = undefined
-  export let onSelectedChange: $$Props["onSelectedChange"] = undefined
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -21,21 +17,19 @@
       flex-col
       gap-2
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const handleChange: CreateSelectProps<string, boolean>["onSelectedChange"] = ({ next }) => {
-    selected = next
-
-    return next
-  }
-
-  ctx.create({
-    ...$$restProps,
-    defaultSelected: selected,
-    onSelectedChange: onSelectedChange || handleChange,
-  })
+  ctx.create({ ...$$restProps, disabled })
 </script>
 
-<div class={cn(style.base, className)} {...$$restProps}>
+<div class={cn(style.base, style({ disabled }), className)} {...$$restProps}>
   <slot />
 </div>

@@ -1,11 +1,10 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import type { HTMLInputAttributes } from "svelte/elements"
   import ctx from "./ctx"
 
-  type $$Props = HTMLInputAttributes & {
-    asChild?: boolean
-  }
+  type $$Props = HTMLInputAttributes & AsChild
 
   export { className as class }
   export let asChild: $$Props["asChild"] = false

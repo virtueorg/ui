@@ -1,13 +1,12 @@
 <script lang="ts">
   import { ChevronDownIcon, Icon, cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = HTMLButtonAttributes & {
-    asChild?: boolean
-  }
+  type $$Props = HTMLButtonAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

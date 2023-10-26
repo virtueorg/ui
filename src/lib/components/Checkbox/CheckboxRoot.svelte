@@ -1,19 +1,15 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateCheckboxProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateCheckboxProps, "checked"> & {
-    checked?: CreateCheckboxProps["defaultChecked"]
-    asChild?: boolean
-  }
+  type $$Props = CreateCheckboxProps & AsChild
 
   export { className as class }
-  export let checked: $$Props["checked"] = false
-  export let onCheckedChange: $$Props["onCheckedChange"] = undefined
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
 
   let className = ""
 
@@ -34,19 +30,17 @@
 
       data-[state=checked]:border-primary
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const handleChange: CreateCheckboxProps["onCheckedChange"] = ({ next }) => {
-    checked = next
-    return next
-  }
-
-  const { elements } = ctx.create({
-    ...$$restProps,
-    defaultChecked: checked,
-    onCheckedChange: onCheckedChange || handleChange,
-  })
-
+  const { elements } = ctx.create({ ...$$restProps, disabled })
   const { root } = elements
 </script>
 
@@ -55,7 +49,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     use:melt={$root}
     {...$$restProps}
     on:click

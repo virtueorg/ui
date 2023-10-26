@@ -1,13 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & {
-    asChild?: boolean
-    placeholder?: string
-  }
+  type $$Props = HTMLAttributes<HTMLSpanElement> &
+    AsChild & {
+      placeholder?: string
+    }
 
   export let placeholder: $$Props["placeholder"] = ""
   export let asChild: $$Props["asChild"] = false

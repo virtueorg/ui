@@ -1,18 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateSliderProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateSliderProps, "value"> & {
-    asChild?: boolean
-    value?: number[]
-  }
+  type $$Props = CreateSliderProps & AsChild
 
   export let asChild: $$Props["asChild"] = false
-  export let value: $$Props["value"] = [0]
-  export let max: $$Props["max"] = 100
-  export let onValueChange: $$Props["onValueChange"] = undefined
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -27,27 +23,24 @@
       bg-muted/5
       rounded-lg
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const handleChange: CreateSliderProps["onValueChange"] = ({ next }) => {
-    value = next
-
-    return next
-  }
-
-  const { elements } = ctx.create({
-    ...$$restProps,
-    defaultValue: value,
-    max: max,
-    onValueChange: onValueChange || handleChange,
-  })
+  const { elements } = ctx.create({ ...$$restProps, disabled })
   const { root } = elements
 </script>
 
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <span class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
+  <span class={cn(style.base, style({ disabled }), className)} use:melt={$root} {...$$restProps}>
     <slot />
   </span>
 {/if}

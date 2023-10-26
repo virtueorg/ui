@@ -1,16 +1,17 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean
-    value: string
-    disabled?: boolean
-    label?: string
-  }
+  type $$Props = HTMLAttributes<HTMLDivElement> &
+    AsChild & {
+      value: string
+      disabled?: boolean
+      label?: string
+    }
 
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
@@ -40,6 +41,7 @@
       disabled: {
         true: cn`
           opacity-50
+          cursor-default
         `,
       },
     },

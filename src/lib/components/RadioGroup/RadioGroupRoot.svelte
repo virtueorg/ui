@@ -1,19 +1,15 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateRadioGroupProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateRadioGroupProps, "value"> & {
-    value?: CreateRadioGroupProps["defaultValue"]
-    asChild?: boolean
-  }
+  type $$Props = CreateRadioGroupProps & AsChild
 
+  export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
-  export let value: $$Props["value"] = undefined
-  export let onValueChange: $$Props["onValueChange"] = undefined
-
-  export let asChild: boolean = false
 
   const style = tv({
     base: cn`
@@ -21,28 +17,26 @@
       flex-col
       gap-2
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
   let className = ""
 
-  const handleChange: CreateRadioGroupProps["onValueChange"] = ({ next }) => {
-    value = next
-
-    return next
-  }
-
-  const { elements } = ctx.create({
-    ...$$restProps,
-    defaultValue: value,
-    onValueChange: onValueChange || handleChange,
-  })
+  const { elements } = ctx.create({ ...$$restProps, disabled })
   const { root } = elements
 </script>
 
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
+  <div class={cn(style.base, style({ disabled }), className)} use:melt={$root} {...$$restProps}>
     <slot />
   </div>
 {/if}

@@ -2,13 +2,11 @@
   import { cn } from "$lib"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
+  import ctx from "./ctx"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
-    value?: number
-  }
+  type $$Props = HTMLAttributes<HTMLDivElement>
 
   export { className as class }
-  export let value: $$Props["value"] = 0
 
   let className = ""
 
@@ -20,6 +18,12 @@
       rounded-lg
     `,
   })
+
+  const { states, options } = ctx.get()
+  const { value } = states
+  const { max } = options
+
+  $: percentage = ($value * 100) / $max
 </script>
 
-<div class={cn(style.base, className)} style="width: {value}%" {...$$restProps} />
+<div class={cn(style.base, className)} style="width: {percentage}%" {...$$restProps} />
