@@ -20,18 +20,31 @@
       w-5
       rounded-lg
       bg-primary
-
-      disabled:pointer-events-none
-      disabled:opacity-50
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+          pointer-events-none
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.get()
+  const { elements, options } = ctx.get()
+  const { disabled } = options
   const { thumb } = elements
+
+  $: console.log($disabled)
 </script>
 
 {#if asChild}
   <slot builder={$thumb()} />
 {:else}
-  <span class={cn(style.base, className)} use:melt={$thumb()} {...$$restProps} />
+  <span
+    class={cn(style.base, style({ disabled: $disabled }), className)}
+    use:melt={$thumb()}
+    {...$$restProps}
+  />
 {/if}

@@ -37,6 +37,13 @@
 
       data-[state=checked]:border-primary
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+        `,
+      },
+    },
   })
 
   const { elements } = ctx.createItem(value)
@@ -49,7 +56,7 @@
   <button
     type="button"
     use:melt={$item({ value, disabled })}
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     {...$$restProps}
     on:click
   >

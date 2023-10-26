@@ -6,8 +6,8 @@
   import ctx from "./ctx"
 
   type $$Props = CreateSwitchProps & AsChild
-
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -26,9 +26,6 @@
       border-2
       bg-muted/50
       border-transparent
-
-      disabled:cursor-not-allowed
-      disabled:opacity-50
     `,
     variants: {
       checked: {
@@ -36,10 +33,16 @@
           bg-primary
         `,
       },
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
     },
   })
 
-  const { elements, states } = ctx.create($$restProps)
+  const { elements, states } = ctx.create({ ...$$restProps, disabled })
   const { checked } = states
   const { root } = elements
 </script>
@@ -49,8 +52,9 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, style({ checked: $checked }), className)}
+    class={cn(style.base, style({ checked: $checked, disabled }), className)}
     use:melt={$root}
+    {disabled}
     {...$$restProps}
     on:click
   >

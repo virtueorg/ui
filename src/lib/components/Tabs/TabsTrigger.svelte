@@ -36,6 +36,14 @@
       data-[state=active]:text-primary
       data-[state=active]:opacity-100
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-20
+          cursor-default
+        `,
+      },
+    },
   })
 
   const { elements } = ctx.get()
@@ -47,9 +55,11 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     use:melt={$trigger({ value, disabled })}
+    {disabled}
     {...$$restProps}
+    on:click
   >
     <slot />
   </button>

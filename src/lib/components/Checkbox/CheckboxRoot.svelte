@@ -9,6 +9,7 @@
 
   export { className as class }
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
 
   let className = ""
 
@@ -29,9 +30,17 @@
 
       data-[state=checked]:border-primary
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.create($$restProps)
+  const { elements } = ctx.create({ ...$$restProps, disabled })
   const { root } = elements
 </script>
 
@@ -40,7 +49,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled }), className)}
     use:melt={$root}
     {...$$restProps}
     on:click

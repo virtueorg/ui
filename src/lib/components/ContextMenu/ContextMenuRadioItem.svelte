@@ -5,13 +5,14 @@
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = CreateContextMenuRadioGroupProps &
+  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> &
     AsChild & {
+      value: string
       disabled?: boolean
     }
 
+  export let value: $$Props["value"]
   export let asChild: $$Props["asChild"] = false
-  export let value: $$Props["value"] = undefined
   export let disabled: $$Props["disabled"] = false
   export { className as class }
 
@@ -29,18 +30,26 @@
 
       hover:bg-muted/5
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.createRadioItem($value || "")
+  const { elements } = ctx.createRadioItem(value)
   const { radioItem } = elements
 </script>
 
 {#if asChild}
-  <slot builder={$radioItem({ value: $value || "", disabled })} />
+  <slot builder={$radioItem({ value, disabled })} />
 {:else}
   <div
-    class={cn(style.base, className)}
-    use:melt={$radioItem({ value: $value || "", disabled })}
+    class={cn(style.base, style({ disabled }), className)}
+    use:melt={$radioItem({ value, disabled })}
     {...$$restProps}
   >
     <slot />

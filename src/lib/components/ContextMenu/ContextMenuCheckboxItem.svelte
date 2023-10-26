@@ -8,6 +8,7 @@
   type $$Props = CreateContextMenuCheckboxItemProps & AsChild
 
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -24,16 +25,28 @@
 
       hover:bg-muted/5
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.createCheckboxItem($$restProps)
+  const { elements } = ctx.createCheckboxItem({ ...$$restProps, disabled })
   const { checkboxItem } = elements
 </script>
 
 {#if asChild}
   <slot builder={$checkboxItem} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$checkboxItem} {...$$restProps}>
+  <div
+    class={cn(style.base, style({ disabled }), className)}
+    use:melt={$checkboxItem}
+    {...$$restProps}
+  >
     <slot />
   </div>
 {/if}

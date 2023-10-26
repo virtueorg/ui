@@ -19,6 +19,14 @@
       bg-muted/5
       rounded-lg
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
   const { item, props } = ctx.setItem({ value, disabled })
@@ -27,7 +35,11 @@
 {#if asChild}
   <slot builder={$item(props)} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$item(props)} {...$$restProps}>
+  <div
+    class={cn(style.base, style({ disabled }), className)}
+    use:melt={$item(props)}
+    {...$$restProps}
+  >
     <slot />
   </div>
 {/if}

@@ -8,6 +8,7 @@
   type $$Props = CreateSliderProps & AsChild
 
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -22,16 +23,24 @@
       bg-muted/5
       rounded-lg
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.create($$restProps)
+  const { elements } = ctx.create({ ...$$restProps, disabled })
   const { root } = elements
 </script>
 
 {#if asChild}
   <slot builder={$root} />
 {:else}
-  <span class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
+  <span class={cn(style.base, style({ disabled }), className)} use:melt={$root} {...$$restProps}>
     <slot />
   </span>
 {/if}

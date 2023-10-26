@@ -9,6 +9,8 @@
   type $$Props = HTMLButtonAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
+  export let disabled: $$Props["disabled"] = false
+
   export { className as class }
 
   let className = ""
@@ -27,6 +29,14 @@
 
       hover:bg-muted/5
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-default
+        `,
+      },
+    },
   })
 
   const { elements } = ctx.get()
@@ -38,8 +48,9 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled: disabled || false }), className)}
     use:melt={$item}
+    {disabled}
     {...$$restProps}
     on:click
   >
