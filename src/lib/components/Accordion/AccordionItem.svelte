@@ -1,12 +1,11 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type AccordionItemProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Exclude<AccordionItemProps, string> & {
-    asChild?: boolean
-  }
+  type $$Props = Exclude<AccordionItemProps, string> & AsChild
 
   export let value: $$Props["value"]
   export let disabled: $$Props["disabled"] = false

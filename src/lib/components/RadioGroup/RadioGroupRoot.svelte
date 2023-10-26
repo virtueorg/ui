@@ -1,19 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateRadioGroupProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateRadioGroupProps, "value"> & {
-    value?: CreateRadioGroupProps["defaultValue"]
-    asChild?: boolean
-  }
-
-  export { className as class }
-  export let value: $$Props["value"] = undefined
-  export let onValueChange: $$Props["onValueChange"] = undefined
+  type $$Props = CreateRadioGroupProps & AsChild
 
   export let asChild: boolean = false
+  export { className as class }
 
   const style = tv({
     base: cn`
@@ -25,17 +20,7 @@
 
   let className = ""
 
-  const handleChange: CreateRadioGroupProps["onValueChange"] = ({ next }) => {
-    value = next
-
-    return next
-  }
-
-  const { elements } = ctx.create({
-    ...$$restProps,
-    defaultValue: value,
-    onValueChange: onValueChange || handleChange,
-  })
+  const { elements } = ctx.create($$restProps)
   const { root } = elements
 </script>
 

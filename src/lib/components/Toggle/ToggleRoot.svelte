@@ -1,19 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateSwitchProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateSwitchProps, "checked"> & {
-    checked?: CreateSwitchProps["defaultChecked"]
-    asChild?: boolean
-  }
+  type $$Props = CreateSwitchProps & AsChild
 
-  export { className as class }
-
-  export let checked: $$Props["checked"] = false
-  export let onCheckedChange: $$Props["onCheckedChange"] = undefined
   export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
 
@@ -44,16 +39,8 @@
     },
   })
 
-  const handleChange: CreateSwitchProps["onCheckedChange"] = ({ next }) => {
-    checked = next
-    return next
-  }
-
-  const { elements } = ctx.create({
-    ...$$restProps,
-    defaultChecked: checked,
-    onCheckedChange: onCheckedChange || handleChange,
-  })
+  const { elements, states } = ctx.create($$restProps)
+  const { checked } = states
   const { root } = elements
 </script>
 
@@ -62,7 +49,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, style({ checked }), className)}
+    class={cn(style.base, style({ checked: $checked }), className)}
     use:melt={$root}
     {...$$restProps}
     on:click

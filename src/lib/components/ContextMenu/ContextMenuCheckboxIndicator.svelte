@@ -1,12 +1,11 @@
 <script lang="ts">
   import { Icon, TickIcon, cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean
-  }
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

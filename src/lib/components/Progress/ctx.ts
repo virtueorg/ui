@@ -1,5 +1,5 @@
-import { createProgress, type CreateProgressProps } from "@melt-ui/svelte"
-import { setContext } from "svelte"
+import { createProgress, type CreateProgressProps, type Progress } from "@melt-ui/svelte"
+import { getContext, setContext } from "svelte"
 
 const NAME = "progress"
 
@@ -11,8 +11,15 @@ const create = (props: CreateProgressProps) => {
   return progress
 }
 
+const get = () => {
+  const progress: Progress = getContext(NAME)
+
+  return progress
+}
+
 const ctx = {
   create,
+  get,
 }
 
 export default ctx

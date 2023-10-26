@@ -1,17 +1,17 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt, type CreateDropdownMenuRadioGroupProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateDropdownMenuRadioGroupProps, "value"> & {
-    value: string
-    disabled?: boolean
-    asChild?: boolean
-  }
+  type $$Props = CreateDropdownMenuRadioGroupProps &
+    AsChild & {
+      disabled?: boolean
+    }
 
   export let asChild: $$Props["asChild"] = false
-  export let value: $$Props["value"]
+  export let value: $$Props["value"] = undefined
   export let disabled: $$Props["disabled"] = false
   export { className as class }
 
@@ -33,17 +33,17 @@
     `,
   })
 
-  const { elements } = ctx.createRadioItem(value)
+  const { elements } = ctx.createRadioItem($value || "")
   const { radioItem } = elements
 </script>
 
 {#if asChild}
-  <slot builder={$radioItem({ value, disabled })} />
+  <slot builder={$radioItem({ value: $value || "", disabled })} />
 {:else}
   <button
     type="button"
     class={cn(style.base, className)}
-    use:melt={$radioItem({ value, disabled })}
+    use:melt={$radioItem({ value: $value || "", disabled })}
     {...$$restProps}
     on:click
   >

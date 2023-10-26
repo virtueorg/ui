@@ -4,13 +4,8 @@
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<CreateSelectProps<string, boolean>, "selected" | "multiple"> & {
-    selected?: CreateSelectProps<string, boolean>["defaultSelected"]
-    multiple?: boolean
-  }
+  type $$Props = CreateSelectProps<string, boolean>
 
-  export let selected: $$Props["selected"] = undefined
-  export let onSelectedChange: $$Props["onSelectedChange"] = undefined
   export { className as class }
 
   let className = ""
@@ -23,17 +18,7 @@
     `,
   })
 
-  const handleChange: CreateSelectProps<string, boolean>["onSelectedChange"] = ({ next }) => {
-    selected = next
-
-    return next
-  }
-
-  ctx.create({
-    ...$$restProps,
-    defaultSelected: selected,
-    onSelectedChange: onSelectedChange || handleChange,
-  })
+  ctx.create($$restProps)
 </script>
 
 <div class={cn(style.base, className)} {...$$restProps}>

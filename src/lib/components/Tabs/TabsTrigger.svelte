@@ -1,15 +1,16 @@
 <script lang="ts">
   import { cn } from "$lib"
+  import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
-  type $$Props = Omit<HTMLButtonAttributes, "disabled"> & {
-    asChild?: boolean
-    value: string
-    disabled?: boolean
-  }
+  type $$Props = Omit<HTMLButtonAttributes, "disabled"> &
+    AsChild & {
+      value: string
+      disabled?: boolean
+    }
 
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
