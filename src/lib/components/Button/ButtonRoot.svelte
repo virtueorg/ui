@@ -51,10 +51,11 @@
       },
       disabled: {
         true: cn`
-            bg-muted/5
-            text-muted
-            cursor-default
-          `,
+          bg-muted/5
+          text-muted
+          cursor-not-allowed
+          hover:bg-muted/5
+        `,
       },
     },
   })
