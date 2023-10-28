@@ -16,8 +16,9 @@
   const style = tv({
     base: cn`
       w-full
-      bg-muted/5
+      bg-panel
       pointer-events-auto
+      
       md:max-w-lg
       md:rounded-lg
     `,
