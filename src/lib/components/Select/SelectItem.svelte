@@ -42,7 +42,7 @@
         true: cn`
           opacity-50
           cursor-not-allowed
-          hover:bg-panel
+          hover:bg-transparent
         `,
       },
     },
