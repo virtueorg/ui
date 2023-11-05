@@ -35,7 +35,8 @@
         true: cn`
           opacity-50
           cursor-not-allowed
-          hover:bg-muted/5
+
+          hover:bg-transparent
         `,
       },
     },
