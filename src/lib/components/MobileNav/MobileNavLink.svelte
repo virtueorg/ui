@@ -4,9 +4,12 @@
   import type { HTMLAnchorAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAnchorAttributes
+  type $$Props = HTMLAnchorAttributes & {
+    disabled?: boolean
+  }
 
   export let href: $$Props["href"] = ""
+  export let disabled: $$Props["disabled"] = false
   export { className as class }
 
   let className = ""
@@ -28,7 +31,17 @@
           opacity-100
           bg-primary/5
           text-primary
+
           hover:bg-primary/10
+        `,
+      },
+      disabled: {
+        true: cn`
+          opacity-20
+          cursor-not-allowed
+          pointer-events-none
+
+          hover:bg-transparent
         `,
       },
     },
@@ -38,7 +51,7 @@
   $: active = $page.url.pathname === href
 </script>
 
-<a {href} class={cn(style.base, style({ active }), className)} {...$$restProps} on:click>
+<a {href} class={cn(style.base, style({ active, disabled }), className)} {...$$restProps} on:click>
   {#if loading}
     <Icon>
       <SpinnerIcon />
