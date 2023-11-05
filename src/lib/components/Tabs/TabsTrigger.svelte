@@ -40,7 +40,7 @@
       disabled: {
         true: cn`
           opacity-20
-          cursor-default
+          cursor-not-allowed
         `,
       },
     },
