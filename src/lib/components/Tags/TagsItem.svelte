@@ -6,7 +6,7 @@
   import ctx from "./ctx"
 
   type $$Props = AsChild & {
-    name: string
+    name?: string
     item: Tag
   }
 
