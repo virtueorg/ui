@@ -34,8 +34,6 @@
   const { elements, options } = ctx.get()
   const { disabled } = options
   const { thumb } = elements
-
-  $: console.log($disabled)
 </script>
 
 {#if asChild}
