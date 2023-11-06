@@ -41,12 +41,16 @@
       disabled: {
         true: cn`
           opacity-50
+          cursor-not-allowed
+          
+          hover:bg-transparent
         `,
       },
     },
   })
 
-  const { elements } = ctx.createItem(value)
+  const { elements, options } = ctx.createItem(value)
+  const { disabled: rootDisabled } = options
   const { item } = elements
 </script>
 
@@ -56,7 +60,7 @@
   <button
     type="button"
     use:melt={$item({ value, disabled })}
-    class={cn(style.base, style({ disabled }), className)}
+    class={cn(style.base, style({ disabled: disabled || $rootDisabled }), className)}
     {...$$restProps}
     on:click
   >

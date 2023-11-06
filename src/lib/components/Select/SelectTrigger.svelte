@@ -24,16 +24,29 @@
       items-center
       justify-between
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          cursor-not-allowed
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.get()
+  const { elements, options } = ctx.get()
+  const { disabled } = options
   const { trigger } = elements
 </script>
 
 {#if asChild}
   <slot builder={$trigger} />
 {:else}
-  <button type="button" class={cn(style.base, className)} use:melt={$trigger} {...$$restProps}>
+  <button
+    type="button"
+    class={cn(style.base, style({ disabled: $disabled }), className)}
+    use:melt={$trigger}
+    {...$$restProps}
+  >
     <div>
       <slot />
     </div>

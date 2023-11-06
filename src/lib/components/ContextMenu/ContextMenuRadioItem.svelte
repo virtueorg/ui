@@ -21,6 +21,7 @@
   const style = tv({
     base: cn`
       transition-all
+      w-full
       flex
       items-center
       gap-2
@@ -34,7 +35,9 @@
       disabled: {
         true: cn`
           opacity-50
-          cursor-default
+          cursor-not-allowed
+
+          hover:bg-transparent
         `,
       },
     },

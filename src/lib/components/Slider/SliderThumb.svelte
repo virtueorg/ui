@@ -25,8 +25,7 @@
       disabled: {
         true: cn`
           opacity-50
-          cursor-default
-          pointer-events-none
+          cursor-not-allowed
         `,
       },
     },

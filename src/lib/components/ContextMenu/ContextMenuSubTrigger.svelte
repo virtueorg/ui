@@ -27,9 +27,20 @@
 
       hover:bg-muted/5
     `,
+    variants: {
+      disabled: {
+        true: cn`
+          opacity-50
+          cursor-not-allowed
+
+          hover:bg-transparent
+        `,
+      },
+    },
   })
 
-  const { elements } = ctx.getSub()
+  const { elements, options } = ctx.getSub()
+  const { disabled } = options
   const { subTrigger } = elements
 </script>
 
@@ -38,7 +49,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, className)}
+    class={cn(style.base, style({ disabled: $disabled }), className)}
     use:melt={$subTrigger}
     {...$$restProps}
     on:click

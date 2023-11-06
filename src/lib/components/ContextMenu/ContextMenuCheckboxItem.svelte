@@ -29,7 +29,9 @@
       disabled: {
         true: cn`
           opacity-50
-          cursor-default
+          cursor-not-allowed
+
+          hover:bg-transparent
         `,
       },
     },
