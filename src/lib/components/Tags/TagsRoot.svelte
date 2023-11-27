@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { cn } from "$lib"
   import type { AsChild } from "$lib/types"
-  import { cn } from "$lib/utils"
   import { melt, type CreateTagsInputProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
