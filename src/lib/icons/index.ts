@@ -6,6 +6,7 @@ import BoxIcon from "./BoxIcon.svelte"
 import BuildingIcon from "./BuildingIcon.svelte"
 import CalendarIcon from "./CalendarIcon.svelte"
 import ChevronDownIcon from "./ChevronDownIcon.svelte"
+import ChevronLeftIcon from "./ChevronLeftIcon.svelte"
 import ChevronRightIcon from "./ChevronRightIcon.svelte"
 import ClockIcon from "./ClockIcon.svelte"
 import CloseIcon from "./CloseIcon.svelte"
@@ -64,6 +65,7 @@ export {
   BuildingIcon,
   CalendarIcon,
   ChevronDownIcon,
+  ChevronLeftIcon,
   ChevronRightIcon,
   ClockIcon,
   CloseIcon,
