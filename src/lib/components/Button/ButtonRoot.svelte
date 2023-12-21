@@ -21,6 +21,8 @@
       items-center
       justify-center
       gap-2
+
+      active:scale-95
     `,
     variants: {
       variant: {
