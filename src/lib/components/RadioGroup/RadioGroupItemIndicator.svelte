@@ -1,9 +1,15 @@
 <script lang="ts">
-  import { Icon, TickIcon } from "$lib"
+  import { TRANSITION_BASE, cn } from "$lib"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
-
-  import { cn } from "$lib"
   import ctx from "./ctx"
+
+  type $$Props = HTMLAttributes<HTMLDivElement>
+
+  export { className as class }
+
+  let className = ""
 
   const style = tv({
     base: cn`
@@ -17,9 +23,7 @@
 </script>
 
 {#if $isChecked(value)}
-  <slot>
-    <Icon class={style.base}>
-      <TickIcon />
-    </Icon>
-  </slot>
+  <div class={cn(style.base, className)} {...$$restProps} transition:scale|global={TRANSITION_BASE}>
+    <slot />
+  </div>
 {/if}
