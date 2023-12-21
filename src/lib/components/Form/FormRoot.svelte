@@ -16,7 +16,7 @@
     base: cn`
       flex
       flex-col
-      gap-4
+      gap-5
     `,
   })
 </script>

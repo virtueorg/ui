@@ -12,7 +12,7 @@
   const style = tv({
     base: cn`
       mt-auto
-      p-4
+      p-5
     `,
   })
 </script>
