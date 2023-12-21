@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { TRANSITION_BASE, cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
@@ -35,7 +35,7 @@
       class={cn(style.base, className)}
       use:melt={$content(item)}
       {...$$restProps}
-      transition:slide|global
+      transition:slide|global={TRANSITION_BASE}
     >
       <slot />
     </div>

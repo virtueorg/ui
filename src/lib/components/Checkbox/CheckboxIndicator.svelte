@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { TRANSITION_BASE, cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import type { HTMLAttributes } from "svelte/elements"
   import { scale } from "svelte/transition"
@@ -28,7 +28,11 @@
   {#if asChild}
     <slot />
   {:else}
-    <div class={cn(style.base, className)} {...$$restProps} transition:scale|global>
+    <div
+      class={cn(style.base, className)}
+      {...$$restProps}
+      transition:scale|global={TRANSITION_BASE}
+    >
       <slot />
     </div>
   {/if}
