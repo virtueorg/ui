@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { CloseIcon, cn, Icon } from "$lib"
+  import { cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
+  import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
   type $$Props = HTMLButtonAttributes & AsChild
@@ -12,6 +13,12 @@
 
   let className = ""
 
+  const style = tv({
+    base: cn`
+      active:scale-95
+    `,
+  })
+
   const item = ctx.getItem()
   const { elements } = ctx.get()
   const { deleteTrigger } = elements
@@ -20,11 +27,12 @@
 {#if asChild}
   <slot builder={$deleteTrigger(item)} />
 {:else}
-  <button type="button" class={cn(className)} use:melt={$deleteTrigger(item)} {...$$restProps}>
-    <slot>
-      <Icon class="w-4 h-4">
-        <CloseIcon />
-      </Icon>
-    </slot>
+  <button
+    type="button"
+    class={cn(style.base, className)}
+    use:melt={$deleteTrigger(item)}
+    {...$$restProps}
+  >
+    <slot />
   </button>
 {/if}
