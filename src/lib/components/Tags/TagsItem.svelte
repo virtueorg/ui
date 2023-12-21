@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn, TRANSITION_SCALE } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt, type Tag } from "@melt-ui/svelte"
+  import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -44,7 +45,12 @@
 {#if asChild}
   <slot builder={$tag(item)} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$tag(item)} {...$$restProps}>
+  <div
+    class={cn(style.base, className)}
+    use:melt={$tag(item)}
+    {...$$restProps}
+    transition:scale|global={TRANSITION_SCALE}
+  >
     <input type="checkbox" {name} class="hidden" value={item.value} checked />
     <slot />
   </div>
