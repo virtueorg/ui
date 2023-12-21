@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { Icon, MinusIcon, TickIcon, cn } from "$lib"
+  import { cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import type { HTMLAttributes } from "svelte/elements"
+  import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -20,23 +21,15 @@
   let className = ""
 
   const { helpers } = ctx.get()
-  const { isChecked, isIndeterminate } = helpers
+  const { isChecked } = helpers
 </script>
 
-{#if asChild}
-  <slot isChecked={$isChecked} isIndeterminate={$isIndeterminate} />
-{:else}
-  <div class={cn(style.base, className)} {...$$restProps}>
-    <slot isChecked={$isChecked} isIndeterminate={$isIndeterminate}>
-      {#if $isChecked}
-        <Icon>
-          <TickIcon />
-        </Icon>
-      {:else if $isIndeterminate}
-        <Icon>
-          <MinusIcon />
-        </Icon>
-      {/if}
-    </slot>
-  </div>
+{#if $isChecked}
+  {#if asChild}
+    <slot />
+  {:else}
+    <div class={cn(style.base, className)} {...$$restProps} transition:scale|global>
+      <slot />
+    </div>
+  {/if}
 {/if}
