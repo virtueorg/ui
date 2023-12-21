@@ -21,6 +21,7 @@
   const style = tv({
     base: cn`
       transition-all
+      w-full
       flex
       items-center
       gap-2
@@ -29,6 +30,8 @@
       cursor-pointer
 
       hover:bg-muted/5
+
+      active:scale-95
     `,
     variants: {
       disabled: {

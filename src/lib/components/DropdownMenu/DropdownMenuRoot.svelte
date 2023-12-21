@@ -4,7 +4,9 @@
 
   type $$Props = CreateContextMenuProps
 
-  ctx.create($$restProps)
+  export let forceVisible: $$Props["forceVisible"] = true
+
+  ctx.create({ ...$$restProps, forceVisible })
 </script>
 
 <slot />
