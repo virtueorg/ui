@@ -3,6 +3,7 @@
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
+  import { slide } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -30,7 +31,12 @@
   {#if asChild}
     <slot builder={$content} />
   {:else}
-    <div class={cn(style.base, className)} use:melt={$content(item)} {...$$restProps}>
+    <div
+      class={cn(style.base, className)}
+      use:melt={$content(item)}
+      {...$$restProps}
+      transition:slide|global
+    >
       <slot />
     </div>
   {/if}
