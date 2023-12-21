@@ -1,15 +1,32 @@
 <script lang="ts">
-  import { DotIcon, Icon } from "$lib"
+  import { TRANSITION_SCALE, cn } from "$lib"
+  import type { HTMLAttributes } from "svelte/elements"
+  import { scale } from "svelte/transition"
+  import { tv } from "tailwind-variants"
   import ctx from "./ctx"
+
+  type $$Props = HTMLAttributes<HTMLDivElement>
+
+  export { className as class }
+
+  let className = ""
 
   const { helpers, value } = ctx.getRadioItem()
   const { isChecked } = helpers
+
+  const style = tv({
+    base: cn`
+      ml-auto
+    `,
+  })
 </script>
 
 {#if $isChecked(value)}
-  <slot>
-    <Icon class="ml-auto">
-      <DotIcon />
-    </Icon>
-  </slot>
+  <div
+    class={cn(style.base, className)}
+    {...$$restProps}
+    transition:scale|global={TRANSITION_SCALE}
+  >
+    <slot />
+  </div>
 {/if}
