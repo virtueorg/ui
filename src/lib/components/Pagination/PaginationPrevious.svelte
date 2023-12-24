@@ -23,6 +23,7 @@
       text-muted
 
       hover:bg-muted/10
+      active:scale-95
 
       disabled:bg-transparent
       disabled:opacity-50
