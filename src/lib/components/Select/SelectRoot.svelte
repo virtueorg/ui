@@ -7,6 +7,7 @@
   type $$Props = CreateSelectProps<string, boolean>
 
   export let disabled: $$Props["disabled"] = false
+  export let forceVisible: $$Props["forceVisible"] = true
   export { className as class }
 
   let className = ""
@@ -26,7 +27,7 @@
     },
   })
 
-  ctx.create({ ...$$restProps, disabled })
+  ctx.create({ ...$$restProps, disabled, forceVisible })
 </script>
 
 <div class={cn(style.base, style({ disabled }), className)} {...$$restProps}>

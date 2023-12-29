@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { TRANSITION_X_IN, cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
+  import { fly } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -33,7 +34,12 @@
 {#if asChild}
   <slot builder={$content} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$content} {...$$restProps}>
+  <div
+    class={cn(style.base, className)}
+    use:melt={$content}
+    {...$$restProps}
+    transition:fly|global={TRANSITION_X_IN}
+  >
     <slot />
   </div>
 {/if}

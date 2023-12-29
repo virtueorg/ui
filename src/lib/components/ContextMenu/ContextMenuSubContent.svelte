@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { TRANSITION_SCALE, cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
+  import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -30,7 +31,12 @@
   {#if asChild}
     <slot builder={$subMenu} />
   {:else}
-    <div class={cn(style.base, className)} use:melt={$subMenu} {...$$restProps}>
+    <div
+      class={cn(style.base, className)}
+      use:melt={$subMenu}
+      {...$$restProps}
+      transition:scale|global={TRANSITION_SCALE}
+    >
       <slot />
     </div>
   {/if}

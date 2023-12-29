@@ -28,6 +28,8 @@
 
       hover:bg-muted/10
 
+      active:scale-95
+
       data-[selected]:bg-primary
       data-[selected]:text-background
 

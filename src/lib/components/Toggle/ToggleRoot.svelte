@@ -26,6 +26,8 @@
       border-2
       bg-muted/50
       border-transparent
+
+      active:scale-95
     `,
     variants: {
       checked: {

@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { TRANSITION_BASE, cn } from "$lib"
   import type { AsChild } from "$lib/types"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
+  import { fade } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx"
 
@@ -30,7 +31,12 @@
 {#if asChild}
   <slot builder={$overlay} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$overlay} {...$$restProps}>
+  <div
+    class={cn(style.base, className)}
+    use:melt={$overlay}
+    {...$$restProps}
+    transition:fade|global={TRANSITION_BASE}
+  >
     <slot />
   </div>
 {/if}

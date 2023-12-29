@@ -34,6 +34,8 @@
       cursor-pointer
       
       hover:bg-muted/5
+
+      active:scale-95
       
       data-[selected]:border-primary
     `,
@@ -48,7 +50,7 @@
     },
   })
 
-  const { elements } = ctx.createItem(value)
+  const { elements, states } = ctx.createItem(value)
   const { option } = elements
 </script>
 

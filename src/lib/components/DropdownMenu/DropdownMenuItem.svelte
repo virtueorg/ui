@@ -28,6 +28,8 @@
       cursor-pointer
 
       hover:bg-muted/5
+
+      active:scale-95
     `,
     variants: {
       disabled: {

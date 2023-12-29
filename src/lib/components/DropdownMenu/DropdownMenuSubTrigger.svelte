@@ -24,15 +24,17 @@
       rounded-lg
       p-2
       cursor-pointer
-    
+
       hover:bg-muted/5
+
+      active:scale-95
     `,
     variants: {
       disabled: {
         true: cn`
           opacity-50
           cursor-not-allowed
-          
+
           hover:bg-transparent
         `,
       },
