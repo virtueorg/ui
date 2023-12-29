@@ -17,6 +17,9 @@
   const style = tv({
     base: cn`
       w-full
+      flex
+      flex-col
+      h-full
       bg-panel
       pointer-events-auto
       

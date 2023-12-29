@@ -9,7 +9,9 @@
 
   const style = tv({
     base: cn`
+      h-full
       p-5
+      overflow-y-auto
     `,
   })
 
