@@ -18,10 +18,12 @@
       fixed
       inset-0
       pointer-events-none
+      p-5
       flex
       items-end
       justify-center
       z-10
+
       md:items-center
     `,
   })

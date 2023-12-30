@@ -13,6 +13,7 @@
     base: cn`
       p-5
       h-full
+      overflow-y-auto
     `,
   })
 </script>
