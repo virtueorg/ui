@@ -6,11 +6,13 @@
 
   type $$Props = HTMLButtonAttributes & {
     variant?: IVariant
+    href?: string
   }
 
   export { className as class }
   export let variant: $$Props["variant"] = "default"
   export let disabled: $$Props["disabled"] = false
+  export let href: $$Props["href"] = ""
 
   const style = tv({
     base: cn`
@@ -71,11 +73,17 @@
   let className = ""
 </script>
 
-<button
-  class={cn(style.base, style({ variant, disabled: disabled || false }), className)}
-  {...$$restProps}
-  {disabled}
-  on:click
->
-  <slot />
-</button>
+{#if href}
+  <a class={cn(style.base, style({ variant, disabled: disabled || false }), className)} {href}>
+    <slot />
+  </a>
+{:else}
+  <button
+    class={cn(style.base, style({ variant, disabled: disabled || false }), className)}
+    {...$$restProps}
+    {disabled}
+    on:click
+  >
+    <slot />
+  </button>
+{/if}
