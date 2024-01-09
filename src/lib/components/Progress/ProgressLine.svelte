@@ -23,7 +23,7 @@
   const { value } = states
   const { max } = options
 
-  $: percentage = ($value * 100) / $max
+  $: percentage = ($value! * 100) / $max
 </script>
 
 <div class={cn(style.base, className)} style="width: {percentage}%" {...$$restProps} />
