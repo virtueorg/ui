@@ -33,12 +33,16 @@
     `,
   })
 
-  const { elements } = ctx.get()
+  const { elements, options } = ctx.get()
+
+  const { disabled } = options
   const { edit } = elements
 </script>
 
-{#if asChild}
-  <slot builder={$edit(item)} />
-{:else}
-  <div class={cn(style.base, className)} use:melt={$edit(item)} {...$$restProps} />
+{#if !$disabled}
+  {#if asChild}
+    <slot builder={$edit(item)} />
+  {:else}
+    <div class={cn(style.base, className)} use:melt={$edit(item)} {...$$restProps} />
+  {/if}
 {/if}
