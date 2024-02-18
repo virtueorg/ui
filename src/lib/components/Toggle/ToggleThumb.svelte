@@ -1,32 +1,32 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
-  export { className as class }
   export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
 
   const style = tv({
     base: cn`
       transition-all
-      pointer-events-none
-      block
-      h-5
-      w-5
-      rounded-full
-      bg-background
-      shadow-lg
-      ring-0
+      border
+      border-background/10
+      h-full
+      aspect-square
+      bg-muted
+      rounded-xl
     `,
     variants: {
       checked: {
         true: cn`
+          bg-foreground
+          border-foreground
           translate-x-5
         `,
       },
@@ -38,9 +38,7 @@
 </script>
 
 {#if asChild}
-  <slot checked={$checked} />
+  <slot />
 {:else}
-  <span class={cn(style.base, style({ checked: $checked }), className)} {...$$restProps}>
-    <slot checked={$checked} />
-  </span>
+  <div class={cn(style.base, style({ checked: $checked }), className)} {...$$restProps} />
 {/if}

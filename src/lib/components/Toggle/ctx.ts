@@ -1,9 +1,9 @@
 import { createSwitch, type CreateSwitchProps, type Switch } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "toggle"
+const NAME = "Toggle"
 
-const create = (props: CreateSwitchProps) => {
+const set = (props: CreateSwitchProps) => {
   const toggle = createSwitch(props)
 
   setContext(NAME, toggle)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 
