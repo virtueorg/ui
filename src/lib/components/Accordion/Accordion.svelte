@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt, type CreateAccordionProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = CreateAccordionProps<boolean> & AsChild
 
@@ -16,18 +16,20 @@
     base: cn`
       flex
       flex-col
-      gap-2
+      gap-3
     `,
   })
 
-  const { elements } = ctx.create($$restProps)
+  const { elements } = ctx.set($$restProps)
   const { root } = elements
+
+  $: builder = $root
 </script>
 
 {#if asChild}
-  <slot builder={$root} />
+  <slot {builder} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$root} {...$$restProps}>
-    <slot />
+  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </div>
 {/if}
