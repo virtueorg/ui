@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { TRANSITION_Y_OUT, cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { TRANSITION_BASE, cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
-  import { fly } from "svelte/transition"
+  import { slide } from "svelte/transition"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
@@ -16,27 +16,34 @@
 
   const style = tv({
     base: cn`
+      p-2
+      border
+      border-muted/5
       bg-panel
-      rounded-lg
+      rounded-xl
+      flex
+      flex-col
     `,
   })
 
   const { elements, states } = ctx.get()
   const { menu } = elements
   const { open } = states
+
+  $: builder = $menu
 </script>
 
 {#if $open}
   {#if asChild}
-    <slot builder={$menu} />
+    <slot {builder} />
   {:else}
     <div
       class={cn(style.base, className)}
-      use:melt={$menu}
+      use:melt={builder}
+      transition:slide|global={TRANSITION_BASE}
       {...$$restProps}
-      transition:fly|global={TRANSITION_Y_OUT}
     >
-      <slot />
+      <slot {builder} />
     </div>
   {/if}
 {/if}

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
-  import type { HTMLAttributes } from "svelte/elements"
+  import type { HTMLLabelAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
+  type $$Props = HTMLLabelAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
@@ -15,18 +15,21 @@
 
   const style = tv({
     base: cn`
-      text-sm
       text-muted
+      text-sm
     `,
   })
 
-  const { groupLabel, id } = ctx.getGroup()
+  const { elements } = ctx.get()
+  const { label } = elements
+
+  $: builder = $label
 </script>
 
 {#if asChild}
-  <slot builder={$groupLabel(id)} />
+  <slot {builder} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$groupLabel(id)} {...$$restProps}>
-    <slot />
-  </div>
+  <label class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
+  </label>
 {/if}

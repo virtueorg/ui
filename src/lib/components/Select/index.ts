@@ -1,26 +1,10 @@
-import SelectArrow from "./SelectArrow.svelte"
-import SelectContent from "./SelectContent.svelte"
-import SelectGroup from "./SelectGroup.svelte"
-import SelectInput from "./SelectInput.svelte"
-import SelectItem from "./SelectItem.svelte"
-import SelectItemIndicator from "./SelectItemIndicator.svelte"
-import SelectLabel from "./SelectLabel.svelte"
-import SelectMessage from "./SelectMessage.svelte"
-import Select from "./SelectRoot.svelte"
-import SelectTrigger from "./SelectTrigger.svelte"
-import SelectValue from "./SelectValue.svelte"
-
-export {
-  Select,
-  SelectArrow,
-  SelectContent,
-  SelectGroup,
-  SelectInput,
-  SelectItem,
-  SelectItemIndicator,
-  SelectLabel,
-  SelectMessage,
-  SelectTrigger,
-  SelectValue
-}
-
+export { default as Root } from "./Select.svelte"
+export { default as Content } from "./SelectContent.svelte"
+export { default as Group } from "./SelectGroup.svelte"
+export { default as Input } from "./SelectInput.svelte"
+export { default as Label } from "./SelectLabel.svelte"
+export { default as Message } from "./SelectMessage.svelte"
+export { default as Option } from "./SelectOption.svelte"
+export { default as OptionIndicator } from "./SelectOptionIndicator.svelte"
+export { default as Trigger } from "./SelectTrigger.svelte"
+export { default as Value } from "./SelectValue.svelte"

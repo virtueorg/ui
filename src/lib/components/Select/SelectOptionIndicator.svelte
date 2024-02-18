@@ -4,25 +4,22 @@
   import type { HTMLAttributes } from "svelte/elements"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> &
-    AsChild & {
-      placeholder?: string
-    }
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
   export let asChild: $$Props["asChild"] = false
-  export let placeholder: $$Props["placeholder"] = ""
   export { className as class }
 
   let className = ""
 
-  const { states } = ctx.get()
-  const { selectedLabel } = states
+  const { value } = ctx.getOption()
+  const { helpers } = ctx.get()
+  const { isSelected } = helpers
 </script>
 
 {#if asChild}
-  <slot selectedLabel={$selectedLabel} />
+  <slot isSelected={$isSelected(value)} />
 {:else}
   <div class={cn(className)} {...$$restProps}>
-    {$selectedLabel || placeholder}
+    <slot isSelected={$isSelected(value)} />
   </div>
 {/if}

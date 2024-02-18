@@ -1,14 +1,14 @@
 <script lang="ts">
   import { cn } from "$lib/index.js"
   import type { AsChild } from "$lib/types.js"
-  import { melt } from "@melt-ui/svelte"
-  import type { HTMLAttributes } from "svelte/elements"
+  import { type CreateSelectProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
+  type $$Props = CreateSelectProps<boolean> & AsChild
 
   export let asChild: $$Props["asChild"] = false
+  export let forceVisible: $$Props["forceVisible"] = true
   export { className as class }
 
   let className = ""
@@ -17,20 +17,17 @@
     base: cn`
       flex
       flex-col
-      gap-1
+      gap-2
     `,
   })
 
-  const { elements } = ctx.get()
-  const { group } = elements
-
-  $: builder = $group
+  ctx.set({ ...$$restProps, forceVisible })
 </script>
 
 {#if asChild}
-  <slot {builder} />
+  <slot />
 {:else}
-  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
-    <slot {builder} />
+  <div class={cn(style.base, className)} {...$$restProps}>
+    <slot />
   </div>
 {/if}
