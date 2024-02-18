@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { CreateContextMenuProps } from "@melt-ui/svelte"
-  import ctx from "./ctx"
+  import { type CreateContextMenuProps } from "@melt-ui/svelte"
+  import ctx from "./ctx.js"
 
   type $$Props = CreateContextMenuProps
 
   export let forceVisible: $$Props["forceVisible"] = true
 
-  ctx.create({ ...$$restProps, forceVisible })
+  ctx.set({ ...$$restProps, forceVisible })
 </script>
 
 <slot />
