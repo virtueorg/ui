@@ -1,9 +1,9 @@
 import { createCheckbox, type Checkbox, type CreateCheckboxProps } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "checkbox"
+const NAME = "Checkbox"
 
-const create = (props: CreateCheckboxProps) => {
+const set = (props: CreateCheckboxProps) => {
   const checkbox = createCheckbox(props)
 
   setContext(NAME, checkbox)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 
