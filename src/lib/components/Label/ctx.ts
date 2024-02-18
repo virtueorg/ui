@@ -1,9 +1,9 @@
-import { createLabel } from "@melt-ui/svelte"
-import { setContext } from "svelte"
+import { createLabel, type Label } from "@melt-ui/svelte"
+import { getContext, setContext } from "svelte"
 
-const NAME = "label"
+const NAME = "Label"
 
-const create = () => {
+const set = () => {
   const label = createLabel()
 
   setContext(NAME, label)
@@ -11,8 +11,15 @@ const create = () => {
   return label
 }
 
+const get = () => {
+  const label: Label = getContext(NAME)
+
+  return label
+}
+
 const ctx = {
-  create,
+  set,
+  get,
 }
 
 export default ctx

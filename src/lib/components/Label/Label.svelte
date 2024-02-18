@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLLabelAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLLabelAttributes & AsChild
 
-  export { className as class }
   export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
 
@@ -20,14 +20,16 @@
     `,
   })
 
-  const { elements } = ctx.create()
+  const { elements } = ctx.set()
   const { root } = elements
+
+  $: builder = $root
 </script>
 
 {#if asChild}
-  <slot builder={$root} />
+  <slot {builder} />
 {:else}
-  <label use:melt={$root} class={cn(style.base, className)} {...$$restProps}>
-    <slot />
+  <label class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </label>
 {/if}
