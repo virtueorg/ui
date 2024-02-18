@@ -1,32 +1,27 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
-  import type { HTMLAttributes } from "svelte/elements"
-  import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import type { HTMLImgAttributes } from "svelte/elements"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & AsChild
+  type $$Props = HTMLImgAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
 
   let className = ""
 
-  const style = tv({
-    base: cn`
-      text-muted
-    `,
-  })
-
   const { elements } = ctx.get()
   const { fallback } = elements
+
+  $: builder = $fallback
 </script>
 
 {#if asChild}
-  <slot builder={$fallback} />
+  <slot {builder} />
 {:else}
-  <span class={cn(style.base, className)} use:melt={$fallback} {...$$restProps}>
-    <slot />
-  </span>
+  <div class={cn(className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
+  </div>
 {/if}

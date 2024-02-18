@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLImgAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLImgAttributes & AsChild
 
@@ -23,13 +23,15 @@
     `,
   })
 
-  $: avatar = ctx.getImage(src)
-  $: elements = avatar.elements
-  $: image = elements.image
+  const { elements, options } = ctx.get()
+  const { image } = elements
+
+  $: options.src.set(src || "")
+  $: builder = $image
 </script>
 
 {#if asChild}
-  <slot builder={$image} />
+  <slot {builder} />
 {:else}
-  <img {src} {alt} class={cn(style.base, className)} use:melt={$image} {...$$restProps} />
+  <img {src} {alt} class={cn(style.base, className)} use:melt={builder} {...$$restProps} />
 {/if}
