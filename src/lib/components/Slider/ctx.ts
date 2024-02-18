@@ -1,9 +1,9 @@
 import { createSlider, type CreateSliderProps, type Slider } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "slider"
+const NAME = "Slider"
 
-const create = (props: CreateSliderProps) => {
+const set = (props: CreateSliderProps) => {
   const slider = createSlider(props)
 
   setContext(NAME, slider)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 

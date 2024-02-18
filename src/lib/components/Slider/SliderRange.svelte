@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
@@ -15,20 +15,23 @@
 
   const style = tv({
     base: cn`
-      h-2
-      grow
-      overflow-hidden
-      rounded-full
+      absolute
+      h-full
       bg-primary
+      rounded-xl
     `,
   })
 
   const { elements } = ctx.get()
   const { range } = elements
+
+  $: builder = $range
 </script>
 
 {#if asChild}
-  <slot builder={$range} />
+  <slot {builder} />
 {:else}
-  <span class={cn(style.base, className)} use:melt={$range} {...$$restProps} />
+  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
+  </div>
 {/if}

@@ -1,6 +1,4 @@
-import SliderInput from "./SliderInput.svelte"
-import SliderRange from "./SliderRange.svelte"
-import Slider from "./SliderRoot.svelte"
-import SliderThumb from "./SliderThumb.svelte"
-
-export { Slider, SliderInput, SliderRange, SliderThumb }
+export { default as Root } from "./Slider.svelte"
+export { default as Input } from "./SliderInput.svelte"
+export { default as Range } from "./SliderRange.svelte"
+export { default as Thumb } from "./SliderThumb.svelte"
