@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt, type CreateTagsInputProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = CreateTagsInputProps & AsChild
 
@@ -16,31 +16,28 @@
   const style = tv({
     base: cn`
       flex
-      flex-wrap
+      flex-col
       gap-2
-      p-2
-      rounded-lg
-      bg-muted/5
     `,
     variants: {
       disabled: {
         true: cn`
           opacity-50
-          cursor-not-allowed
         `,
       },
     },
   })
 
-  const { elements, states } = ctx.create({ ...$$restProps, disabled })
-  const { tags } = states
+  const { elements } = ctx.set({ ...$$restProps, disabled })
   const { root } = elements
+
+  $: builder = $root
 </script>
 
 {#if asChild}
-  <slot builder={$root} />
+  <slot {builder} />
 {:else}
-  <div class={cn(style.base, style({ disabled }), className)} use:melt={$root} {...$$restProps}>
-    <slot tags={$tags} />
+  <div class={cn(style.base, style({ disabled }), className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </div>
 {/if}
