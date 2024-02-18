@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { ChevronRightIcon, cn, Icon } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLButtonAttributes & AsChild
 
@@ -16,50 +16,33 @@
   const style = tv({
     base: cn`
       transition-all
-      text-left
       w-full
       flex
       items-center
-      gap-2
-      rounded-lg
-      p-2
-      cursor-pointer
+      justify-between
+      gap-3
+      p-3
+      rounded-xl
+      border
+      border-transparent
 
       hover:bg-muted/5
+      hover:border-muted/5
 
       active:scale-95
     `,
-    variants: {
-      disabled: {
-        true: cn`
-          opacity-50
-          cursor-not-allowed
-
-          hover:bg-transparent
-        `,
-      },
-    },
   })
 
-  const { elements, options } = ctx.getSub()
-  const { disabled } = options
+  const { elements } = ctx.getSub()
   const { subTrigger } = elements
+
+  $: builder = $subTrigger
 </script>
 
 {#if asChild}
-  <slot builder={$subTrigger} />
+  <slot {builder} />
 {:else}
-  <button
-    type="button"
-    class={cn(style.base, style({ disabled: $disabled }), className)}
-    use:melt={$subTrigger}
-    {...$$restProps}
-    on:click
-  >
-    <slot />
-
-    <Icon class="ml-auto">
-      <ChevronRightIcon />
-    </Icon>
+  <button type="button" class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </button>
 {/if}

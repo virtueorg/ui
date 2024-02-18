@@ -1,9 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/index.js"
   import type { AsChild } from "$lib/types.js"
-  import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
-  import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
@@ -13,25 +11,14 @@
 
   let className = ""
 
-  const style = tv({
-    base: cn`
-      p-2
-      flex
-      flex-col
-      gap-1
-    `,
-  })
-
-  const { elements } = ctx.get()
-  const { group } = elements
-
-  $: builder = $group
+  const { helpers } = ctx.getCheckboxItem()
+  const { isChecked, isIndeterminate } = helpers
 </script>
 
 {#if asChild}
-  <slot {builder} />
+  <slot isChecked={$isChecked} isIndeterminate={$isIndeterminate} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
-    <slot {builder} />
+  <div class={cn(className)} {...$$restProps}>
+    <slot isChecked={$isChecked} isIndeterminate={$isIndeterminate} />
   </div>
 {/if}

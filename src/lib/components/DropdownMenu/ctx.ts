@@ -1,22 +1,24 @@
 import {
   createDropdownMenu,
+  type CreateAccordionProps,
   type CreateDropdownMenuCheckboxItemProps,
-  type CreateDropdownMenuProps,
   type CreateDropdownMenuRadioGroupProps,
   type CreateDropdownSubmenuProps,
   type DropdownMenu,
+  type DropdownMenuCheckboxItem,
+  type DropdownMenuRadioGroup,
+  type DropdownMenuRadioItemProps,
+  type DropdownMenuSubmenu,
 } from "@melt-ui/svelte"
-import { nanoid } from "nanoid"
 import { getContext, setContext } from "svelte"
 
-const NAME = "dropdownmenu"
-const CHECKBOX_ITEM_NAME = "dropdownmenu-checkbox-item"
-const GROUP_NAME = "dropdownmenu-group"
-const RADIO_GROUP_NAME = "dropdownmenu-radio-group"
-const RADIO_ITEM_NAME = "dropdownmenu-radio-item"
-const SUB_NAME = "dropdownmenu-sub"
+const NAME = "DropdownMenu"
+const CHECKBOX_ITEM_NAME = "DropdownMenuCheckboxItem"
+const RADIO_GROUP_NAME = "DropdownMenuRadioGroup"
+const RADIO_ITEM_NAME = "DropdownMenuRadioItem"
+const SUB_NAME = "DropdownMenuSub"
 
-const create = (props: CreateDropdownMenuProps) => {
+const set = (props: CreateAccordionProps<boolean>) => {
   const dropdownMenu = createDropdownMenu(props)
 
   setContext(NAME, dropdownMenu)
@@ -30,10 +32,9 @@ const get = () => {
   return dropdownMenu
 }
 
-const createCheckboxItem = (props: CreateDropdownMenuCheckboxItemProps) => {
+const setCheckboxItem = (props: CreateDropdownMenuCheckboxItemProps) => {
   const { builders } = get()
   const { createCheckboxItem } = builders
-
   const checkboxItem = createCheckboxItem(props)
 
   setContext(CHECKBOX_ITEM_NAME, checkboxItem)
@@ -42,37 +43,12 @@ const createCheckboxItem = (props: CreateDropdownMenuCheckboxItemProps) => {
 }
 
 const getCheckboxItem = () => {
-  const checkboxItem: ReturnType<typeof createCheckboxItem> = getContext(CHECKBOX_ITEM_NAME)
+  const checkboxItem: DropdownMenuCheckboxItem = getContext(CHECKBOX_ITEM_NAME)
 
   return checkboxItem
 }
 
-const createGroup = () => {
-  const { elements } = get()
-  const { group } = elements
-  const id = nanoid()
-
-  setContext(GROUP_NAME, id)
-
-  return {
-    id,
-    group,
-  }
-}
-
-const getGroupLabel = () => {
-  const id: string = getContext(GROUP_NAME) || nanoid()
-
-  const { elements } = get()
-  const { groupLabel } = elements
-
-  return {
-    id,
-    groupLabel,
-  }
-}
-
-const createRadioGroup = (props: CreateDropdownMenuRadioGroupProps) => {
+const setRadioGroup = (props: CreateDropdownMenuRadioGroupProps) => {
   const { builders } = get()
   const { createMenuRadioGroup } = builders
   const radioGroup = createMenuRadioGroup(props)
@@ -82,29 +58,30 @@ const createRadioGroup = (props: CreateDropdownMenuRadioGroupProps) => {
   return radioGroup
 }
 
-const createRadioItem = (value: string) => {
-  const radioGroup: ReturnType<typeof createRadioGroup> = getContext(RADIO_GROUP_NAME)
+const getRadioGroup = () => {
+  const radioGroup: DropdownMenuRadioGroup = getContext(RADIO_GROUP_NAME)
 
-  setContext(RADIO_ITEM_NAME, {
-    value,
-    ...radioGroup,
-  })
+  return radioGroup
+}
 
-  return {
-    value,
-    ...radioGroup,
-  }
+const setRadioItem = (props: DropdownMenuRadioItemProps) => {
+  const item = props
+
+  setContext(RADIO_ITEM_NAME, item)
+
+  return item
 }
 
 const getRadioItem = () => {
-  const radioItem: ReturnType<typeof createRadioItem> = getContext(RADIO_ITEM_NAME)
+  const item: DropdownMenuRadioItemProps = getContext(RADIO_ITEM_NAME)
 
-  return radioItem
+  return item
 }
 
-const createSub = (props: CreateDropdownSubmenuProps) => {
+const setSub = (props: CreateDropdownSubmenuProps) => {
   const { builders } = get()
   const { createSubmenu } = builders
+
   const sub = createSubmenu(props)
 
   setContext(SUB_NAME, sub)
@@ -113,22 +90,21 @@ const createSub = (props: CreateDropdownSubmenuProps) => {
 }
 
 const getSub = () => {
-  const sub: ReturnType<typeof createSub> = getContext(SUB_NAME)
+  const sub: DropdownMenuSubmenu = getContext(SUB_NAME)
 
   return sub
 }
 
 const ctx = {
-  create,
+  set,
   get,
-  createCheckboxItem,
+  setCheckboxItem,
   getCheckboxItem,
-  createGroup,
-  getGroupLabel,
-  createRadioGroup,
-  createRadioItem,
+  setRadioGroup,
+  getRadioGroup,
+  setRadioItem,
   getRadioItem,
-  createSub,
+  setSub,
   getSub,
 }
 

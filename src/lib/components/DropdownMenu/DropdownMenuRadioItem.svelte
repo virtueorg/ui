@@ -1,18 +1,14 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
-  import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
+  import { melt, type DropdownMenuRadioItemProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = Omit<CreateContextMenuRadioGroupProps, "value"> &
-    AsChild & {
-      value: string
-      disabled?: boolean
-    }
+  type $$Props = DropdownMenuRadioItemProps & AsChild
 
-  export let value: $$Props["value"]
   export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"]
   export let disabled: $$Props["disabled"] = false
   export { className as class }
 
@@ -24,12 +20,15 @@
       w-full
       flex
       items-center
-      gap-2
-      rounded-lg
-      p-2
-      cursor-pointer
+      justify-between
+      gap-3
+      p-3
+      rounded-xl
+      border
+      border-transparent
 
       hover:bg-muted/5
+      hover:border-muted/5
 
       active:scale-95
     `,
@@ -37,29 +36,34 @@
       disabled: {
         true: cn`
           opacity-50
-          cursor-not-allowed
 
           hover:bg-transparent
+          hover:border-transparent
+          
+          active:scale-100
         `,
       },
     },
   })
 
-  const { elements } = ctx.createRadioItem(value)
+  ctx.setRadioItem({ value, disabled })
+
+  const { elements } = ctx.getRadioGroup()
   const { radioItem } = elements
+
+  $: builder = $radioItem({ value, disabled })
 </script>
 
 {#if asChild}
-  <slot builder={$radioItem({ value, disabled })} />
+  <slot {builder} />
 {:else}
   <button
     type="button"
     class={cn(style.base, style({ disabled }), className)}
-    use:melt={$radioItem({ value, disabled })}
-    {disabled}
+    use:melt={builder}
     {...$$restProps}
     on:click
   >
-    <slot />
+    <slot {builder} />
   </button>
 {/if}
