@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TRANSITION_FLY_Y, cn } from "$lib/index.js"
+  import { TRANSITION_Y_IN, cn } from "$lib/index.js"
   import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
@@ -37,7 +37,7 @@
 {#if asChild}
   <slot {builder} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={builder} transition:fly|global={TRANSITION_FLY_Y} {...$$restProps}>
+  <div class={cn(style.base, className)} use:melt={builder} transition:fly|global={TRANSITION_Y_IN} {...$$restProps}>
     <slot {builder} />
   </div>
 {/if}

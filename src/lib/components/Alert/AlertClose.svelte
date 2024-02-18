@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/index.js"
-  import alerts from "$lib/stores/alerts.js"
+  import { alerts, cn } from "$lib/index.js"
   import type { AsChild } from "$lib/types.js"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"

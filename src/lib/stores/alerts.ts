@@ -3,15 +3,15 @@ import type { Alert } from "$lib/types.js"
 import { nanoid } from "nanoid"
 import { writable } from "svelte/store"
 
-const alerts = writable<Alert[]>([])
+const store = writable<Alert[]>([])
 
 const add = (alert: Alert) => {
   if (!alert.id) {
     alert.id = nanoid()
   }
 
-  alerts.update($alerts => {
-    return [...$alerts, alert]
+  store.update($store => {
+    return [...$store, alert]
   })
 
   setTimeout(() => {
@@ -20,13 +20,13 @@ const add = (alert: Alert) => {
 }
 
 const remove = (id: Alert["id"]) => {
-  alerts.update($alerts => {
-    return $alerts.filter(alert => alert.id !== id)
+  store.update($store => {
+    return $store.filter(alert => alert.id !== id)
   })
 }
 
-export default {
-  ...alerts,
+export const alerts = {
+  ...store,
   add,
   remove,
 }
