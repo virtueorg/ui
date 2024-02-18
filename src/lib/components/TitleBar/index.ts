@@ -1,15 +1,5 @@
-import TitleBarDescription from "./TitleBarDescription.svelte"
-import TitleBarHeading from "./TitleBarHeading.svelte"
-import TitleBarIcon from "./TitleBarIcon.svelte"
-import TitleBarImage from "./TitleBarImage.svelte"
-import TitleBar from "./TitleBarRoot.svelte"
-import TitleBarTitle from "./TitleBarTitle.svelte"
-
-export {
-  TitleBar,
-  TitleBarDescription,
-  TitleBarHeading,
-  TitleBarIcon,
-  TitleBarImage,
-  TitleBarTitle,
-}
+export { default as Root } from "./TitleBar.svelte"
+export { default as Asset } from "./TitleBarAsset.svelte"
+export { default as Description } from "./TitleBarDescription.svelte"
+export { default as Header } from "./TitleBarHeader.svelte"
+export { default as Title } from "./TitleBarTitle.svelte"
