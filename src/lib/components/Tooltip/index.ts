@@ -1,6 +1,3 @@
-import TooltipArrow from "./TooltipArrow.svelte"
-import TooltipContent from "./TooltipContent.svelte"
-import Tooltip from "./TooltipRoot.svelte"
-import TooltipTrigger from "./TooltipTrigger.svelte"
-
-export { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger }
+export { default as Root } from "./Tooltip.svelte"
+export { default as Content } from "./TooltipContent.svelte"
+export { default as Trigger } from "./TooltipTrigger.svelte"

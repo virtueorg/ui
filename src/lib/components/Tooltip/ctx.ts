@@ -1,9 +1,9 @@
 import { createTooltip, type CreateTooltipProps, type Tooltip } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "tooltip"
+const NAME = "Tooltip"
 
-const create = (props: CreateTooltipProps) => {
+const set = (props: CreateTooltipProps) => {
   const tooltip = createTooltip(props)
 
   setContext(NAME, tooltip)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 
