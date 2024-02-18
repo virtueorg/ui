@@ -1,7 +1,5 @@
-import AccordionContent from "./AccordionContent.svelte"
-import AccordionHeader from "./AccordionHeader.svelte"
-import AccordionItem from "./AccordionItem.svelte"
-import Accordion from "./AccordionRoot.svelte"
-import AccordionTrigger from "./AccordionTrigger.svelte"
-
-export { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionTrigger }
+export { default as Root } from "./Accordion.svelte"
+export { default as Content } from "./AccordionContent.svelte"
+export { default as Heading } from "./AccordionHeading.svelte"
+export { default as Item } from "./AccordionItem.svelte"
+export { default as Trigger } from "./AccordionTrigger.svelte"

@@ -1,15 +1,10 @@
-import {
-  createAccordion,
-  type Accordion,
-  type AccordionItemProps,
-  type CreateAccordionProps,
-} from "@melt-ui/svelte"
+import { createAccordion, type Accordion, type AccordionItemProps, type CreateAccordionProps } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "accordion"
-const ITEM_NAME = "accordion-item"
+const NAME = "Accordion"
+const ITEM_NAME = "AccordionItem"
 
-const create = (props: CreateAccordionProps<boolean>) => {
+const set = (props: CreateAccordionProps<boolean>) => {
   const accordion = createAccordion(props)
 
   setContext(NAME, accordion)
@@ -24,13 +19,11 @@ const get = () => {
 }
 
 const setItem = (props: Exclude<AccordionItemProps, string>) => {
-  setContext(ITEM_NAME, props)
+  const item = props
 
-  const accordion = get()
-  const { elements } = accordion
-  const { item } = elements
+  setContext(ITEM_NAME, item)
 
-  return { item, props }
+  return item
 }
 
 const getItem = () => {
@@ -40,7 +33,7 @@ const getItem = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
   setItem,
   getItem,

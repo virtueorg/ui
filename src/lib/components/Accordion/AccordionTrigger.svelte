@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
-  import type { HTMLAttributes } from "svelte/elements"
+  import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLButtonElement> & AsChild
+  type $$Props = HTMLButtonAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
@@ -16,36 +16,24 @@
   const style = tv({
     base: cn`
       w-full
-      text-left
-      p-5
       flex
-      items-center
-      justify-between
+      p-4
+      rounded-xl
     `,
-    variants: {
-      disabled: {
-        true: cn`
-          cursor-not-allowed
-        `,
-      },
-    },
   })
 
-  const { value, disabled } = ctx.getItem()
+  const item = ctx.getItem()
+
   const { elements } = ctx.get()
   const { trigger } = elements
+
+  $: builder = $trigger(item)
 </script>
 
 {#if asChild}
-  <slot builder={$trigger({ value, disabled })} />
+  <slot {builder} />
 {:else}
-  <button
-    type="button"
-    class={cn(style.base, style({ disabled }), className)}
-    use:melt={$trigger({ value, disabled })}
-    {...$$restProps}
-    on:click
-  >
-    <slot />
+  <button type="button" class={cn(style.base, className)} use:melt={builder} {...$$restProps} on:click>
+    <slot {builder} />
   </button>
 {/if}
