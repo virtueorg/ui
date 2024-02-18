@@ -1,6 +1,4 @@
-import TextareaInput from "./TextareaInput.svelte"
-import TextareaLabel from "./TextareaLabel.svelte"
-import TextareaMessage from "./TextareaMessage.svelte"
-import Textarea from "./TextareaRoot.svelte"
-
-export { Textarea, TextareaInput, TextareaLabel, TextareaMessage }
+export { default as Root } from "./Textarea.svelte"
+export { default as Input } from "./TextareaInput.svelte"
+export { default as Label } from "./TextareaLabel.svelte"
+export { default as Message } from "./TextareaMessage.svelte"

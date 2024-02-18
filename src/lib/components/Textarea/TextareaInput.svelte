@@ -1,54 +1,46 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLTextareaAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLTextareaAttributes & {
-    hasLabel?: boolean
-  }
+  type $$Props = HTMLTextareaAttributes & AsChild
 
+  export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"] = ""
   export { className as class }
-  export let disabled: $$Props["disabled"] = false
-  export let value: $$Props["value"] = undefined
-  export let hasLabel: $$Props["hasLabel"] = false
 
   let className = ""
-  let element: HTMLTextAreaElement
+  let element: HTMLElement
 
   const style = tv({
     base: cn`
-      w-full
+      transition-all
       p-3
-      bg-transparent
-      rounded-lg
+      rounded-xl
+      bg-muted/5
+      border
+      border-muted/5
       resize-none
+
+      placeholder:text-muted/60
+
+      hover:border-muted/10
+      hover:bg-muted/10
+      
+      focus:border-muted/10
+      focus:bg-muted/10
     `,
-    variants: {
-      hasLabel: {
-        true: cn`
-          pt-8
-        `,
-      },
-      disabled: {
-        true: cn`
-          opacity-50
-          cursor-not-allowed
-        `,
-      },
-    },
   })
 
   const autoGrow = () => {
     element.style.height = "auto"
-    element.style.height = element.scrollHeight + "px"
+    element.style.height = `${element.scrollHeight}px`
   }
 </script>
 
-<textarea
-  class={cn(style.base, style({ hasLabel, disabled: disabled || false }), className)}
-  {disabled}
-  {...$$restProps}
-  bind:value
-  bind:this={element}
-  on:input={autoGrow}
-/>
+{#if asChild}
+  <slot />
+{:else}
+  <textarea class={cn(style.base, className)} {...$$restProps} bind:this={element} bind:value on:input={autoGrow} />
+{/if}
