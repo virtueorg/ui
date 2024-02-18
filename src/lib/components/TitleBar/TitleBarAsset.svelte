@@ -13,8 +13,8 @@
 
   const style = tv({
     base: cn`
-      w-12
-      h-12
+      w-11
+      h-11
       flex
       items-center
       justify-center
