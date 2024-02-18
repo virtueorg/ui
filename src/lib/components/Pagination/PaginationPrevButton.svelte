@@ -1,47 +1,47 @@
 <script lang="ts">
-  import { ChevronLeftIcon, Icon, cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLButtonAttributes & AsChild
 
-  export { className as class }
   export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
 
   const style = tv({
     base: cn`
       transition-all
-      py-3
-      px-4
-      rounded-lg
-      bg-muted/5
-      text-muted
+      p-4
+      rounded-xl
+      border
+      border-muted/5
 
       hover:bg-muted/10
+      hover:border-muted/10
+
       active:scale-95
 
-      disabled:bg-transparent
       disabled:opacity-50
+      disabled:bg-transparent
+      disabled:border-muted/5
     `,
   })
 
   const { elements } = ctx.get()
   const { prevButton } = elements
+
+  $: builder = $prevButton
 </script>
 
 {#if asChild}
-  <slot builder={$prevButton} />
+  <slot {builder} />
 {:else}
-  <button class={cn(style.base, className)} use:melt={$prevButton}>
-    <slot>
-      <Icon>
-        <ChevronLeftIcon />
-      </Icon>
-    </slot>
+  <button type="button" class={cn(style.base, className)} use:melt={builder} {...$$restProps} on:click>
+    <slot {builder} />
   </button>
 {/if}

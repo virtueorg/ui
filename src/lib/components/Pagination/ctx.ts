@@ -1,9 +1,9 @@
 import { createPagination, type CreatePaginationProps, type Pagination } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "pagination"
+const NAME = ""
 
-const create = (props: CreatePaginationProps) => {
+const set = (props: CreatePaginationProps) => {
   const pagination = createPagination(props)
 
   setContext(NAME, pagination)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 

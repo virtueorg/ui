@@ -1,7 +1,5 @@
-import PaginationEllipsis from "./PaginationEllipsis.svelte"
-import PaginationNext from "./PaginationNext.svelte"
-import PaginationPrevious from "./PaginationPrevious.svelte"
-import Pagination from "./PaginationRoot.svelte"
-import PaginationTrigger from "./PaginationTrigger.svelte"
-
-export { Pagination, PaginationEllipsis, PaginationNext, PaginationPrevious, PaginationTrigger }
+export { default as Root } from "./Pagination.svelte"
+export { default as Ellipsis } from "./PaginationEllipsis.svelte"
+export { default as NextButton } from "./PaginationNextButton.svelte"
+export { default as Page } from "./PaginationPage.svelte"
+export { default as PrevButton } from "./PaginationPrevButton.svelte"

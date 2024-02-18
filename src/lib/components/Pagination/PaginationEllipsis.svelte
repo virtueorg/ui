@@ -1,29 +1,20 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
-  import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
-  export { className as class }
   export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
-
-  const style = tv({
-    base: cn`
-      p-3
-      text-muted
-      cursor-default
-    `,
-  })
 </script>
 
 {#if asChild}
-  <slot>...</slot>
+  <slot />
 {:else}
-  <span class={cn(style.base, className)}>
-    <slot>...</slot>
-  </span>
+  <div class={cn(className)} {...$$restProps}>
+    <slot />
+  </div>
 {/if}
