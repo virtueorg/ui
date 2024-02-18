@@ -1,5 +1,3 @@
-import FormFields from "./FormFields.svelte"
-import Form from "./FormRoot.svelte"
-import FormSubmit from "./FormSubmit.svelte"
-
-export { Form, FormFields, FormSubmit }
+export { default as Root } from "./Form.svelte"
+export { default as Controls } from "./FormControls.svelte"
+export { default as Fields } from "./FormFields.svelte"

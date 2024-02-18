@@ -1,12 +1,15 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLFormAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLFormAttributes & {
-    enhance?: (node: HTMLFormElement) => void
-  }
+  type $$Props = HTMLFormAttributes &
+    AsChild & {
+      enhance?: (node: HTMLFormElement) => void
+    }
 
+  export let asChild: $$Props["asChild"] = false
   export let enhance: $$Props["enhance"] = undefined
   export { className as class }
 
@@ -16,12 +19,14 @@
     base: cn`
       flex
       flex-col
-      gap-5
+      gap-4
     `,
   })
 </script>
 
-{#if enhance}
+{#if asChild}
+  <slot />
+{:else if enhance}
   <form class={cn(style.base, className)} use:enhance {...$$restProps}>
     <slot />
   </form>
