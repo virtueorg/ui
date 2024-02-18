@@ -1,16 +1,11 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
-  import { melt } from "@melt-ui/svelte"
-  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
+  import { melt, type TabsTriggerProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = Omit<HTMLButtonAttributes, "disabled"> &
-    AsChild & {
-      value: string
-      disabled?: boolean
-    }
+  type $$Props = Exclude<TabsTriggerProps, string> & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
@@ -22,45 +17,53 @@
   const style = tv({
     base: cn`
       transition-all
-      text-left
-      flex
-      items-center
-      gap-2
+      px-4
       py-3
-      px-5
-      border-b-2
-      border-muted/20
+      border-b
+      border-transparent
       opacity-50
+      -mb-px
 
-      data-[state=active]:border-primary
-      data-[state=active]:text-primary
-      data-[state=active]:opacity-100
+      hover:opacity-100
+      hover:border-muted/10
     `,
     variants: {
+      active: {
+        true: cn`
+          border-primary
+          text-primary
+          opacity-100
+
+          hover:border-primary
+        `,
+      },
       disabled: {
         true: cn`
-          opacity-20
-          cursor-not-allowed
+          hover:opacity-50
+          hover:border-transparent
         `,
       },
     },
   })
 
-  const { elements } = ctx.get()
+  const { elements, states } = ctx.get()
   const { trigger } = elements
+  const { value: currentValue } = states
+
+  $: builder = $trigger({ value, disabled })
 </script>
 
 {#if asChild}
-  <slot builder={$trigger({ value, disabled })} />
+  <slot {builder} />
 {:else}
   <button
     type="button"
-    class={cn(style.base, style({ disabled }), className)}
-    use:melt={$trigger({ value, disabled })}
     {disabled}
+    class={cn(style.base, style({ active: value === $currentValue, disabled: disabled }), className)}
+    use:melt={builder}
     {...$$restProps}
     on:click
   >
-    <slot />
+    <slot {builder} />
   </button>
 {/if}
