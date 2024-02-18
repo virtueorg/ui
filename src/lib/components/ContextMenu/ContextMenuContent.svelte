@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { TRANSITION_SCALE, cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { TRANSITION_SCALE, cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
@@ -16,28 +16,32 @@
 
   const style = tv({
     base: cn`
-      w-64
+      w-80
+      rounded-xl
       bg-panel
-      rounded-lg
+      border
+      border-muted/5
     `,
   })
 
   const { elements, states } = ctx.get()
   const { menu } = elements
   const { open } = states
+
+  $: builder = $menu
 </script>
 
 {#if $open}
   {#if asChild}
-    <slot builder={$menu} />
+    <slot {builder} />
   {:else}
     <div
       class={cn(style.base, className)}
-      use:melt={$menu}
-      {...$$restProps}
+      use:melt={builder}
       transition:scale|global={TRANSITION_SCALE}
+      {...$$restProps}
     >
-      <slot />
+      <slot {builder} />
     </div>
   {/if}
 {/if}

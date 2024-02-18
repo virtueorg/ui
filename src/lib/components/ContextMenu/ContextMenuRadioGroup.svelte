@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt, type CreateContextMenuRadioGroupProps } from "@melt-ui/svelte"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = CreateContextMenuRadioGroupProps & AsChild
 
@@ -11,14 +11,16 @@
 
   let className = ""
 
-  const { elements } = ctx.createRadioGroup($$restProps)
+  const { elements } = ctx.setRadioGroup($$restProps)
   const { radioGroup } = elements
+
+  $: builder = $radioGroup
 </script>
 
 {#if asChild}
-  <slot builder={$radioGroup} />
+  <slot {builder} />
 {:else}
-  <div class={cn(className)} use:melt={$radioGroup} {...$$restProps}>
-    <slot />
+  <div class={cn(className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </div>
 {/if}
