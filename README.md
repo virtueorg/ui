@@ -27,13 +27,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#020617",
-        foreground: "#f8fafc",
-        muted: "#94a3b8",
+        background: "#09090b",
+        foreground: "#f4f4f5",
+        muted: "#a1a1aa",
         primary: "#818cf8",
         warning: "#fbbf24",
         error: "#f87171",
-        panel: "#090E1F",
+        panel: "#111113",
       },
     },
   },
@@ -51,5 +51,5 @@ Simply import what you need and use it, it's as simple as that!
   import { Button } from "virtue-ui";
 </script>
 
-<Button>Hello world!</Button>
+<Button.Root>Hello world!</Button.Root>
 ```
