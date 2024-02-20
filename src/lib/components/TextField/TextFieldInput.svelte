@@ -1,60 +1,39 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLInputAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLInputAttributes & {
-    hasIcon?: boolean
-    hasLabel?: boolean
-  }
+  type $$Props = HTMLInputAttributes & AsChild
 
+  export let asChild: $$Props["asChild"] = false
+  export let value: $$Props["value"] = ""
   export { className as class }
-  export let value: $$Props["value"] = undefined
-  export let disabled: $$Props["disabled"] = false
-  export let hasIcon: $$Props["hasIcon"] = false
-  export let hasLabel: $$Props["hasLabel"] = false
 
   let className = ""
 
   const style = tv({
     base: cn`
-      w-full
+      transition-all
       p-3
-      bg-transparent
-      rounded-lg
+      rounded-xl
+      bg-muted/5
+      border
+      border-muted/5
+
+      placeholder:text-muted/60
+
+      hover:border-muted/10
+      hover:bg-muted/10
+      
+      focus:border-muted/10
+      focus:bg-muted/10
     `,
-    variants: {
-      hasIcon: {
-        true: cn`
-          pr-11
-        `,
-      },
-      hasLabel: {
-        true: cn`
-          pt-8
-        `,
-      },
-      disabled: {
-        true: cn`
-          opacity-50
-          cursor-not-allowed
-        `,
-      },
-    },
   })
 </script>
 
-<input
-  class={cn(style.base, style({ hasIcon, hasLabel, disabled: disabled || false }), className)}
-  {disabled}
-  {...$$restProps}
-  bind:value
-/>
-
-<style lang="postcss">
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-  }
-</style>
+{#if asChild}
+  <slot />
+{:else}
+  <input class={cn(style.base, className)} {...$$restProps} bind:value />
+{/if}

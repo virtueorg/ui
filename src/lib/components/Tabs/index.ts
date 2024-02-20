@@ -1,6 +1,4 @@
-import TabsContent from "./TabsContent.svelte"
-import TabsList from "./TabsList.svelte"
-import Tabs from "./TabsRoot.svelte"
-import TabsTrigger from "./TabsTrigger.svelte"
-
-export { Tabs, TabsContent, TabsList, TabsTrigger }
+export { default as Root } from "./Tabs.svelte"
+export { default as Content } from "./TabsContent.svelte"
+export { default as List } from "./TabsList.svelte"
+export { default as Trigger } from "./TabsTrigger.svelte"

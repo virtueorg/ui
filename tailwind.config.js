@@ -5,13 +5,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#020617",
-        foreground: "#f8fafc",
-        muted: "#94a3b8",
+        background: "#09090b",
+        foreground: "#f4f4f5",
+        muted: "#a1a1aa",
         primary: "#818cf8",
         warning: "#fbbf24",
         error: "#f87171",
-        panel: "#090E1F",
+        panel: "#111113",
       },
     },
   },

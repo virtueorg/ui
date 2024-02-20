@@ -1,35 +1,28 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
-  import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> &
+  type $$Props = HTMLAttributes<HTMLDivElement> &
     AsChild & {
       placeholder?: string
     }
 
-  export let placeholder: $$Props["placeholder"] = ""
   export let asChild: $$Props["asChild"] = false
+  export let placeholder: $$Props["placeholder"] = ""
   export { className as class }
 
   let className = ""
-
-  const style = tv({
-    base: cn`
-      font-bold
-    `,
-  })
 
   const { states } = ctx.get()
   const { selectedLabel } = states
 </script>
 
 {#if asChild}
-  <slot label={$selectedLabel || placeholder} />
+  <slot selectedLabel={$selectedLabel} />
 {:else}
-  <span class={cn(style.base, className)} {...$$restProps}>
+  <div class={cn(className)} {...$$restProps}>
     {$selectedLabel || placeholder}
-  </span>
+  </div>
 {/if}

@@ -1,10 +1,15 @@
-import { createRadioGroup, type CreateRadioGroupProps, type RadioGroup } from "@melt-ui/svelte"
+import {
+  createRadioGroup,
+  type CreateRadioGroupProps,
+  type RadioGroup,
+  type RadioGroupItemProps,
+} from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "radio-group"
-const ITEM_NAME = "radio-item"
+const NAME = "RadioGroup"
+const ITEM_NAME = "RadioGroupItem"
 
-const create = (props: CreateRadioGroupProps) => {
+const set = (props: CreateRadioGroupProps) => {
   const radioGroup = createRadioGroup(props)
 
   setContext(NAME, radioGroup)
@@ -18,30 +23,24 @@ const get = () => {
   return radioGroup
 }
 
-const createItem = (value: string) => {
-  const radioGroup: ReturnType<typeof createRadioGroup> = getContext(NAME)
+const setItem = (props: Exclude<RadioGroupItemProps, string>) => {
+  const item = props
 
-  setContext(ITEM_NAME, {
-    value,
-    ...radioGroup,
-  })
+  setContext(ITEM_NAME, item)
 
-  return {
-    value,
-    ...radioGroup,
-  }
+  return item
 }
 
 const getItem = () => {
-  const radioItem: ReturnType<typeof createItem> = getContext(ITEM_NAME)
+  const item: Exclude<RadioGroupItemProps, string> = getContext(ITEM_NAME)
 
-  return radioItem
+  return item
 }
 
 const ctx = {
-  create,
+  set,
   get,
-  createItem,
+  setItem,
   getItem,
 }
 

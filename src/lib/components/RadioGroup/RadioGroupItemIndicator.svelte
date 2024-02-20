@@ -1,29 +1,25 @@
 <script lang="ts">
-  import { TRANSITION_BASE, cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
-  import { scale } from "svelte/transition"
-  import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLDivElement>
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
+  export let asChild: $$Props["asChild"] = false
   export { className as class }
 
   let className = ""
 
-  const style = tv({
-    base: cn`
-      ml-auto 
-      text-primary
-    `,
-  })
-
-  const { helpers, value } = ctx.getItem()
+  const { value } = ctx.getItem()
+  const { helpers } = ctx.get()
   const { isChecked } = helpers
 </script>
 
-{#if $isChecked(value)}
-  <div class={cn(style.base, className)} {...$$restProps} transition:scale|global={TRANSITION_BASE}>
-    <slot />
+{#if asChild}
+  <slot isChecked={$isChecked(value)} />
+{:else}
+  <div class={cn(className)} {...$$restProps}>
+    <slot isChecked={$isChecked(value)} />
   </div>
 {/if}

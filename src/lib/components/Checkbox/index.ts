@@ -1,5 +1,3 @@
-import CheckboxIndicator from "./CheckboxIndicator.svelte"
-import CheckboxInput from "./CheckboxInput.svelte"
-import Checkbox from "./CheckboxRoot.svelte"
-
-export { Checkbox, CheckboxIndicator, CheckboxInput }
+export { default as Root } from "./Checkbox.svelte"
+export { default as Indicator } from "./CheckboxIndicator.svelte"
+export { default as Input } from "./CheckboxInput.svelte"

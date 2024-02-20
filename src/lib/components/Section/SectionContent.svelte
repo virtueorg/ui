@@ -1,14 +1,20 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
 
-  type $$Props = HTMLAttributes<HTMLDivElement>
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
+  export let asChild: $$Props["asChild"] = false
   export { className as class }
 
   let className = ""
 </script>
 
-<div class={cn(className)} {...$$restProps}>
+{#if asChild}
   <slot />
-</div>
+{:else}
+  <div class={cn(className)} {...$$restProps}>
+    <slot />
+  </div>
+{/if}

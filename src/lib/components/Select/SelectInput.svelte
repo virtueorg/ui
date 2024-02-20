@@ -1,24 +1,21 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLInputAttributes } from "svelte/elements"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLInputAttributes & AsChild
 
   export let asChild: $$Props["asChild"] = false
-  export let value: $$Props["value"] = undefined
-  export { className as class }
-
-  let className = ""
 
   const { elements } = ctx.get()
   const { hiddenInput } = elements
+
+  $: builder = $hiddenInput
 </script>
 
 {#if asChild}
-  <slot builder={$hiddenInput} />
+  <slot {builder} />
 {:else}
-  <input class={cn(className)} use:melt={$hiddenInput} {...$$restProps} bind:value />
+  <input use:melt={builder} {...$$restProps} />
 {/if}

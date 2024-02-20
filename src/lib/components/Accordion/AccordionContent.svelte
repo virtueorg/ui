@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { TRANSITION_BASE, cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { TRANSITION_BASE, cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { slide } from "svelte/transition"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
@@ -14,30 +14,32 @@
 
   let className = ""
 
-  const item = ctx.getItem()
-
   const style = tv({
     base: cn`
-      p-5
+      p-4
     `,
   })
+
+  const item = ctx.getItem()
 
   const { elements, helpers } = ctx.get()
   const { content } = elements
   const { isSelected } = helpers
+
+  $: builder = $content(item)
 </script>
 
 {#if $isSelected(item.value)}
   {#if asChild}
-    <slot builder={$content} />
+    <slot {builder} />
   {:else}
     <div
       class={cn(style.base, className)}
-      use:melt={$content(item)}
-      {...$$restProps}
+      use:melt={builder}
       transition:slide|global={TRANSITION_BASE}
+      {...$$restProps}
     >
-      <slot />
+      <slot {builder} />
     </div>
   {/if}
 {/if}

@@ -1,71 +1,79 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
-  import { melt } from "@melt-ui/svelte"
-  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
+  import { melt, type RadioGroupItemProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  // TODO: Review this
-  type $$Props = Omit<HTMLButtonAttributes, "value"> &
-    AsChild & {
-      value: string
-      disabled?: boolean
-    }
+  type $$Props = Exclude<RadioGroupItemProps, string> & AsChild
 
-  export { className as class }
+  export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"]
   export let disabled: $$Props["disabled"] = false
-  export let asChild: $$Props["asChild"] = false
+  export { className as class }
 
   let className = ""
 
   const style = tv({
     base: cn`
       transition-all
+      w-full
       flex
       items-center
-      w-full
-      border
-      border-transparent
-      bg-muted/5
-      text-left
+      justify-between
+      gap-3
       p-3
-      rounded-lg
+      rounded-xl
+      border
+      border-muted/5
 
-      hover:bg-muted/10
+      hover:bg-muted/5
+      hover:border-muted/10
 
       active:scale-95
-
-      data-[state=checked]:border-primary
     `,
     variants: {
+      isChecked: {
+        true: cn`
+          border-primary
+          bg-primary/5
+
+          hover:border-primary
+          hover:bg-primary/10
+        `,
+      },
       disabled: {
         true: cn`
           opacity-50
-          cursor-not-allowed
-          
+
           hover:bg-transparent
+          hover:border-muted/5
+          
+          active:scale-100
         `,
       },
     },
   })
 
-  const { elements, options } = ctx.createItem(value)
-  const { disabled: rootDisabled } = options
+  ctx.setItem({ value, disabled })
+
+  const { elements, helpers } = ctx.get()
   const { item } = elements
+  const { isChecked } = helpers
+
+  $: builder = $item({ value, disabled })
 </script>
 
 {#if asChild}
-  <slot builder={$item({ value, disabled })} />
+  <slot {builder} />
 {:else}
   <button
     type="button"
-    use:melt={$item({ value, disabled })}
-    class={cn(style.base, style({ disabled: disabled || $rootDisabled }), className)}
+    class={cn(style.base, style({ isChecked: $isChecked(value), disabled: disabled }), className)}
+    use:melt={builder}
     {...$$restProps}
     on:click
   >
-    <slot />
+    <slot {builder} />
   </button>
 {/if}

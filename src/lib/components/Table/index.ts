@@ -1,10 +1,7 @@
-import TableBody from "./TableBody.svelte"
-import TableCaption from "./TableCaption.svelte"
-import TableCell from "./TableCell.svelte"
-import TableFooter from "./TableFooter.svelte"
-import TableHead from "./TableHead.svelte"
-import TableHeader from "./TableHeader.svelte"
-import Table from "./TableRoot.svelte"
-import TableRow from "./TableRow.svelte"
-
-export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow }
+export { default as Root } from "./Table.svelte"
+export { default as Body } from "./TableBody.svelte"
+export { default as Caption } from "./TableCaption.svelte"
+export { default as Cell } from "./TableCell.svelte"
+export { default as Head } from "./TableHead.svelte"
+export { default as Header } from "./TableHeader.svelte"
+export { default as Row } from "./TableRow.svelte"

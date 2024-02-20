@@ -1,5 +1,3 @@
-import ToggleInput from "./ToggleInput.svelte"
-import Toggle from "./ToggleRoot.svelte"
-import ToggleThumb from "./ToggleThumb.svelte"
-
-export { Toggle, ToggleInput, ToggleThumb }
+export { default as Root } from "./Toggle.svelte"
+export { default as Input } from "./ToggleInput.svelte"
+export { default as Thumb } from "./ToggleThumb.svelte"

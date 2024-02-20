@@ -1,9 +1,9 @@
 import { createTabs, type CreateTabsProps, type Tabs } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "tabs"
+const NAME = "Tabs"
 
-const create = (props: CreateTabsProps) => {
+const set = (props: CreateTabsProps) => {
   const tabs = createTabs(props)
 
   setContext(NAME, tabs)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 

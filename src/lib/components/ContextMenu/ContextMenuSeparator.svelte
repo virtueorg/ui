@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
@@ -16,18 +16,20 @@
   const style = tv({
     base: cn`
       h-px
-      bg-muted/10
+      bg-muted/5
     `,
   })
 
   const { elements } = ctx.get()
   const { separator } = elements
+
+  $: builder = $separator
 </script>
 
 {#if asChild}
-  <slot builder={$separator} />
+  <slot {builder} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$separator} {...$$restProps}>
-    <slot />
+  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </div>
 {/if}

@@ -1,4 +1,2 @@
-import ProgressLine from "./ProgressLine.svelte"
-import Progress from "./ProgressRoot.svelte"
-
-export { Progress, ProgressLine }
+export { default as Root } from "./Progress.svelte"
+export { default as Line } from "./ProgressLine.svelte"

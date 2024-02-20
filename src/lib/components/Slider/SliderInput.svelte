@@ -1,26 +1,18 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLInputAttributes } from "svelte/elements"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLInputAttributes
+  type $$Props = HTMLInputAttributes & AsChild
 
-  export { className as class }
-
-  let className = ""
+  export let asChild: $$Props["asChild"] = false
 
   const { states } = ctx.get()
   const { value } = states
-
-  const getValue = (value: number[]) => {
-    if (value.length === 1) {
-      return value[0]
-    }
-
-    return value[1] - value[0]
-  }
-
-  $: inputValue = getValue($value)
 </script>
 
-<input class={cn(className)} hidden {...$$restProps} value={inputValue} />
+{#if asChild}
+  <slot value={$value} />
+{:else}
+  <input hidden value={$value} {...$$restProps} />
+{/if}

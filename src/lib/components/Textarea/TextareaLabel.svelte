@@ -1,26 +1,28 @@
 <script lang="ts">
-  import { cn } from "$lib"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import type { HTMLLabelAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLLabelAttributes
+  type $$Props = HTMLLabelAttributes & AsChild
 
+  export let asChild: $$Props["asChild"] = false
   export { className as class }
 
   let className = ""
 
   const style = tv({
     base: cn`
-      absolute
-      top-0
-      left-0
-      p-3
-      text-sm
       text-muted
+      text-sm
     `,
   })
 </script>
 
-<label class={cn(style.base, className)} {...$$restProps}>
+{#if asChild}
   <slot />
-</label>
+{:else}
+  <label class={cn(style.base, className)} {...$$restProps}>
+    <slot />
+  </label>
+{/if}

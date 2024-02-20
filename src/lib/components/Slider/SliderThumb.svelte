@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLSpanElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
@@ -15,33 +15,24 @@
 
   const style = tv({
     base: cn`
-      block
-      h-5
+      transition
       w-5
-      rounded-lg
-      bg-primary
+      h-5
+      rounded-xl
+      bg-foreground
     `,
-    variants: {
-      disabled: {
-        true: cn`
-          opacity-50
-          cursor-not-allowed
-        `,
-      },
-    },
   })
 
-  const { elements, options } = ctx.get()
-  const { disabled } = options
+  const { elements } = ctx.get()
   const { thumb } = elements
+
+  $: builder = $thumb()
 </script>
 
 {#if asChild}
-  <slot builder={$thumb()} />
+  <slot {builder} />
 {:else}
-  <span
-    class={cn(style.base, style({ disabled: $disabled }), className)}
-    use:melt={$thumb()}
-    {...$$restProps}
-  />
+  <div class={cn(style.base, className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
+  </div>
 {/if}

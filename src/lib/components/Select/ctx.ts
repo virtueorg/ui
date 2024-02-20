@@ -1,12 +1,10 @@
-import { createSelect, type CreateSelectProps, type Select } from "@melt-ui/svelte"
-import { nanoid } from "nanoid"
+import { createSelect, type CreateSelectProps, type Select, type SelectOptionProps } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "select"
-const GROUP_NAME = "select-group"
-const ITEM_NAME = "select-item"
+const NAME = "Select"
+const OPTION_NAME = "SelectOption"
 
-const create = (props: CreateSelectProps<string, boolean>) => {
+const set = (props: CreateSelectProps<boolean>) => {
   const select = createSelect(props)
 
   setContext(NAME, select)
@@ -15,54 +13,30 @@ const create = (props: CreateSelectProps<string, boolean>) => {
 }
 
 const get = () => {
-  const select: Select<string, boolean> = getContext(NAME)
+  const select: Select = getContext(NAME)
 
   return select
 }
 
-const createGroup = () => {
-  const id = nanoid()
+const setOption = (props: SelectOptionProps) => {
+  const option = props
 
-  setContext(GROUP_NAME, id)
+  setContext(OPTION_NAME, option)
 
-  const { elements } = get()
-  const { group } = elements
-
-  return { group, id }
+  return option
 }
 
-const createItem = (value: string) => {
-  const select = get()
+const getOption = () => {
+  const option: SelectOptionProps = getContext(OPTION_NAME)
 
-  setContext(ITEM_NAME, value)
-
-  return select
-}
-
-const getItem = () => {
-  const value: string = getContext(ITEM_NAME)
-
-  return value
-}
-
-const getGroup = () => {
-  const id: string = getContext(GROUP_NAME)
-  const { elements } = get()
-  const { groupLabel } = elements
-
-  return {
-    id,
-    groupLabel,
-  }
+  return option
 }
 
 const ctx = {
-  create,
+  set,
   get,
-  createGroup,
-  createItem,
-  getItem,
-  getGroup,
+  setOption,
+  getOption,
 }
 
 export default ctx

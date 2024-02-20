@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { AsChild } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
-  import { tv } from "tailwind-variants"
-  import ctx from "./ctx"
+  import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
 
@@ -13,20 +12,16 @@
 
   let className = ""
 
-  const style = tv({
-    base: cn`
-      text-left
-    `,
-  })
-
   const { elements } = ctx.get()
   const { trigger } = elements
+
+  $: builder = $trigger
 </script>
 
 {#if asChild}
-  <slot builder={$trigger} />
+  <slot {builder} />
 {:else}
-  <div class={cn(style.base, className)} use:melt={$trigger} {...$$restProps}>
-    <slot />
+  <div class={cn(className)} use:melt={builder} {...$$restProps}>
+    <slot {builder} />
   </div>
 {/if}

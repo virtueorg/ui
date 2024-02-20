@@ -1,44 +1,50 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { IVariant } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild, Variant } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
-    variant?: IVariant
-  }
+  type $$Props = HTMLAttributes<HTMLDivElement> &
+    AsChild & {
+      variant?: Variant
+    }
 
-  export { className as class }
+  export let asChild: $$Props["asChild"] = false
   export let variant: $$Props["variant"] = "default"
+  export { className as class }
 
   let className = ""
 
   const style = tv({
     base: cn`
-      text-sm
-    `,
+        text-sm
+      `,
     variants: {
       variant: {
         default: cn`
-          text-foreground
-        `,
+            text-muted
+          `,
         success: cn`
-          text-primary
-        `,
+            text-primary
+          `,
         info: cn`
-          text-muted
-        `,
+            text-muted
+          `,
         warning: cn`
-          text-warning
-        `,
+            text-warning
+          `,
         error: cn`
-          text-error
-        `,
+            text-error
+          `,
       },
     },
   })
 </script>
 
-<div class={cn(style.base, style({ variant }), className)} {...$$restProps}>
+{#if asChild}
   <slot />
-</div>
+{:else}
+  <div class={cn(style.base, style({ variant }), className)} {...$$restProps}>
+    <slot />
+  </div>
+{/if}

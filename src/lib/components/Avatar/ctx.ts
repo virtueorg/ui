@@ -1,9 +1,9 @@
 import { createAvatar, type Avatar, type CreateAvatarProps } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "avatar"
+const NAME = "Avatar"
 
-const create = (props: CreateAvatarProps) => {
+const set = (props: CreateAvatarProps) => {
   const avatar = createAvatar(props)
 
   setContext(NAME, avatar)
@@ -17,22 +17,9 @@ const get = () => {
   return avatar
 }
 
-const getImage = (src?: string | null) => {
-  const avatar: Avatar = getContext(NAME)
-
-  if (src) {
-    avatar.options.src.set(src)
-  } else {
-    avatar.options.src.set("")
-  }
-
-  return avatar
-}
-
 const ctx = {
-  create,
+  set,
   get,
-  getImage,
 }
 
 export default ctx

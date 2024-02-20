@@ -1,15 +1,17 @@
 <script lang="ts">
-  import { cn } from "$lib"
-  import type { IHeadingTag } from "$lib/types"
+  import { cn } from "$lib/index.js"
+  import type { AsChild, HeadingLevel } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLAttributes<HTMLElement> & {
-    tag?: IHeadingTag
-  }
+  type $$Props = HTMLAttributes<HTMLHeadingElement> &
+    AsChild & {
+      level?: HeadingLevel
+    }
 
+  export let asChild: $$Props["asChild"] = false
+  export let level: $$Props["level"] = "h3"
   export { className as class }
-  export let tag: $$Props["tag"] = "h2"
 
   let className = ""
 
@@ -21,6 +23,10 @@
   })
 </script>
 
-<svelte:element this={tag} class={cn(style.base, className)} {...$$restProps}>
+{#if asChild}
   <slot />
-</svelte:element>
+{:else}
+  <svelte:element this={level} class={cn(style.base, className)} {...$$restProps}>
+    <slot />
+  </svelte:element>
+{/if}

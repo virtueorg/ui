@@ -1,35 +1,14 @@
-import ContextMenuArrow from "./ContextMenuArrow.svelte"
-import ContextMenuCheckboxIndicator from "./ContextMenuCheckboxIndicator.svelte"
-import ContextMenuCheckboxItem from "./ContextMenuCheckboxItem.svelte"
-import ContextMenuContent from "./ContextMenuContent.svelte"
-import ContextMenuGroup from "./ContextMenuGroup.svelte"
-import ContextMenuItem from "./ContextMenuItem.svelte"
-import ContextMenuLabel from "./ContextMenuLabel.svelte"
-import ContextMenuRadioGroup from "./ContextMenuRadioGroup.svelte"
-import ContextMenuRadioIndicator from "./ContextMenuRadioIndicator.svelte"
-import ContextMenuRadioItem from "./ContextMenuRadioItem.svelte"
-import ContextMenu from "./ContextMenuRoot.svelte"
-import ContextMenuSeparator from "./ContextMenuSeparator.svelte"
-import ContextMenuSub from "./ContextMenuSub.svelte"
-import ContextMenuSubContent from "./ContextMenuSubContent.svelte"
-import ContextMenuSubTrigger from "./ContextMenuSubTrigger.svelte"
-import ContextMenuTrigger from "./ContextMenuTrigger.svelte"
-
-export {
-  ContextMenu,
-  ContextMenuArrow,
-  ContextMenuCheckboxIndicator,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioIndicator,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
-}
+export { default as Root } from "./ContextMenu.svelte"
+export { default as CheckboxItem } from "./ContextMenuCheckboxItem.svelte"
+export { default as CheckboxItemIndicator } from "./ContextMenuCheckboxItemIndicator.svelte"
+export { default as Content } from "./ContextMenuContent.svelte"
+export { default as Group } from "./ContextMenuGroup.svelte"
+export { default as Item } from "./ContextMenuItem.svelte"
+export { default as RadioGroup } from "./ContextMenuRadioGroup.svelte"
+export { default as RadioItem } from "./ContextMenuRadioItem.svelte"
+export { default as RadioItemIndicator } from "./ContextMenuRadioItemIndicator.svelte"
+export { default as Separator } from "./ContextMenuSeparator.svelte"
+export { default as Sub } from "./ContextMenuSub.svelte"
+export { default as SubContent } from "./ContextMenuSubContent.svelte"
+export { default as SubTrigger } from "./ContextMenuSubTrigger.svelte"
+export { default as Trigger } from "./ContextMenuTrigger.svelte"

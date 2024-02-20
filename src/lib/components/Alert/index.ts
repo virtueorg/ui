@@ -1,6 +1,5 @@
-import AlertAction from "./AlertAction.svelte"
-import AlertIcon from "./AlertIcon.svelte"
-import Alert from "./AlertRoot.svelte"
-import AlertTitle from "./AlertTitle.svelte"
-
-export { Alert, AlertAction, AlertIcon, AlertTitle }
+export { default as Root } from "./Alert.svelte"
+export { default as Action } from "./AlertAction.svelte"
+export { default as Close } from "./AlertClose.svelte"
+export { default as Progress } from "./AlertProgress.svelte"
+export { default as Title } from "./AlertTitle.svelte"

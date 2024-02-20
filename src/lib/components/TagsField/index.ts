@@ -1,0 +1,8 @@
+export { default as Root } from "./TagsField.svelte"
+export { default as Input } from "./TagsFieldInput.svelte"
+export { default as Item } from "./TagsFieldItem.svelte"
+export { default as ItemDelete } from "./TagsFieldItemDelete.svelte"
+export { default as ItemEdit } from "./TagsFieldItemEdit.svelte"
+export { default as ItemValue } from "./TagsFieldItemValue.svelte"
+export { default as Items } from "./TagsFieldItems.svelte"
+export { default as Label } from "./TagsFieldLabel.svelte"

@@ -1,9 +1,9 @@
 import { createProgress, type CreateProgressProps, type Progress } from "@melt-ui/svelte"
 import { getContext, setContext } from "svelte"
 
-const NAME = "progress"
+const NAME = "Progress"
 
-const create = (props: CreateProgressProps) => {
+const set = (props: CreateProgressProps) => {
   const progress = createProgress(props)
 
   setContext(NAME, progress)
@@ -18,7 +18,7 @@ const get = () => {
 }
 
 const ctx = {
-  create,
+  set,
   get,
 }
 
