@@ -1,9 +1,9 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
 
-  type $$Props = HTMLAttributes<HTMLTableSectionElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLTableSectionElement> & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

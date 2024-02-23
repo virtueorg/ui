@@ -1,6 +1,6 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn, TRANSITION_SCALE } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt, type Tag } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { scale } from "svelte/transition"
@@ -8,7 +8,7 @@
   import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> &
-    AsChild & {
+    AsChildType & {
       item: Tag
     }
 

@@ -1,12 +1,12 @@
 <script lang="ts">
+  import type { AsChildType, HeadingLevelType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild, HeadingLevel } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
   type $$Props = HTMLAttributes<HTMLHeadingElement> &
-    AsChild & {
-      level?: HeadingLevel
+    AsChildType & {
+      level?: HeadingLevelType
     }
 
   export let asChild: $$Props["asChild"] = false

@@ -1,11 +1,11 @@
+import type { AlertType } from "$lib/index.js"
 import { ALERT_TIMEOUT } from "$lib/index.js"
-import type { Alert } from "$lib/types.js"
 import { nanoid } from "nanoid"
 import { writable } from "svelte/store"
 
-const store = writable<Alert[]>([])
+const store = writable<AlertType[]>([])
 
-const add = (alert: Alert) => {
+const add = (alert: AlertType) => {
   if (!alert.id) {
     alert.id = nanoid()
   }
@@ -19,7 +19,7 @@ const add = (alert: Alert) => {
   }, ALERT_TIMEOUT)
 }
 
-const remove = (id: Alert["id"]) => {
+const remove = (id: AlertType["id"]) => {
   store.update($store => {
     return $store.filter(alert => alert.id !== id)
   })

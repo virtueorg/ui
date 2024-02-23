@@ -1,12 +1,12 @@
 <script lang="ts">
+  import type { AsChildType, VariantType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild, Variant } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
   type $$Props = HTMLAttributes<HTMLDivElement> &
-    AsChild & {
-      variant?: Variant
+    AsChildType & {
+      variant?: VariantType
     }
 
   export let asChild: $$Props["asChild"] = false

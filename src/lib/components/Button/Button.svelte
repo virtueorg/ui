@@ -1,13 +1,13 @@
 <script lang="ts">
+  import type { AsChildType, BuilderActionsParamsType, ExtendedVariantType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild, BuilderActionsParams, ExtendedVariant } from "$lib/types.js"
   import type { ActionReturn } from "svelte/action"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
   type $$Props = HTMLButtonAttributes &
-    AsChild & {
-      variant?: ExtendedVariant
+    AsChildType & {
+      variant?: ExtendedVariantType
       builders?: any[]
     }
 
@@ -138,7 +138,7 @@
     },
   })
 
-  const builderActions = (node: HTMLElement, params: BuilderActionsParams) => {
+  const builderActions = (node: HTMLElement, params: BuilderActionsParamsType) => {
     const unsubs: ActionReturn[] = []
 
     params.builders.forEach(builder => {

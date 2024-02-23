@@ -1,13 +1,13 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { TRANSITION_Y_IN, cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLAttributes } from "svelte/elements"
   import { fly } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & AsChild
+  type $$Props = HTMLAttributes<HTMLDivElement> & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }
