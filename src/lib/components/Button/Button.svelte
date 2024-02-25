@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AsChildType, BuilderActionsParamsType, ExtendedVariantType } from "$lib/index.js"
+  import type { AsChildType, BuilderActionsParamsType, BuilderType, ExtendedVariantType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
   import type { ActionReturn } from "svelte/action"
   import type { HTMLButtonAttributes } from "svelte/elements"
@@ -8,12 +8,14 @@
   type $$Props = HTMLButtonAttributes &
     AsChildType & {
       variant?: ExtendedVariantType
-      builders?: any[]
+      builders?: BuilderType[]
+      href?: string
     }
 
   export let asChild: $$Props["asChild"] = false
   export let type: $$Props["type"] = "button"
   export let variant: $$Props["variant"] = "default"
+  export let href: $$Props["href"] = ""
   export let builders: $$Props["builders"] = []
   export { className as class }
 
@@ -22,7 +24,7 @@
   const style = tv({
     base: cn`
       transition-all
-      flex
+      inline-flex
       items-center
       justify-center
       gap-3
@@ -139,6 +141,8 @@
   })
 
   const builderActions = (node: HTMLElement, params: BuilderActionsParamsType) => {
+    if (!params.builders) return
+
     const unsubs: ActionReturn[] = []
 
     params.builders.forEach(builder => {
@@ -163,9 +167,12 @@
 
 {#if asChild}
   <slot />
-{:else if builders}
-  <button
-    {type}
+{:else}
+  <svelte:element
+    this={href ? "a" : "button"}
+    role={href ? "a" : "button"}
+    type={href ? undefined : type}
+    href={href ? href : undefined}
     tabindex="0"
     class={cn(style.base, style({ variant }), className)}
     {...$$restProps}
@@ -173,9 +180,5 @@
     on:click
   >
     <slot />
-  </button>
-{:else}
-  <button {type} tabindex="0" class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
-    <slot />
-  </button>
+  </svelte:element>
 {/if}

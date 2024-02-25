@@ -15,7 +15,7 @@ export type BuilderType = {
 }
 
 export type BuilderActionsParamsType = {
-  builders: BuilderType[]
+  builders?: BuilderType[]
 }
 
 export type AlertType = {
