@@ -24,7 +24,7 @@
   const style = tv({
     base: cn`
       transition-all
-      flex
+      inline-flex
       items-center
       justify-center
       gap-3
