@@ -141,6 +141,8 @@
   })
 
   const builderActions = (node: HTMLElement, params: BuilderActionsParamsType) => {
+    if (!params.builders) return
+
     const unsubs: ActionReturn[] = []
 
     params.builders.forEach(builder => {
@@ -165,35 +167,18 @@
 
 {#if asChild}
   <slot />
-{:else if builders}
-  {#if href}
-    <a
-      {href}
-      tabindex="0"
-      class={cn(style.base, style({ variant }), className)}
-      {...$$restProps}
-      use:builderActions={{ builders }}
-    >
-      <slot />
-    </a>
-  {:else}
-    <button
-      {type}
-      tabindex="0"
-      class={cn(style.base, style({ variant }), className)}
-      {...$$restProps}
-      use:builderActions={{ builders }}
-      on:click
-    >
-      <slot />
-    </button>
-  {/if}
-{:else if href}
-  <a {href} tabindex="0" class={cn(style.base, style({ variant }), className)} {...$$restProps}>
-    <slot />
-  </a>
 {:else}
-  <button {type} tabindex="0" class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
+  <svelte:element
+    this={href ? "a" : "button"}
+    role={href ? "a" : "button"}
+    type={href ? undefined : type}
+    href={href ? href : undefined}
+    tabindex="0"
+    class={cn(style.base, style({ variant }), className)}
+    {...$$restProps}
+    use:builderActions={{ builders }}
+    on:click
+  >
     <slot />
-  </button>
+  </svelte:element>
 {/if}
