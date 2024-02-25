@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt, type CreateSeparatorProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = CreateSeparatorProps & AsChild
+  type $$Props = CreateSeparatorProps & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let orientation: $$Props["orientation"] = "horizontal"

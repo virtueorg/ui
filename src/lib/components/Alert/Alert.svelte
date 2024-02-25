@@ -1,14 +1,14 @@
 <script lang="ts">
+  import type { AlertType, AsChildType } from "$lib/index.js"
   import { TRANSITION_SCALE, cn } from "$lib/index.js"
-  import type { Alert, AsChild } from "$lib/types.js"
   import type { HTMLAttributes } from "svelte/elements"
   import { scale } from "svelte/transition"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
   type $$Props = HTMLAttributes<HTMLDivElement> &
-    AsChild & {
-      alert: Alert
+    AsChildType & {
+      alert: AlertType
     }
 
   export let asChild: $$Props["asChild"] = false

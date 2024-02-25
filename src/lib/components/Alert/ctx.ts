@@ -1,9 +1,9 @@
-import type { Alert } from "$lib/types.js"
+import type { AlertType } from "$lib/index.js"
 import { getContext, setContext } from "svelte"
 
 const NAME = "Alert"
 
-const set = (props: Alert) => {
+const set = (props: AlertType) => {
   const alert = props
 
   setContext(NAME, alert)
@@ -12,7 +12,7 @@ const set = (props: Alert) => {
 }
 
 const get = () => {
-  const alert: Alert = getContext(NAME)
+  const alert: AlertType = getContext(NAME)
 
   return alert
 }

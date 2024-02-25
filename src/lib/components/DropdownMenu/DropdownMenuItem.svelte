@@ -1,12 +1,12 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLButtonAttributes & AsChild
+  type $$Props = HTMLButtonAttributes & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let disabled: $$Props["disabled"] = false

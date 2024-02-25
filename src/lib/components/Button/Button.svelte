@@ -1,13 +1,13 @@
 <script lang="ts">
+  import type { AsChildType, BuilderActionsParamsType, ExtendedVariantType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild, BuilderActionsParams, Variant } from "$lib/types.js"
   import type { ActionReturn } from "svelte/action"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
   type $$Props = HTMLButtonAttributes &
-    AsChild & {
-      variant?: Variant
+    AsChildType & {
+      variant?: ExtendedVariantType
       builders?: any[]
     }
 
@@ -47,15 +47,15 @@
           disabled:hover:bg-transparent
         `,
         success: cn`
-          border-background/5
-          bg-primary
-          text-background
+          border-primary/5
+          bg-primary/5
+          text-primary
           
-          hover:border-background/10
-          hover:bg-primary/90
+          hover:border-primary/10
+          hover:bg-primary/20
 
-          disabled:hover:border-background/5
-          disabled:hover:bg-primary
+          disabled:hover:border-primary/5
+          disabled:hover:bg-primary/5
         `,
         info: cn`
           border-muted/5
@@ -90,11 +90,55 @@
           disabled:hover:border-error/5
           disabled:hover:bg-error/5
         `,
+        successFilled: cn`
+          border-primary
+          bg-primary
+          text-background
+          
+          hover:border-primary/90
+          hover:bg-primary/90
+
+          disabled:hover:border-primary
+          disabled:hover:bg-primary
+        `,
+        infoFilled: cn`
+          border-muted
+          bg-muted
+          text-background
+
+          hover:border-muted/90
+          hover:bg-muted/90
+          
+          disabled:hover:border-muted
+          disabled:hover:bg-muted
+        `,
+        warningFilled: cn`
+          border-warning
+          bg-warning
+          text-background
+
+          hover:border-warning/90
+          hover:bg-warning/90
+
+          disabled:hover:border-warning
+          disabled:hover:bg-warning
+        `,
+        errorFilled: cn`
+          border-error
+          bg-error
+          text-background
+
+          hover:border-error/90
+          hover:bg-error/90
+
+          disabled:hover:border-error
+          disabled:hover:bg-error
+        `,
       },
     },
   })
 
-  const builderActions = (node: HTMLElement, params: BuilderActionsParams) => {
+  const builderActions = (node: HTMLElement, params: BuilderActionsParamsType) => {
     const unsubs: ActionReturn[] = []
 
     params.builders.forEach(builder => {

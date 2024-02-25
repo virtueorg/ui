@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import type { HTMLFormAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
   type $$Props = HTMLFormAttributes &
-    AsChild & {
+    AsChildType & {
       enhance?: (node: HTMLFormElement) => void
     }
 

@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt, type CreateDropdownMenuCheckboxItemProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = CreateDropdownMenuCheckboxItemProps & AsChild
+  type $$Props = CreateDropdownMenuCheckboxItemProps & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let disabled: $$Props["disabled"] = false

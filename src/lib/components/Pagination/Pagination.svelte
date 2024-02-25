@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt, type CreatePaginationProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = CreatePaginationProps & AsChild
+  type $$Props = CreatePaginationProps & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let count: $$Props["count"]

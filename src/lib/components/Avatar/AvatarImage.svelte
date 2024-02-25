@@ -1,12 +1,12 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLImgAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLImgAttributes & AsChild
+  type $$Props = HTMLImgAttributes & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let src: $$Props["src"] = ""

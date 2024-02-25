@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { alerts, cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import type { HTMLButtonAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLButtonAttributes & AsChild
+  type $$Props = HTMLButtonAttributes & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

@@ -1,11 +1,11 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import { type CreateAvatarProps } from "@melt-ui/svelte"
   import { tv } from "tailwind-variants"
   import ctx from "./ctx.js"
 
-  type $$Props = Omit<CreateAvatarProps, "src"> & AsChild
+  type $$Props = Omit<CreateAvatarProps, "src"> & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export { className as class }

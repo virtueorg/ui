@@ -1,10 +1,10 @@
 <script lang="ts">
+  import type { AsChildType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
-  import type { AsChild } from "$lib/types.js"
   import type { HTMLTextareaAttributes } from "svelte/elements"
   import { tv } from "tailwind-variants"
 
-  type $$Props = HTMLTextareaAttributes & AsChild
+  type $$Props = HTMLTextareaAttributes & AsChildType
 
   export let asChild: $$Props["asChild"] = false
   export let value: $$Props["value"] = ""

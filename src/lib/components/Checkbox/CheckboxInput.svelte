@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { AsChild } from "$lib/types.js"
+  import type { AsChildType } from "$lib/index.js"
   import { melt } from "@melt-ui/svelte"
   import type { HTMLInputAttributes } from "svelte/elements"
   import ctx from "./ctx.js"
 
-  type $$Props = HTMLInputAttributes & AsChild
+  type $$Props = HTMLInputAttributes & AsChildType
 
   export let asChild: $$Props["asChild"] = false
 
