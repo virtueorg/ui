@@ -8,12 +8,14 @@
   type $$Props = HTMLButtonAttributes &
     AsChildType & {
       variant?: ExtendedVariantType
-      builders?: any[]
+      builders?: BuilderType[]
+      href?: string
     }
 
   export let asChild: $$Props["asChild"] = false
   export let type: $$Props["type"] = "button"
   export let variant: $$Props["variant"] = "default"
+  export let href: $$Props["href"] = ""
   export let builders: $$Props["builders"] = []
   export { className as class }
 
