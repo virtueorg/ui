@@ -4,6 +4,19 @@
   "repository": {
     "url": "https://github.com/virtueorg/ui"
   },
+  "author": {
+    "name": "Leonardo Dipace",
+    "email": "leonardodipace@gmail.com",
+    "url": "https://github.com/leonardodipace"
+  },
+  "contributors": [
+    {
+      "name": "Stefano Labianca",
+      "email": "lstefano@proton.me",
+      "url": "https://github.com/Stefano-Labianca"
+    }
+  ],
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
