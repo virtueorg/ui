@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AsChildType, BuilderActionsParamsType, ExtendedVariantType } from "$lib/index.js"
+  import type { AsChildType, BuilderActionsParamsType, BuilderType, ExtendedVariantType } from "$lib/index.js"
   import { cn } from "$lib/index.js"
   import type { ActionReturn } from "svelte/action"
   import type { HTMLButtonAttributes } from "svelte/elements"
@@ -166,16 +166,32 @@
 {#if asChild}
   <slot />
 {:else if builders}
-  <button
-    {type}
-    tabindex="0"
-    class={cn(style.base, style({ variant }), className)}
-    {...$$restProps}
-    use:builderActions={{ builders }}
-    on:click
-  >
+  {#if href}
+    <a
+      {href}
+      tabindex="0"
+      class={cn(style.base, style({ variant }), className)}
+      {...$$restProps}
+      use:builderActions={{ builders }}
+    >
+      <slot />
+    </a>
+  {:else}
+    <button
+      {type}
+      tabindex="0"
+      class={cn(style.base, style({ variant }), className)}
+      {...$$restProps}
+      use:builderActions={{ builders }}
+      on:click
+    >
+      <slot />
+    </button>
+  {/if}
+{:else if href}
+  <a {href} tabindex="0" class={cn(style.base, style({ variant }), className)} {...$$restProps}>
     <slot />
-  </button>
+  </a>
 {:else}
   <button {type} tabindex="0" class={cn(style.base, style({ variant }), className)} {...$$restProps} on:click>
     <slot />
