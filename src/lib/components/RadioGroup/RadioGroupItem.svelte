@@ -57,9 +57,10 @@
 
   ctx.setItem({ value, disabled })
 
-  const { elements, helpers } = ctx.get()
+  const { elements, helpers, options } = ctx.get()
   const { item } = elements
   const { isChecked } = helpers
+  const { disabled: rootDisabled } = options
 
   $: builder = $item({ value, disabled })
 </script>
@@ -69,7 +70,7 @@
 {:else}
   <button
     type="button"
-    class={cn(style.base, style({ isChecked: $isChecked(value), disabled: disabled }), className)}
+    class={cn(style.base, style({ isChecked: $isChecked(value), disabled: disabled || $rootDisabled }), className)}
     use:melt={builder}
     {...$$restProps}
     on:click
