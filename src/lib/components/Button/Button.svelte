@@ -170,7 +170,7 @@
 {:else}
   <svelte:element
     this={href ? "a" : "button"}
-    role={href ? "a" : "button"}
+    role={href ? undefined : "button"}
     type={href ? undefined : type}
     href={href ? href : undefined}
     tabindex="0"
